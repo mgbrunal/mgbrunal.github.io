@@ -1,0 +1,37 @@
+---
+import Card from "../Card.astro";
+import SkillsItem from "../SkillsItem.astro";
+
+const skills = [
+  {
+    name: "HTML-Javascript-CSS",
+    level: 5,
+  },
+  {
+    name: "React",
+    level: 5,
+  },
+  {
+    name: "Node.js - Express.js",
+    level: 5,
+  },
+  {
+    name: "Teamwork",
+    level: 5,
+  },
+];
+---
+
+<Card cols={2} rows={2} clickable href="/skills">
+  <p class="text-white/50" transition:name="skills text">skills</p>
+  <div class="grid grid-cols-1 gap-2 py-2">
+    {
+      skills.map((skill) => (
+        <SkillsItem
+          name={skill.name}
+          level={skill.level}
+        />
+      ))
+    }
+  </div>
+</Card>

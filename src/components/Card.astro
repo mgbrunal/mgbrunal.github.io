@@ -1,0 +1,46 @@
+---
+import ArrowUpRight from "../icons/ArrowUpRight.astro";
+
+interface Props {
+  clickable?: boolean;
+  cols?: 1 | 2;
+  external?: boolean;
+  href?: string;
+  rows?: 1 | 2;
+}
+
+const {
+  clickable = false,
+  cols = 1,
+  external = false,
+  href = "#",
+  rows = 1,
+} = Astro.props;
+---
+
+<div
+  class={`${rows === 1 ? "row-span-1" : "row-span-2"} ${
+    cols === 1 ? "col-span-1" : "col-span-2"
+  } rounded-lg bg-gradient-to-br from-stone-800 to-black shadow-lg hover:shadow-2xl p-4`}
+>
+  <div
+    class={`relative h-full w-full transition-all duration-300 ${
+      clickable ? "items-center hover:bg-purple-900/10" : "items-start"
+    } justify-center flex flex-col text-white/50`}
+  >
+    {
+      clickable ? (
+        <a href={href} {...(external && { target: "_blank" })}>
+          <button>
+            <div class="absolute top-0 right-0">
+              <ArrowUpRight />
+            </div>
+            <slot />
+          </button>
+        </a>
+      ) : (
+        <slot />
+      )
+    }
+  </div>
+</div>

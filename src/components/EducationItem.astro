@@ -1,0 +1,32 @@
+---
+interface Props {
+  imageURL: string;
+  institution: string;
+  name: string;
+  timePeriod: string;
+}
+
+const { imageURL, institution, name, timePeriod } = Astro.props;
+---
+
+<div
+  class="flex flex-row justify-start items-start w-full gap-4 rounded-lg p-5
+    border border-dotted border-black bg-black/50"
+>
+  <picture class="h-12 w-12 flex-none">
+    <img
+      src={imageURL}
+      alt={`Logo of ${name}`}
+      class="object-cover w-full h-full rounded-full"
+    />
+  </picture>
+  <div class="flex flex-col flex-1 justify-start items-start">
+    <h2 class="text-xl text-white font-bold">{name}</h2>
+
+    <div
+      class="flex flex-col justify-start items-start text-base font-normal text-white/80"
+    >
+      <p>{institution} ({timePeriod})</p>
+    </div>
+  </div>
+</div>

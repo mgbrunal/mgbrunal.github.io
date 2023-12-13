@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BackButton from "../components/BackButton.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+
+const items = [
+  {
+    imageURL: "/img/creativos.jpeg",
+    location: "Medellin, Colombia",
+    name: "Creativos Digitales",
+    position: "Software Engineer",
+    technologies: ["Vue.js", "Nuxt.js", "Node.js", "Express.js", "PostgreSQL", "Material UI"],
+    timePeriod: "August 2019 - April 2021",
+  },
+  {
+    imageURL: "/img/celerik.jpeg",
+    location: "Medellin, Colombia (Remote)",
+    name: "Celerik",
+    position: "Full-Stack Developer",
+    technologies: ["React", "Next.js", "Node.js", "NestJS", "TailwindCSS", "React Native"],
+    timePeriod: "May 2021 - February 2023",
+  },
+  {
+    imageURL: "/img/touchto.jpeg",
+    location: "Austin, TX (Remote)",
+    name: "TouchTo",
+    position: "Full-Stack Developer",
+    technologies: ["React", "Next.js", "Node.js", "GraphQL", "TailwindCSS", "React Native"],
+    timePeriod: "February 2021 - Present",
+  },
+];
+---
+
+<Layout title="Experience">
+  <div
+    class="flex flex-row justify-start items-center p-5 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
+  >
+    <BackButton />
+    <h1
+      class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
+      transition:name="experience number"
+    >
+      4+
+    </h1>
+    <h1 class="text-white/50 text-xl" transition:name="experience text">
+      years of experience
+    </h1>
+  </div>
+
+  <div
+    class="flex flex-col justify-start items-center rounded-lg gap-2 py-2 overflow-y-auto"
+  >
+    {
+      items.map((item) => (
+        <ExperienceItem
+          imageURL={item.imageURL}
+          location={item.location}
+          name={item.name}
+          position={item.position}
+          technologies={item.technologies}
+          timePeriod={item.timePeriod}
+        />
+      ))
+    }
+  </div>
+</Layout>
