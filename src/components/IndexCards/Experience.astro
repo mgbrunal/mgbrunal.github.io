@@ -7,9 +7,8 @@ import Card from "../Card.astro";
     class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
     transition:name="experience number"
   >
-    4+
+    {`${new Date().getFullYear() - 2019}+`}
   </p>
-  <p class="text-white/50" transition:name="experience text">
-    years of experience
-  </p>
+  <p class="text-white/50">years of experience</p>
+  <p class="text-white/30 italic">since 2019</p>
 </Card>

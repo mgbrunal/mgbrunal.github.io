@@ -3,33 +3,36 @@ import Layout from "../layouts/Layout.astro";
 import BackButton from "../components/BackButton.astro";
 import EducationItem from "../components/EducationItem.astro";
 
+import udemedellinImg from "../assets/img/udem.jpeg";
+import udemyImg from "../assets/img/udemy.jpeg";
+
 const courses = [
   {
-    imageURL: "/img/udem.jpeg",
+    image: udemedellinImg,
     institution: "Universidad de Medellin",
     name: "Software Engineer",
-    timePeriod: "2017-2024",
+    timePeriod: "2025",
   },
   {
-    imageURL: "/img/udemy.jpeg",
+    image: udemyImg,
     institution: "Udemy - Andrei Neagoie",
     name: "The Complete Web Developer in 2023: Zero to Mastery",
     timePeriod: "2022",
   },
   {
-    imageURL: "/img/udemy.jpeg",
+    image: udemyImg,
     institution: "Udemy - Fernando Herrera",
     name: "React Native: Native Apps for IOS & Android",
     timePeriod: "2022",
   },
   {
-    imageURL: "/img/udemy.jpeg",
+    image: udemyImg,
     institution: "Udemy - Kim Chen",
     name: "Complete Progressive Web App Bootcamp",
     timePeriod: "2022",
   },
   {
-    imageURL: "/img/udemy.jpeg",
+    image: udemyImg,
     institution: "Udemy - Jeovani Martínez",
     name: "Website Hosting in Serverless Mode on Amazon AWS",
     timePeriod: "2022",
@@ -54,7 +57,7 @@ const courses = [
     {
       courses.map((item) => (
         <EducationItem
-          imageURL={item.imageURL}
+          image={item.image}
           institution={item.institution}
           name={item.name}
           timePeriod={item.timePeriod}

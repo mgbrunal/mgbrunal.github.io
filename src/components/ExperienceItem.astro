@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
-  imageURL: string;
+  image: ImageMetadata;
   location: string;
   name: string;
   position: string;
@@ -8,7 +10,7 @@ interface Props {
   timePeriod: string;
 }
 
-const { imageURL, location, name, position, technologies, timePeriod } =
+const { image, location, name, position, technologies, timePeriod } =
   Astro.props;
 ---
 
@@ -17,10 +19,11 @@ const { imageURL, location, name, position, technologies, timePeriod } =
     border border-dotted border-black bg-black/50"
 >
   <picture class="h-12 w-12 flex-none">
-    <img
-      src={imageURL}
+    <Image
+      src={image}
       alt={`Logo of ${name}`}
       class="object-cover w-full h-full rounded-full"
+      loading="eager"
     />
   </picture>
   <div class="flex flex-col flex-1 justify-start items-start">

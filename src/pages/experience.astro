@@ -3,29 +3,54 @@ import Layout from "../layouts/Layout.astro";
 import BackButton from "../components/BackButton.astro";
 import ExperienceItem from "../components/ExperienceItem.astro";
 
+import creativosImg from "../assets/img/creativos.jpeg";
+import celerikImg from "../assets/img/celerik.jpeg";
+import touchtoImg from "../assets/img/touchto.jpeg";
+
 const items = [
   {
-    imageURL: "/img/creativos.jpeg",
+    image: creativosImg,
     location: "Medellin, Colombia",
     name: "Creativos Digitales",
     position: "Software Engineer",
-    technologies: ["Vue.js", "Nuxt.js", "Node.js", "Express.js", "PostgreSQL", "Material UI"],
+    technologies: [
+      "Vue.js",
+      "Nuxt.js",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Material UI",
+    ],
     timePeriod: "August 2019 - April 2021",
   },
   {
-    imageURL: "/img/celerik.jpeg",
+    image: celerikImg,
     location: "Medellin, Colombia (Remote)",
     name: "Celerik",
     position: "Full-Stack Developer",
-    technologies: ["React", "Next.js", "Node.js", "NestJS", "TailwindCSS", "React Native"],
+    technologies: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "NestJS",
+      "TailwindCSS",
+      "React Native",
+    ],
     timePeriod: "May 2021 - February 2023",
   },
   {
-    imageURL: "/img/touchto.jpeg",
+    image: touchtoImg,
     location: "Austin, TX (Remote)",
     name: "TouchTo",
     position: "Full-Stack Developer",
-    technologies: ["React", "Next.js", "Node.js", "GraphQL", "TailwindCSS", "React Native"],
+    technologies: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "GraphQL",
+      "TailwindCSS",
+      "React Native",
+    ],
     timePeriod: "February 2023 - Present",
   },
 ];
@@ -40,7 +65,7 @@ const items = [
       class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
       transition:name="experience number"
     >
-      4+
+      {`${new Date().getFullYear() - 2019}+`}
     </h1>
     <h1 class="text-white/50 text-xl" transition:name="experience text">
       years of experience
@@ -53,7 +78,7 @@ const items = [
     {
       items.map((item) => (
         <ExperienceItem
-          imageURL={item.imageURL}
+          image={item.image}
           location={item.location}
           name={item.name}
           position={item.position}

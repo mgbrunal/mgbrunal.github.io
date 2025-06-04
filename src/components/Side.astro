@@ -1,20 +1,25 @@
 ---
-
+import profileImg from "../assets/img/profile.png";
+import { Image } from "astro:assets";
 ---
 
-<div class="flex flex-row lg:flex-col justify-center items-center gap-4 rounded-lg p-5 h-full
-  bg-gradient-to-br from-stone-800 to-black">
+<div
+  class="flex flex-row lg:flex-col justify-center items-center gap-4 rounded-lg p-5 h-full
+  bg-gradient-to-br from-stone-800 to-black"
+>
   <picture class="h-20 w-20 lg:h-40 lg:w-40 flex-none">
-    <img
-      src="/img/profile.png"
+    <Image
+      src={profileImg}
       alt="Profile"
       class="object-cover w-full h-full rounded-full"
+      loading="eager"
     />
   </picture>
   <div class="w-max text-center">
     <h1
       class="animate-typing overflow-hidden whitespace-nowrap border-r-4
       border-r-white pr-5 text-3xl text-white font-bold"
+      aria-label="Mauricio Garzon"
     >
       Mauricio Garzon
     </h1>
