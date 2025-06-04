@@ -1,4 +1,4 @@
-name: Deploy Astro site to GitHub Pages
+name: Deploy Astro to GitHub Pages
 
 on:
   push:
@@ -17,19 +17,26 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies and build
-        uses: withastro/action@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./dist # Asegúrate de que sea la ruta de salida de Astro (normalmente es `dist`)
+          path: ./dist
 
   deploy:
     needs: build
