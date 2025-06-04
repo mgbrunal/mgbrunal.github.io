@@ -47,16 +47,16 @@ const { title } = Astro.props;
   </head>
   <body>
     <div
-      class="min-h-screen lg:h-screen max-w-screen bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900"
+      class="min-h-screen md:h-screen max-w-screen bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900"
     >
       <div
-        class="h-auto lg:h-screen p-3 gap-3 grid grid-cols-1 lg:grid-cols-12"
+        class="h-auto md:h-screen p-3 gap-3 grid grid-cols-1 md:grid-cols-12"
       >
-        <div class="lg:col-span-4 p-3 backdrop-blur-sm bg-black/30 rounded-lg">
+        <div class="md:col-span-4 p-3 backdrop-blur-sm bg-black/30 rounded-lg">
           <Side />
         </div>
         <div
-          class="lg:col-span-8 p-3 backdrop-blur-sm bg-black/30 rounded-lg overflow-x-hidden overflow-y-auto"
+          class="md:col-span-8 p-3 backdrop-blur-sm bg-black/30 rounded-lg overflow-x-hidden overflow-y-auto"
         >
           <slot />
         </div>

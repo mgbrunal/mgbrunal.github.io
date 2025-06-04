@@ -74,34 +74,52 @@ const soft_items = [
     name: "Leadership",
     level: 4,
   },
+  {
+    name: "Professional Vocabulary",
+    level: 5,
+  },
+  {
+    name: "Self-demand",
+    level: 5,
+  },
 ];
 ---
 
-<Layout title="Skills">
+<Layout title="Services & Skills">
+  <div
+    class="flex flex-row justify-start items-center p-5 mb-4 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
+  >
+    <BackButton />
+    <h1
+      class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
+    >
+      Services
+    </h1>
+  </div>
+
   <div
     class="flex flex-row justify-start items-center p-5 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
   >
     <BackButton />
     <h1
-      class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
-      transition:name="skills text"
+      class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
     >
       Skills
     </h1>
   </div>
 
-  <h2 class="text-3xl text-center my-2 font-bold text-white">Frontend</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 py-2">
+  <h2 class="text-xl md:text-3xl text-center my-2 font-bold text-white">Frontend</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 py-2">
     {FE_items.map((item) => <SkillsItem name={item.name} level={item.level} />)}
   </div>
 
-  <h2 class="text-3xl text-center my-2 font-bold text-white">Backend</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 py-2">
+  <h2 class="text-xl md:text-3xl text-center my-2 font-bold text-white">Backend</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 py-2">
     {BE_items.map((item) => <SkillsItem name={item.name} level={item.level} />)}
   </div>
 
-  <h2 class="text-3xl text-center my-2 font-bold text-white">Professional</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 py-2">
+  <h2 class="text-xl md:text-3xl text-center my-2 font-bold text-white">Soft Skills</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 py-2">
     {
       soft_items.map((item) => (
         <SkillsItem name={item.name} level={item.level} />

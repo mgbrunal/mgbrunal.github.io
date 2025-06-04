@@ -2,12 +2,12 @@
 import Card from "../Card.astro";
 ---
 
-<Card clickable href="/experience">
+<Card cols={2} clickable href="/experience">
   <p
     class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
     transition:name="experience number"
   >
-    {`${new Date().getFullYear() - 2019}+`}
+    {`${new Date().getFullYear() - 2020}+`}
   </p>
   <p class="text-white/50">years of experience</p>
   <p class="text-white/30 italic">since 2019</p>

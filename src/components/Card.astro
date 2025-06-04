@@ -3,10 +3,10 @@ import ArrowUpRight from "../assets/icons/ArrowUpRight.astro";
 
 interface Props {
   clickable?: boolean;
-  cols?: 1 | 2;
+  cols?: 1 | 2 | 4;
   external?: boolean;
   href?: string;
-  rows?: 1 | 2;
+  rows?: 1 | 2 | 4;
 }
 
 const {
@@ -16,16 +16,44 @@ const {
   href = "#",
   rows = 1,
 } = Astro.props;
+
+const getCols = (cols?: 1 | 2 | 4): string => {
+  switch (cols) {
+    case 1:
+      return "col-span-1";
+    case 2:
+      return "col-span-2";
+    case 4:
+      return "col-span-2 md:col-span-4";
+    default:
+      return "col-span-1";
+  }
+};
+
+const getRows = (rows?: 1 | 2 | 4): string => {
+  switch (rows) {
+    case 1:
+      return "row-span-1";
+    case 2:
+      return "row-span-2";
+    case 4:
+      return "row-span-4";
+    default:
+      return "row-span-1";
+  }
+};
 ---
 
 {
   clickable ? (
     <div
-      class={`${rows === 1 ? "row-span-1" : "row-span-2"} ${
-        cols === 1 ? "col-span-1" : "col-span-2"
-      } rounded-lg bg-gradient-to-br from-stone-800 to-black shadow-lg group transition-all duration-300 group-hover:bg-purple-900/10 group-hover:shadow-2xl p-4`}
+      class={`${getRows(rows)} ${getCols(cols)} rounded-lg bg-black/50 transition-all duration-500 hover:bg-black hover:shadow-2xl p-4`}
     >
-      <a class="flex h-full" href={href} {...(external && { target: "_blank" })}>
+      <a
+        class="flex h-full w-full"
+        href={href}
+        {...(external && { target: "_blank" })}
+      >
         <div class="relative h-full w-full flex flex-col items-center justify-center text-white/50">
           <button>
             <div class="absolute top-0 right-0">
@@ -38,9 +66,7 @@ const {
     </div>
   ) : (
     <div
-      class={`${rows === 1 ? "row-span-1" : "row-span-2"} ${
-        cols === 1 ? "col-span-1" : "col-span-2"
-      } rounded-lg bg-gradient-to-br from-stone-800 to-black shadow-lg hover:shadow-2xl p-4`}
+      class={`${getRows(rows)} ${getCols(cols)} rounded-lg bg-black/50 transition-all duration-500 hover:bg-black hover:shadow-2xl p-4`}
     >
       <div class="relative h-full w-full transition-all duration-300 flex flex-col items-start justify-center text-white/50">
         <slot />

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 interface Props {
   image: ImageMetadata;
@@ -15,8 +15,7 @@ const { image, location, name, position, technologies, timePeriod } =
 ---
 
 <div
-  class="flex flex-row justify-start items-start w-full gap-4 rounded-lg p-5
-    border border-dotted border-black bg-black/50"
+  class="flex flex-row justify-start items-start w-full gap-4 rounded-lg p-5 border border-dotted border-black bg-black/20"
 >
   <picture class="h-12 w-12 flex-none">
     <Image
@@ -27,14 +26,16 @@ const { image, location, name, position, technologies, timePeriod } =
     />
   </picture>
   <div class="flex flex-col flex-1 justify-start items-start">
-    <div class="flex flex-col md:flex-row justify-start items-start md:items-end md:gap-4">
+    <div
+      class="flex flex-col md:flex-row justify-start items-start md:items-end md:gap-4"
+    >
       <h2 class="text-xl text-white font-bold">{name}</h2>
       <p class="text-base font-normal text-white/80">{location}</p>
-      <p class="text-base font-normal text-white/80">({timePeriod})</p>
+      <p class="text-base font-normal text-white/80">{timePeriod}</p>
     </div>
 
     <div
-      class="flex flex-col justify-start items-start text-base font-normal text-white/80"
+      class="flex flex-col justify-start items-start text-sm font-normal text-white/80"
     >
       <p class="font-bold">{position}</p>
       <ul>
