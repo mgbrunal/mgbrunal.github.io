@@ -6,21 +6,31 @@ import CV from "../../assets/icons/CV.astro";
 import GitHub from "../../assets/icons/GitHub.astro";
 ---
 
-<Card clickable external href="https://www.linkedin.com/in/maugarbru/">
-  <div class="text-purple-400">
-    <LinkedIn />
+<div
+  class="flex h-full w-full bg-gradient-to-tl from-black via-red-950 to-black"
+>
+  <div class="grid grid-cols-1 md:grid-cols-3 p-5 gap-4 w-1/2 m-auto">
+    <Card clickable external href="https://www.linkedin.com/in/maugarbru/">
+      <div class="text-white/70">
+        <LinkedIn />
+      </div>
+      <p class="text-white/50 gsap-split-chars">LinkedIn</p>
+    </Card>
+    <Card clickable external href="https://github.com/maugarbru">
+      <div class="text-white/70">
+        <GitHub />
+      </div>
+      <p class="text-white/50 gsap-split-chars">GitHub</p>
+    </Card>
+    <Card
+      clickable
+      external
+      href="https://www.canva.com/design/DADYPgSeKLM/yLbXjGofZ-03o6s5GEoWyg/view?website#1:english"
+    >
+      <div class="text-white/70">
+        <CV />
+      </div>
+      <p class="text-white/50 gsap-split-chars">CV</p>
+    </Card>
   </div>
-  <p class="text-white/50">LinkedIn Profile</p>
-</Card>
-<Card clickable external href="https://github.com/maugarbru">
-  <div class="text-purple-400">
-    <GitHub />
-  </div>
-  <p class="text-white/50">GitHub Profile</p>
-</Card>
-<Card clickable external href="https://www.canva.com/design/DADYPgSeKLM/yLbXjGofZ-03o6s5GEoWyg/view?website#1:english">
-  <div class="text-purple-400">
-    <CV />
-  </div>
-  <p class="text-white/50">Complete CV</p>
-</Card>
+</div>

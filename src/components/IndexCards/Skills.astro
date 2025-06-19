@@ -1,6 +1,14 @@
 ---
-import Card from "../Card.astro";
 import SkillsItem from "../SkillsItem.astro";
+import getLanguageFile from "../../internationalization";
+const { lang = "es" } = Astro.props;
+
+const {
+  click,
+  index: {
+    skills: { title },
+  },
+} = getLanguageFile(lang);
 
 const skills = [
   {
@@ -22,16 +30,23 @@ const skills = [
 ];
 ---
 
-<Card cols={4} rows={4} clickable href="/skills">
-  <p class="text-white/50">services & skills</p>
-  <div class="grid grid-cols-1 gap-2 py-2">
-    {
-      skills.map((skill) => (
-        <SkillsItem
-          name={skill.name}
-          level={skill.level}
-        />
-      ))
-    }
-  </div>
-</Card>
+<div
+  class="flex h-full w-full bg-gradient-to-bl from-black via-indigo-950 to-black gsap-slidein"
+>
+  <a
+    class="flex flex-col justify-center items-center bg-black/5 rounded-lg m-auto hover:bg-black transition-all duration-300 gsap-fadein"
+    href="skills"
+  >
+    <button class="p-10">
+      <p class="text-white/50 gsap-split-chars">{title}</p>
+      <div class="grid grid-cols-1 gap-2 py-2">
+        {
+          skills.map((skill) => (
+            <SkillsItem name={skill.name} level={skill.level} />
+          ))
+        }
+      </div>
+      <p class="text-white/50 text-sm mt-5">{click}</p>
+    </button>
+  </a>
+</div>

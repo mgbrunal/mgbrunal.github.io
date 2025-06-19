@@ -1,22 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import BackButton from "../components/BackButton.astro";
-import ExperienceItem from "../components/ExperienceItem.astro";
-import EducationItem from "../components/EducationItem.astro";
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../../components/BackButton.astro";
+import ExperienceItem from "../../components/ExperienceItem.astro";
+import EducationItem from "../../components/EducationItem.astro";
 
-import udemedellinImg from "../assets/img/udem.jpeg";
-import udemyImg from "../assets/img/udemy.jpeg";
-import creativosImg from "../assets/img/creativos.jpeg";
-import celerikImg from "../assets/img/celerik.jpeg";
-import touchtoImg from "../assets/img/touchto.jpeg";
-import inbanxImg from "../assets/img/inbanx.jpeg";
+import udemedellinImg from "../../assets/img/udem.jpeg";
+import udemyImg from "../../assets/img/udemy.jpeg";
+import creativosImg from "../../assets/img/creativos.jpeg";
+import celerikImg from "../../assets/img/celerik.jpeg";
+import touchtoImg from "../../assets/img/touchto.jpeg";
+import inbanxImg from "../../assets/img/inbanx.jpeg";
 
 const items = [
   {
     image: inbanxImg,
-    location: "Austin, TX (Remoto)",
+    location: "Austin, TX (Remote)",
     name: "inbanx Inc",
-    position: "Ingeniero Full-Stack & React Native",
+    position: "Full-Stack & RN Engineer",
     technologies: [
       "React",
       "Node.js",
@@ -24,13 +24,13 @@ const items = [
       "TailwindCSS",
       "React Native - Expo",
     ],
-    timePeriod: "Mayo 2024 - Presente",
+    timePeriod: "May 2024 - Present",
   },
   {
     image: touchtoImg,
-    location: "Austin, TX (Remoto)",
+    location: "Austin, TX (Remote)",
     name: "TouchTo",
-    position: "Desarrollador Full-Stack & React Native",
+    position: "Full-Stack & RN Developer",
     technologies: [
       "React",
       "Node.js",
@@ -38,21 +38,21 @@ const items = [
       "TailwindCSS",
       "React Native - Expo",
     ],
-    timePeriod: "Febrero 2023 - Abril 2024",
+    timePeriod: "February 2023 - April 2024",
   },
   {
     image: celerikImg,
-    location: "Medellin, Colombia (Remoto)",
+    location: "Medellin, Colombia (Remote)",
     name: "Celerik",
-    position: "Desarrollador de Software Mid Full-Stack",
+    position: "Mid Full-Stack Developer",
     technologies: ["React", "Next.js", "Node.js", "NestJS"],
-    timePeriod: "Mayo 2021 - Febrero 2023",
+    timePeriod: "May 2021 - February 2023",
   },
   {
     image: creativosImg,
     location: "Medellin, Colombia",
     name: "Creativos Digitales",
-    position: "Desarrollador de Software Junior",
+    position: "Junior Software Developer",
     technologies: [
       "Vue.js",
       "Nuxt.js",
@@ -61,7 +61,7 @@ const items = [
       "PostgreSQL",
       "Material UI",
     ],
-    timePeriod: "Agosto 2019 - Abril 2021",
+    timePeriod: "August 2019 - April 2021",
   },
 ];
 
@@ -69,7 +69,7 @@ const courses = [
   {
     image: udemedellinImg,
     institution: "Universidad de Medellin",
-    name: "Ingeniero de Sistemas",
+    name: "Software Engineer",
     timePeriod: "2025",
   },
   {
@@ -99,7 +99,7 @@ const courses = [
 ];
 ---
 
-<Layout title="Experiencia y Educación" lang="es">
+<Layout title="Experience & Education" lang="en">
   <section
     id="experience-page-1"
     class="flex flex-col w-full h-[100vh] overflow-y-auto"
@@ -112,7 +112,7 @@ const courses = [
         class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
         transition:name="experience number"
       >
-        {`Más de ${new Date().getFullYear() - 2020} años de experiencia`}
+        {`${new Date().getFullYear() - 2020}+ years of experience`}
       </h1>
     </div>
 
@@ -145,7 +145,7 @@ const courses = [
       <h1
         class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
       >
-        Cursos y Educación
+        Education & Courses
       </h1>
     </div>
 

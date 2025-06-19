@@ -1,8 +1,15 @@
 ---
 import ArrowLeft from "../assets/icons/ArrowLeft.astro";
+
+const { url } = Astro.props
+const currentPath = Astro.url.pathname;
+
+const setHref = () => {
+  return currentPath.startsWith('/en/') ? '/en/' : '/'
+};
 ---
 
-<a aria-label="Back to Home" href="/">
+<a aria-label="Back to Home" href={url ?? setHref()}>
   <button
     class="p-2 rounded-full text-white/50 hover:bg-gradient-to-r from-purple-200 to-slate-500 hover:text-black transition-all duration-300"
   >

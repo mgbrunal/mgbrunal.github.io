@@ -1,0 +1,43 @@
+---
+import UK_Flag from "../assets/icons/UK_Flag.astro";
+import ES_Flag from "../assets/icons/ES_Flag.astro";
+
+const { lang = "es" } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const setHref = () => {
+  let newPath = currentPath;
+  if (lang === "es") {
+    newPath = currentPath.startsWith('/en/') ? currentPath : '/en' + currentPath;
+  } else {
+    newPath = currentPath.replace(/^\/en\//, '/');
+  }
+  return newPath;
+};
+---
+
+<div class="fixed bottom-2 md:top-0 right-0 z-20 transition-all duration-300">
+  {
+    lang === "es" ? (
+      <a
+        class="py-1 px-2 rounded-full w-auto bg-white/20 text-white/50 flex hover:bg-white/40 transition-all duration-300"
+        href={setHref()}
+      >
+        <button class="h-full w-full flex flex-row justify-start items-center space-x-2">
+          <p>Switch to</p>
+          <UK_Flag />
+        </button>
+      </a>
+    ) : (
+      <a
+        class="py-1 px-2  rounded-full w-auto bg-white/20 text-white/50 flex hover:bg-white/40 transition-all duration-300"
+        href={setHref()}
+      >
+        <button class="h-full w-full flex flex-row justify-start items-center space-x-2">
+          <p>Cambiar a</p>
+          <ES_Flag />
+        </button>
+      </a>
+    )
+  }
+</div>

@@ -1,0 +1,22 @@
+{
+  "index": {
+    "position": "Full-Stack Web Developer",
+    "basic": {
+      "languages": "languages",
+      "english": "English",
+      "englishSub": "Fluent, professional",
+      "spanish": "Spanish",
+      "spanishSub": "Native",
+      "location": "based in"
+    },
+    "experience": {
+      "years": "years of experience",
+      "since": "since",
+      "description": ""
+    },
+    "skills": {
+        "title": "services & skills"
+    }
+  },
+  "click": "Click here to see more"
+}

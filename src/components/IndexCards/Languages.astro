@@ -1,19 +1,32 @@
 ---
-import Card from "../Card.astro";
+import getLanguageFile from "../../internationalization";
+const { lang = "es" } = Astro.props;
+
+const {
+  index: {
+    basic: { languages, english, englishSub, spanish, spanishSub },
+  },
+} = getLanguageFile(lang);
 ---
 
-<Card cols={2}>
-  <p class="text-white/50">languages</p>
+<divx
+  class="flex flex-col justify-center items-center h-full w-full bg-gradient-to-tl from-black via-cyan-950 to-black gsap-slidein"
+>
+  <p class="text-white/50">{languages}</p>
   <p
-    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
+    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500 gsap-fadein"
   >
-    English <span class="text-white/50 text-base font-normal"
-      >(Fluent, professional)</span
+    {english}{" "}
+    <span class="text-white/50 text-base font-normal gsap-split-chars"
+      >({englishSub})</span
     >
   </p>
   <p
-    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
+    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500 gsap-fadein"
   >
-    Spanish <span class="text-white/50 text-base font-normal">(Native)</span>
+    {spanish}{" "}<span
+      class="text-white/50 text-base font-normal gsap-split-chars"
+      >({spanishSub})</span
+    >
   </p>
-</Card>
+</divx>

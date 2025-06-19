@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import BackButton from "../components/BackButton.astro";
-import SkillsItem from "../components/SkillsItem.astro";
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../../components/BackButton.astro";
+import SkillsItem from "../../components/SkillsItem.astro";
 
 const FE_items = [
   {
@@ -48,44 +48,44 @@ const BE_items = [
     level: 4,
   },
   {
-    name: "Bases de Datos SQL",
+    name: "SQL Databases",
     level: 4,
   },
   {
-    name: "Bases de Datos No-SQL",
+    name: "Non-SQL DBs",
     level: 4,
   },
 ];
 
 const soft_items = [
   {
-    name: "Trabajo en Equipo",
+    name: "Teamwork",
     level: 5,
   },
   {
-    name: "Comunicación Acertiva",
+    name: "Assertive Communication",
     level: 5,
   },
   {
-    name: "Disposición de Aprendizaje",
+    name: "Learning Willingness",
     level: 5,
   },
   {
-    name: "Liderazgo",
+    name: "Leadership",
     level: 4,
   },
   {
-    name: "Vocabulario Profesional",
+    name: "Professional Vocabulary",
     level: 5,
   },
   {
-    name: "Auto-demanda",
+    name: "Self-demand",
     level: 5,
   },
 ];
 ---
 
-<Layout title="Servicios y Habilidades" lang="es">
+<Layout title="Services & Skills" lang="en">
   <div
     class="flex flex-row justify-start items-center p-5 mb-4 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
   >
@@ -93,7 +93,7 @@ const soft_items = [
     <h1
       class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
     >
-      Servicios que ofrezco
+      Services
     </h1>
   </div>
 
@@ -104,21 +104,33 @@ const soft_items = [
     <h1
       class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
     >
-      Habilidades
+      Skills
     </h1>
   </div>
 
-  <h2 class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white">Frontend</h2>
+  <h2
+    class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white"
+  >
+    Frontend
+  </h2>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
     {FE_items.map((item) => <SkillsItem name={item.name} level={item.level} />)}
   </div>
 
-  <h2 class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white">Backend</h2>
+  <h2
+    class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white"
+  >
+    Backend
+  </h2>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
     {BE_items.map((item) => <SkillsItem name={item.name} level={item.level} />)}
   </div>
 
-  <h2 class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white">Habilidades Blandas</h2>
+  <h2
+    class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white"
+  >
+    Soft Skills
+  </h2>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
     {
       soft_items.map((item) => (

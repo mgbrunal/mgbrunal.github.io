@@ -1,12 +1,19 @@
 ---
 import profileImg from "../assets/img/profile.png";
 import { Image } from "astro:assets";
+import getLanguageFile from "../internationalization";
+
+const { lang = "es" } = Astro.props;
+
+const {
+  index: { position },
+} = getLanguageFile(lang);
 ---
 
 <div
-  class="flex flex-row md:flex-col justify-center items-center gap-4 rounded-lg p-5 h-full bg-gradient-to-br from-stone-800 to-black"
+  class="flex flex-col justify-center items-center gap-4 p-5 h-full bg-black"
 >
-  <picture class="h-10 w-10 md:h-40 md:w-40 flex-none">
+  <picture class="h-40 w-40 md:h-40 md:w-40 flex-none">
     <Image
       src={profileImg}
       alt="Profile"
@@ -16,12 +23,12 @@ import { Image } from "astro:assets";
   </picture>
   <div class="w-max text-center">
     <h1
-      class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-2xl md:text-3xl text-white font-bold"
+      class="overflow-hidden whitespace-nowrap pr-5 text-2xl md:text-3xl text-white font-bold"
       aria-label="Mauricio Garzón B."
     >
       Mauricio Garzón B.
     </h1>
 
-    <p class="text-white/50">Full-Stack Web Developer</p>
+    <p class="text-white/50 gsap-split-chars">{position}</p>
   </div>
 </div>
