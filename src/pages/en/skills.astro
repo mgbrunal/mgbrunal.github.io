@@ -83,59 +83,159 @@ const soft_items = [
     level: 5,
   },
 ];
+
+const platforms = [
+  {
+    name: "Custom Web Development",
+    level: 5,
+  },
+  {
+    name: "Webflow development",
+    level: 4,
+  },
+  {
+    name: "iOS/Android apps development",
+    level: 5,
+  },
+];
+
+const examples = [
+  {
+    name: "Mediser IPS",
+    url: "https://mediserips.com",
+  },
+  {
+    name: "Skimmer",
+    url: "https://www.getskimmer.com/",
+  },
+  {
+    name: "Historic Lodging",
+    url: "https://www.historiclodging.com/",
+  },
+  {
+    name: "Hotel Paisano",
+    url: "https://www.historiclodging.com/hotel-paisano/home",
+  },
+  {
+    name: "Hotel El Capitan",
+    url: "https://www.historiclodging.com/el-capitan/home",
+  },
+  {
+    name: "The Lodge",
+    url: "https://www.historiclodging.com/the-lodge/home",
+  },
+];
 ---
 
 <Layout title="Services & Skills" lang="en">
-  <div
-    class="flex flex-row justify-start items-center p-5 mb-4 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
+  <section
+    id="services-page"
+    class="flex flex-col w-full h-[100vh] overflow-y-auto"
   >
-    <BackButton url="#experience" />
-    <h1
-      class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
+    <div
+      class="flex flex-row justify-start items-center p-5 mb-4 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
     >
-      Services
-    </h1>
-  </div>
+      <BackButton url="#experience" />
+      <h1
+        class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-amber-100 to-white"
+      >
+        Services I offer
+      </h1>
+    </div>
 
-  <div
-    class="flex flex-row justify-start items-center p-5 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
-  >
-    <BackButton url="#experience" />
-    <h1
-      class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-slate-500"
+    <h2
+      class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-white"
     >
-      Skills
-    </h1>
-  </div>
+      Platforms
+    </h2>
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5 w-full md:w-2/3 mx-auto"
+    >
+      {
+        platforms.map((skill) => (
+          <SkillsItem name={skill.name} level={skill.level} />
+        ))
+      }
+    </div>
 
-  <h2
-    class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white"
-  >
-    Frontend
-  </h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
-    {FE_items.map((item) => <SkillsItem name={item.name} level={item.level} />)}
-  </div>
+    <h2
+      class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white"
+    >
+      Examples
+    </h2>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-2 p-5 w-full md:w-2/3 mx-auto"
+    >
+      {
+        examples.map((item) => (
+          <a class="w-full h-[800px]" href={item.url} target="_blank">
+            <div class="flex flex-col justify-center items-center p-5 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black w-full h-full">
+              <iframe
+                title={item.url}
+                src={item.url}
+                width="100%"
+                height="100%"
+              />
+              <p class="text-white/50">{item.name}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 
-  <h2
-    class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white"
+  <section
+    id="skills-page"
+    class="flex flex-col w-full h-[100vh] overflow-y-auto"
   >
-    Backend
-  </h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
-    {BE_items.map((item) => <SkillsItem name={item.name} level={item.level} />)}
-  </div>
+    <div
+      class="flex flex-row justify-start items-center p-5 rounded-lg gap-4 bg-gradient-to-br from-stone-800 to-black"
+    >
+      <BackButton url="#experience" />
+      <h1
+        class="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-amber-100 to-white"
+      >
+        Skills
+      </h1>
+    </div>
 
-  <h2
-    class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold text-white"
-  >
-    Soft Skills
-  </h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
-    {
-      soft_items.map((item) => (
-        <SkillsItem name={item.name} level={item.level} />
-      ))
-    }
-  </div>
+    <h2
+      class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-white"
+    >
+      Frontend
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
+      {
+        FE_items.map((item) => (
+          <SkillsItem name={item.name} level={item.level} />
+        ))
+      }
+    </div>
+
+    <h2
+      class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white"
+    >
+      Backend
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
+      {
+        BE_items.map((item) => (
+          <SkillsItem name={item.name} level={item.level} />
+        ))
+      }
+    </div>
+
+    <h2
+      class="text-xl md:text-3xl text-start md:text-center my-2 ml-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-100 to-white"
+    >
+      Soft Skills
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-5">
+      {
+        soft_items.map((item) => (
+          <SkillsItem name={item.name} level={item.level} />
+        ))
+      }
+    </div>
+  </section>
 </Layout>
