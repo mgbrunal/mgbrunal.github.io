@@ -14,6 +14,9 @@ const { title, lang = "es" } = Astro.props;
 <!doctype html>
 <html lang={lang}>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#000" />
     <SEO
       title={`${title} - Mauricio Garzon B.`}
       description="Welcome to the professional portfolio of Mauricio Garzon. As a Software Engineer, I bring expertise in web and mobile software development. With a commitment to excellence and a passion for Javascript development, focused on delivering results. Navigate through my career journey, discover my skills, and learn how I can contribute to your projects."
@@ -42,9 +45,6 @@ const { title, lang = "es" } = Astro.props;
         ],
       }}
     />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="theme-color" content="#000" />
     <ClientRouter />
   </head>
   <body>

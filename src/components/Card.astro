@@ -47,7 +47,7 @@ const getRows = (rows?: 1 | 2 | 4): string => {
 {
   clickable ? (
     <div
-      class={`${getRows(rows)} ${getCols(cols)} rounded-lg bg-black/5 transition-all duration-500 hover:bg-black hover:shadow-2xl p-4`}
+      class={`${getRows(rows)} ${getCols(cols)} rounded-lg bg-black/5 transition-all duration-500 hover:bg-black hover:shadow-2xl p-4 gsap-fadein`}
     >
       <a
         class="flex h-full w-full"

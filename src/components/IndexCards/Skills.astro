@@ -12,33 +12,27 @@ const {
 
 const skills = [
   {
-    name: "HTML-Javascript-CSS",
+    name: "Frontend",
     level: 5,
   },
   {
-    name: "React",
-    level: 5,
+    name: "Backend",
+    level: 4,
   },
   {
-    name: "Node.js - Express.js",
-    level: 5,
-  },
-  {
-    name: "Teamwork",
+    name: "Mobile",
     level: 5,
   },
 ];
 ---
 
-<div
-  class="flex h-full w-full bg-gradient-to-bl from-black via-indigo-950 to-black gsap-slidein"
->
+<div class="flex h-full w-full">
   <a
     class="flex flex-col justify-center items-center bg-black/5 rounded-lg m-auto hover:bg-black transition-all duration-300 gsap-fadein"
     href="skills"
   >
     <button class="p-10">
-      <p class="text-white/50 gsap-split-chars">{title}</p>
+      <p class="text-white/50">{title}</p>
       <div class="grid grid-cols-1 gap-2 py-2">
         {
           skills.map((skill) => (

@@ -11,21 +11,24 @@ import Side from "../components/Side.astro";
 
 <Layout title="Inicio" lang="es">
   <main>
-    <section id="basic" class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col">
+    <section
+      id="basic"
+      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden bg-gradient-to-tl from-black via-cyan-950 to-black gsap-col"
+    >
       <Side />
       <Languages />
       <BasedIn />
     </section>
     <section
       id="experience"
-      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col"
+      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
     >
       <Experience />
       <Skills />
     </section>
     <section
       id="socials"
-      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col"
+      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-tl from-black via-indigo-950 to-black"
     >
       <Socials />
     </section>

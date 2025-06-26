@@ -5,74 +5,41 @@ import ScrollToPlugin from "https://esm.run/gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export function initScrollAnimations() {
-  // this scrolling object just allows us to conveniently call scrolling.enable(), scrolling.disable(), and check if scrolling.enabled is true.
-  // some browsers (like iOS Safari) handle scrolling on a separate thread and can cause things to get out of sync (jitter/jumpy), so when we're animating the scroll position, force an update of GSAP tweens when there's a scroll event in order to maintain synchronization)
-  const scrolling = {
-    enabled: true,
-    events: "scroll,wheel,touchmove,pointermove".split(","),
-    prevent: (e) => e.preventDefault(),
-    disable() {
-      if (scrolling.enabled) {
-        scrolling.enabled = false;
-        window.addEventListener("scroll", gsap.ticker.tick, {
-          passive: true,
-        });
-        scrolling.events.forEach((e, i) =>
-          (i ? document : window).addEventListener(e, scrolling.prevent, {
-            passive: false,
-          })
-        );
-      }
-    },
-    enable() {
-      if (!scrolling.enabled) {
-        scrolling.enabled = true;
-        window.removeEventListener("scroll", gsap.ticker.tick);
-        scrolling.events.forEach((e, i) =>
-          (i ? document : window).removeEventListener(e, scrolling.prevent)
-        );
-      }
-    },
-  };
-
-  let isScrolling = false;
-
-  function goToSection(section, anim) {
-    if (!scrolling.enabled || isScrolling) return;
-
-    isScrolling = true;
-    scrolling.disable();
-
-    gsap.to(window, {
-      scrollTo: { y: section, autoKill: false },
-      duration: 1,
-      onComplete: () => {
-        scrolling.enable();
-        isScrolling = false;
-      },
-    });
-
-    anim && anim.restart();
-  }
-
   const sections = document.querySelectorAll("section");
-  sections.forEach((section, i) => {
-    const intoAnim = gsap.from(section.querySelector(".gsap-col"), {
+
+  sections.forEach((section) => {
+    const col = section.querySelector(".gsap-col");
+
+    const anim = gsap.from(col, {
       yPercent: 50,
       duration: 1,
       paused: true,
     });
 
+    let snapped = false;
+
     ScrollTrigger.create({
       trigger: section,
-      start: "top bottom-=1",
-      end: "bottom top+=1",
-      onEnter: () => goToSection(section, intoAnim),
-      onEnterBack: () => {
-        const rect = section.getBoundingClientRect();
-        if (Math.abs(rect.top) > 1) {
-          goToSection(section);
+      start: "top 60%", // cuando el top de la sección llega al 60% del viewport
+      end: "bottom 40%", // cuando el bottom sube hasta 40%
+      onEnter: () => {
+        if (!snapped) {
+          snapped = true;
+          gsap.to(window, {
+            scrollTo: { y: section, autoKill: false },
+            duration: 1,
+            ease: "power2.out",
+            onComplete: () => {
+              anim.restart();
+            },
+          });
         }
+      },
+      onLeave: () => {
+        snapped = false;
+      },
+      onLeaveBack: () => {
+        snapped = false;
       },
     });
   });
