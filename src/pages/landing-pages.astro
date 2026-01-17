@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections-landing/Hero.astro";
+import ServiceDetails from "../components/sections-landing/ServiceDetails.astro";
+import Examples from "../components/sections-landing/Examples.astro";
+import FAQs from "../components/sections-landing/FAQs.astro";
+import FinalCTA from "../components/sections-landing/FinalCTA.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Landing Pages" lang="es">
+    <main>
+        <section
+            id="hero"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <Hero />
+        </section>
+        <section
+            id="service_details"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <ServiceDetails />
+        </section>
+        <section
+            id="examples"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <Examples />
+        </section>
+        <section
+            id="faqs"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <FAQs />
+        </section>
+        <section
+            id="final_cta"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <FinalCTA />
+        </section>
+
+        <Footer />
+    </main>
+</Layout>

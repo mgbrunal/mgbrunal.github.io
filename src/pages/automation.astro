@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections-automation/Hero.astro";
+import ServiceDetails from "../components/sections-automation/ServiceDetails.astro";
+import Examples from "../components/sections-automation/Examples.astro";
+import FAQs from "../components/sections-automation/FAQs.astro";
+import FinalCTA from "../components/sections-automation/FinalCTA.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Automatización" lang="es">
+    <main>
+        <section
+            id="hero"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <Hero />
+        </section>
+        <section
+            id="service_details"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <ServiceDetails />
+        </section>
+        <section
+            id="examples"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <Examples />
+        </section>
+        <section
+            id="faqs"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <FAQs />
+        </section>
+        <section
+            id="final_cta"
+            class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+        >
+            <FinalCTA />
+        </section>
+
+        <Footer />
+    </main>
+</Layout>

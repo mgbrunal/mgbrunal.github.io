@@ -1,36 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-import BasedIn from "../components/IndexCards/BasedIn.astro";
-import Experience from "../components/IndexCards/Experience.astro";
-import Languages from "../components/IndexCards/Languages.astro";
-import Skills from "../components/IndexCards/Skills.astro";
-import Socials from "../components/IndexCards/Socials.astro";
-import Side from "../components/Side.astro";
+import Hero from "../components/sections-index/Hero.astro";
+import ForWho from "../components/sections-index/ForWho.astro";
+import TheProblem from "../components/sections-index/TheProblem.astro";
+import Services from "../components/sections-index/Services.astro";
+import HowWeWork from "../components/sections-index/HowWeWork.astro";
+import FinalCTA from "../components/sections-index/FinalCTA.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Inicio" lang="es">
   <main>
-    <section
-      id="basic"
-      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden bg-gradient-to-tl from-black via-cyan-950 to-black gsap-col"
-    >
-      <Side />
-      <Languages />
-      <BasedIn />
+    <section id="hero" class="h-[100vh] overflow-hidden gsap-col bg-black">
+      <Hero />
     </section>
     <section
-      id="experience"
-      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-bl from-black via-blue-950 to-black"
+      id="for_who"
+      class="h-[100vh] overflow-hidden gsap-col bg-secondary"
     >
-      <Experience />
-      <Skills />
+      <ForWho />
     </section>
     <section
-      id="socials"
-      class="flex flex-col sm:flex-row h-[100vh] overflow-hidden gsap-col bg-gradient-to-tl from-black via-indigo-950 to-black"
+      id="the_problem"
+      class="h-[100vh] overflow-hidden gsap-col bg-white"
     >
-      <Socials />
+      <TheProblem />
     </section>
+    <section
+      id="services"
+      class="h-[100vh] overflow-hidden gsap-col bg-tertiary"
+    >
+      <Services />
+    </section>
+    <section
+      id="how_we_work"
+      class="h-[100vh] overflow-hidden gsap-col bg-primary"
+    >
+      <HowWeWork />
+    </section>
+    <section id="final_cta" class="h-[100vh] overflow-hidden gsap-col bg-black">
+      <FinalCTA />
+    </section>
+
+    <Footer />
   </main>
 </Layout>
