@@ -1,0 +1,83 @@
+---
+import Cross from "../../assets/icons/Cross.astro";
+import Warning from "../../assets/icons/Warning.astro";
+
+const items = [
+    "Mensajes poco claros",
+    "Estructuras que no guían al usuario",
+    "Formularios que no generan seguimiento real",
+    "Gestión manual de contactos",
+    "Información dispersa en distintas herramientas",
+];
+---
+
+<div class="w-full h-full flex flex-col items-center justify-center">
+    <div class="w-full h-full sm:max-w-[60%] sm:px-20">
+        <div
+            class="w-full h-full flex flex-col items-start justify-center gap-8"
+        >
+            <div
+                class="w-full flex flex-col items-center justify-center gap-4 text-center"
+            >
+                <div class="w-full bg-white px-5 py-4">
+                    <h1
+                        class="text-4xl sm:text-6xl font-bold text-black drop-shadow"
+                    >
+                        Cuando las páginas y los procesos no están alineados
+                    </h1>
+                </div>
+
+                <p
+                    class="text-sm sm:text-lg font-semibold text-black drop-shadow"
+                >
+                    Muchos proyectos tienen visibilidad y consultas, pero algo
+                    se rompe en el camino.
+                </p>
+            </div>
+
+            <div class="w-full flex flex-col items-center justify-start gap-4">
+                <div class="w-full h-[20vh] overflow-hidden">
+                    <div
+                        class="flex w-max whitespace-nowrap animate-text-slider"
+                    >
+                        {
+                            items.map((text, i) => (
+                                <div class="flex flex-row gap-2 w-full bg-black shadow-lg shadow-secondary mx-12 px-5 py-4">
+                                    {i % 2 === 0 ? (
+                                        <Cross color="#F00" />
+                                    ) : (
+                                        <Warning color="#FF0" />
+                                    )}
+                                    <span class="text-lg font-medium text-white">
+                                        {text}
+                                    </span>
+                                </div>
+                            ))
+                        }
+                        {
+                            items.map((text, i) => (
+                                <div class="flex flex-row gap-2 w-full bg-black shadow-lg shadow-secondary mx-12 px-5 py-4">
+                                    {i % 2 === 0 ? (
+                                        <Cross color="#F00" />
+                                    ) : (
+                                        <Warning color="#FF0" />
+                                    )}
+                                    <span class="text-lg font-medium text-white">
+                                        {text}
+                                    </span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <p
+                    class="text-sm sm:text-lg font-bold bg-secondary/50 text-black rounded-full p-2"
+                >
+                    El problema no es la falta de interés, sino la falta de
+                    estructura digital.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

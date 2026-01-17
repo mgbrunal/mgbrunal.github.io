@@ -1,38 +1,43 @@
 ---
-
+import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center">
-    <div class="w-full sm:w-1/2 h-full">
+    <div class="w-full h-full sm:max-w-[60%] sm:px-20">
         <div
             class="w-full h-full flex flex-col items-center justify-center gap-12"
         >
-            <h1 class="text-4xl sm:text-6xl font-bold text-white">
-                Soluciones digitales para captar clientes y optimizar procesos
+            <h1
+                class="text-4xl sm:text-6xl font-bold text-white drop-shadow-lg"
+            >
+                Páginas web y automatización de procesos para negocios digitales
             </h1>
 
             <div class="w-full flex flex-col items-start justify-center gap-4">
                 <p class="text-sm sm:text-lg font-semibold text-white">
-                    Diseñamos landing pages de alto impacto y automatizaciones
-                    inteligentes para negocios, eventos y proyectos
-                    inmobiliarios. Servicios independientes, claros y adaptados
-                    a cada necesidad.
+                    Diseñamos páginas web enfocadas en conversión y
+                    automatizamos procesos clave para que tu negocio capte
+                    oportunidades y las gestione de forma eficiente.
                 </p>
                 <div
                     class="flex flex-row items-center justify-start gap-4 w-full"
                 >
                     <button
-                        class="bg-secondary text-black border-2 border-black font-semibold uppercase px-5 py-4"
-                        >Ver landing pages</button
+                        class="flex flex-row items-center gap-2 bg-secondary text-black border-2 border-black font-semibold uppercase px-5 py-4"
+                        >Ver soluciones en páginas web <ArrowUpRight
+                            color="#000"
+                        /></button
                     >
                     <button
-                        class="bg-tertiary text-black border-2 border-black font-semibold uppercase px-5 py-4"
-                        >Ver automatizaciones</button
-                    >
+                        class="flex flex-row items-center gap-2 bg-tertiary text-black border-2 border-black font-semibold uppercase px-5 py-4"
+                        >Ver automatización de procesos<ArrowUpRight
+                            color="#000"
+                        />
+                    </button>
                 </div>
-                <p class="text-xs sm:text-sm text-white">
-                    Puedes contratar un servicio o combinar ambos según tu
-                    proyecto.
+                <p class="text-xs sm:text-sm text-white drop-shadow">
+                    Dos soluciones independientes que pueden funcionar juntas o
+                    por separado.
                 </p>
             </div>
         </div>
