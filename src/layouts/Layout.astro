@@ -52,14 +52,5 @@ const { title, lang = "es" } = Astro.props;
     <div class="min-h-screen max-w-screen bg-black overscroll-none">
       <slot />
     </div>
-
-    <!-- Animaciones con GSAP -->
-    <script is:inline type="module" data-astro-rerun>
-      import { initScrollAnimations } from "/scripts/gsap-scroll.js";
-      import { initAnimations } from "/scripts/gsap-animations.js";
-
-      initAnimations();
-      initScrollAnimations();
-    </script>
   </body>
 </html>
