@@ -2,7 +2,7 @@
 import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
 ---
 
-<div class="w-full h-full flex flex-col items-center justify-center">
+<div class="w-full h-full flex flex-col items-center justify-center py-20">
     <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
         <div
             class="w-full h-full flex flex-col items-start justify-center gap-8"
@@ -11,21 +11,21 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
                 class="w-full flex flex-col items-center justify-center gap-4 text-center"
             >
                 <p
-                    class="text-sm sm:text-base font-light text-black/60 uppercase"
+                    class="text-sm sm:text-base font-light text-white uppercase animate-pulse"
                 >
                     ¿QUÉ HACEMOS?
                 </p>
 
-                <div class="w-full bg-primary px-5 py-4">
+                <div class="w-full bg-white px-5 py-4">
                     <h2
-                        class="animate-typing py-4 overflow-hidden whitespace-nowrap border-r-4 border-r-secondary text-3xl sm:text-5xl font-bold text-white drop-shadow"
+                        class="text-4xl sm:text-6xl font-bold text-black drop-shadow"
                     >
                         Dos enfoques que trabajan mejor juntos...
                     </h2>
                 </div>
 
                 <p
-                    class="text-sm sm:text-lg font-semibold text-secondary drop-shadow"
+                    class="text-sm sm:text-lg font-semibold text-white drop-shadow"
                 >
                     Diseñamos soluciones digitales que conectan la captación con
                     la gestión diaria del negocio.
@@ -36,13 +36,13 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
                 class="w-full flex flex-col lg:flex-row items-center justify-start gap-4"
             >
                 <div
-                    class="flex flex-col items-start justify-between w-full bg-black shadow-lg shadow-secondary gap-4 px-5 py-4 grow"
+                    class="flex flex-col items-start justify-between w-full bg-black shadow-lg group cursor-pointer hover:shadow-secondary transition-all duration-500 gap-4 px-5 py-4 grow"
                 >
                     <div
-                        class="w-full bg-white shadow-lg shadow-secondary px-5 py-4"
+                        class="w-full group-hover:bg-white shadow-lg group-hover:shadow-secondary transition-all duration-500 group-hover:px-5 py-4"
                     >
                         <h3
-                            class="text-lg sm:text-xl font-light text-black uppercase"
+                            class="text-lg sm:text-xl font-light text-secondary group-hover:text-black transition-all duration-500 uppercase"
                         >
                             Páginas web orientadas a conversión
                         </h3>
@@ -53,18 +53,18 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
                         registro o solicitud de información.
                     </p>
                     <button
-                        class="flex flex-row items-center gap-2 bg-secondary text-black font-semibold uppercase px-5 py-4"
+                        class="flex flex-row items-center gap-2 bg-secondary/80 text-black font-semibold uppercase group-hover:bg-secondary transition-all duration-500 px-5 py-4"
                         >Conocer más<ArrowUpRight color="#000" /></button
                     >
                 </div>
                 <div
-                    class="flex flex-col items-start justify-between w-full bg-black shadow-lg shadow-tertiary gap-4 px-5 py-4 grow"
+                    class="flex flex-col items-start justify-between w-full bg-black shadow-lg group cursor-pointer hover:shadow-tertiary transition-all duration-500 gap-4 px-5 py-4 grow"
                 >
                     <div
-                        class="w-full bg-white shadow-lg shadow-tertiary px-5 py-4"
+                        class="w-full group-hover:bg-white shadow-lg group-hover:shadow-tertiary transition-all duration-500 group-hover:px-5 py-4"
                     >
                         <h3
-                            class="text-lg sm:text-xl font-light text-black uppercase"
+                            class="text-lg sm:text-xl font-light text-tertiary group-hover:text-black transition-all duration-500 uppercase"
                         >
                             Automatización de procesos
                         </h3>
@@ -75,7 +75,7 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
                         errores operativos.
                     </p>
                     <button
-                        class="flex flex-row items-center gap-2 bg-tertiary text-black font-semibold uppercase px-5 py-4"
+                        class="flex flex-row items-center gap-2 bg-tertiary/50 text-black font-semibold uppercase group-hover:bg-tertiary transition-all duration-500 px-5 py-4"
                         >Conocer más<ArrowUpRight color="#000" /></button
                     >
                 </div>

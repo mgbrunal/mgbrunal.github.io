@@ -26,13 +26,17 @@ const items = [
 ];
 ---
 
-<div class="w-full h-full flex flex-col items-center justify-center py-20">
+<div
+    class="w-full h-full flex flex-col items-center justify-center pt-20 pb-40"
+>
     <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
         <div class="w-full h-full flex flex-col items-start justify-center">
             <div
-                class="w-full flex flex-col items-center justify-center gap-4 text-center"
+                class="w-full flex flex-col items-center justify-center gap-4 text-center sticky top-5"
             >
-                <p class="text-sm sm:text-base font-light text-white uppercase">
+                <p
+                    class="text-sm sm:text-base font-light text-black uppercase animate-pulse"
+                >
                     Nuestro proceso
                 </p>
 
@@ -48,20 +52,26 @@ const items = [
             <div class="w-full flex flex-col items-center justify-start">
                 {
                     items.map(({ title, description }, i) => (
-                        <div class="flex flex-row items-center justify-center odd:flex-row-reverse gap-2 w-full h-full my-12 sticky top-10 bg-black rounded-lg border-2 border-tertiary">
-                            <div class="w-full h-full p-5 overflow-hidden">
+                        <div
+                            class="flex flex-row items-center justify-center gap-2 w-full h-full mt-20 sticky bg-primary rounded-lg shadow shadow-black"
+                            style={{
+                                top: `${200 + i * 10}px`,
+                                marginLeft: `${i * 10}px`,
+                            }}
+                        >
+                            <div class="w-[200px] h-[200px] p-5 flex flex-col justify-center items-center">
                                 <img
-                                    src="https://picsum.photos/1000"
+                                    src="https://picsum.photos/500"
                                     alt={title}
                                     class="w-auto h-auto object-contain"
                                 />
                             </div>
 
-                            <div class="w-full h-full flex flex-col justify-center items-start px-5">
-                                <h3 class="text-lg sm:text-2xl font-medium text-white">
+                            <div class="w-full h-full flex flex-col justify-center items-start px-5 grow">
+                                <h3 class="text-base sm:text-2xl font-medium text-tertiary">
                                     {`${i + 1}. ${title}`}
                                 </h3>
-                                <p class="text-xs sm:text-base font-light text-primary">
+                                <p class="text-xs sm:text-base font-light text-white">
                                     {description}
                                 </p>
                             </div>
