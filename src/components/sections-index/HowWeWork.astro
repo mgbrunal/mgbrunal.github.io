@@ -1,4 +1,10 @@
 ---
+import Analyze from "../../assets/icons/Analyze.astro";
+import Design from "../../assets/icons/Design.astro";
+import Develop from "../../assets/icons/Develop.astro";
+import Rocket2 from "../../assets/icons/Rocket2.astro";
+import Validation from "../../assets/icons/Validation.astro";
+
 const items = [
     {
         title: "Análisis",
@@ -53,25 +59,25 @@ const items = [
                 {
                     items.map(({ title, description }, i) => (
                         <div
-                            class="flex flex-row items-center justify-center gap-2 w-full h-full mt-20 sticky bg-primary rounded-lg shadow shadow-black"
+                            class="flex flex-col sm:flex-row items-center justify-center gap-2 w-full h-[50vh] mt-20 sticky bg-primary rounded-lg shadow shadow-black overflow-hidden"
                             style={{
                                 top: `${200 + i * 10}px`,
                                 marginLeft: `${i * 10}px`,
                             }}
                         >
-                            <div class="w-[200px] h-[200px] p-5 flex flex-col justify-center items-center">
-                                <img
-                                    src="https://picsum.photos/500"
-                                    alt={title}
-                                    class="w-auto h-auto object-contain"
-                                />
+                            <div class="w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] absolute bottom-0 sm:top-0 right-0 flex flex-col justify-center items-center opacity-10">
+                                {i === 0 && <Analyze color="#000" />}
+                                {i === 1 && <Validation color="#000" />}
+                                {i === 2 && <Design color="#000" />}
+                                {i === 3 && <Develop color="#000" />}
+                                {i === 4 && <Rocket2 color="#000" />}
                             </div>
 
-                            <div class="w-full h-full flex flex-col justify-center items-start px-5 grow">
-                                <h3 class="text-base sm:text-2xl font-medium text-tertiary">
+                            <div class="w-full h-full flex flex-col justify-center items-start px-5 z-10">
+                                <h3 class="text-2xl sm:text-4xl font-medium text-tertiary">
                                     {`${i + 1}. ${title}`}
                                 </h3>
-                                <p class="text-xs sm:text-base font-light text-white">
+                                <p class="text-lg sm:text-xl font-light text-white">
                                     {description}
                                 </p>
                             </div>
