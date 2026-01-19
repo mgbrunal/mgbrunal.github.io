@@ -23,13 +23,13 @@ const items = [
 ];
 ---
 
-<div class="w-full h-full flex flex-col items-center justify-center py-[200px]">
-    <div class="w-full h-full sm:max-w-[60%] sm:px-20">
+<div class="w-full h-full flex flex-col items-center justify-center py-20">
+    <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
         <div
-            class="w-full h-full flex flex-row items-start justify-center gap-8"
+            class="w-full h-full flex flex-col lg:flex-row items-start justify-center gap-8"
         >
             <div
-                class="w-full h-full flex flex-col items-start justify-center gap-8 sticky top-10"
+                class="w-full h-full flex flex-col items-start justify-center gap-8 lg:sticky lg:top-10"
             >
                 <p
                     class="text-sm sm:text-base font-light text-white/60 uppercase"
@@ -38,7 +38,7 @@ const items = [
                 </p>
 
                 <h1
-                    class="text-4xl sm:text-6xl font-bold text-tertiary drop-shadow-lg"
+                    class="text-3xl sm:text-5xl font-bold text-tertiary drop-shadow-lg"
                 >
                     Para proyectos que dependen de una buena presencia digital
                 </h1>
@@ -61,8 +61,8 @@ const items = [
                 <div class="flex flex-col space-y-12 w-full h-full">
                     {
                         items.map((item) => (
-                            <div class="flex flex-col h-[50vh] items-center justify-center gap-4 bg-white rounded-lg shadow-lg shadow-black border-2 border-tertiary p-4">
-                                <h3 class="text-xl sm:text-2xl text-center font-bold text-black uppercase drop-shadow-lg">
+                            <div class="flex flex-col h-[50vh] items-start justify-center gap-4 bg-white rounded-lg shadow-lg shadow-black border-2 border-tertiary p-4">
+                                <h3 class="text-xl sm:text-2xl font-bold text-black uppercase drop-shadow-lg">
                                     {item.title}
                                 </h3>
                                 <p class="text-base sm:text-lg font-light text-primary">

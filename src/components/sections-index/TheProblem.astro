@@ -12,7 +12,7 @@ const items = [
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center">
-    <div class="w-full h-full sm:max-w-[60%] sm:px-20">
+    <div class="w-full xl:max-w-[75%] px-10 sm:px-20">
         <div
             class="w-full h-full flex flex-col items-start justify-center gap-8"
         >
@@ -40,50 +40,54 @@ const items = [
                     se rompe en el camino.
                 </p>
             </div>
+        </div>
+    </div>
 
-            <div class="w-full flex flex-col items-center justify-start gap-4">
-                <div class="w-full h-[20vh] overflow-hidden">
-                    <div
-                        class="flex w-max whitespace-nowrap animate-text-slider"
-                    >
-                        {
-                            items.map((text, i) => (
-                                <div class="flex flex-row gap-2 w-full bg-black shadow-lg shadow-secondary mx-12 px-5 py-4">
-                                    {i % 2 === 0 ? (
-                                        <Cross color="#F00" />
-                                    ) : (
-                                        <Warning color="#FF0" />
-                                    )}
-                                    <span class="text-lg font-medium text-white">
-                                        {text}
-                                    </span>
-                                </div>
-                            ))
-                        }
-                        {
-                            items.map((text, i) => (
-                                <div class="flex flex-row gap-2 w-full bg-black shadow-lg shadow-secondary mx-12 px-5 py-4">
-                                    {i % 2 === 0 ? (
-                                        <Cross color="#F00" />
-                                    ) : (
-                                        <Warning color="#FF0" />
-                                    )}
-                                    <span class="text-lg font-medium text-white">
-                                        {text}
-                                    </span>
-                                </div>
-                            ))
-                        }
-                    </div>
+    <div class="w-full">
+        <div class="w-full flex flex-col items-center justify-start gap-4">
+            <div class="w-full py-20 overflow-hidden">
+                <div class="flex w-max whitespace-nowrap animate-text-slider">
+                    {
+                        items.map((text, i) => (
+                            <div class="flex flex-row gap-2 w-full bg-black shadow-lg shadow-secondary mx-12 px-5 py-4">
+                                {i % 2 === 0 ? (
+                                    <Cross color="#F00" />
+                                ) : (
+                                    <Warning color="#FF0" />
+                                )}
+                                <span class="text-lg font-medium text-white">
+                                    {text}
+                                </span>
+                            </div>
+                        ))
+                    }
+                    {
+                        items.map((text, i) => (
+                            <div class="flex flex-row gap-2 w-full bg-black shadow-lg shadow-secondary mx-12 px-5 py-4">
+                                {i % 2 === 0 ? (
+                                    <Cross color="#F00" />
+                                ) : (
+                                    <Warning color="#FF0" />
+                                )}
+                                <span class="text-lg font-medium text-white">
+                                    {text}
+                                </span>
+                            </div>
+                        ))
+                    }
                 </div>
-
-                <p
-                    class="text-sm sm:text-lg font-bold bg-secondary/50 text-black rounded-full p-2"
-                >
-                    El problema no es la falta de interés, sino la falta de
-                    estructura digital.
-                </p>
             </div>
+        </div>
+    </div>
+
+    <div class="w-full xl:max-w-[75%] px-10 sm:px-20">
+        <div class="w-full flex flex-col items-center justify-start gap-4">
+            <p
+                class="text-sm sm:text-lg text-center font-bold bg-secondary/50 text-black rounded-full p-2"
+            >
+                El problema no es la falta de interés, sino la falta de
+                estructura digital.
+            </p>
         </div>
     </div>
 </div>
