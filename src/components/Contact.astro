@@ -1,0 +1,141 @@
+---
+import ArrowUpRight from "../assets/icons/ArrowUpRight.astro";
+
+const WHATSAPP_LINK = "https://wa.me/+573126570779?text=Hola,%20quiero%20recibir%20asesoría%20sobre%20un%20proyecto";
+const CALENDLY_LINK = "https://calendly.com/mauriciogarzonb/30min"
+---
+
+<div class="w-full h-full flex flex-col items-center justify-center py-20">
+  <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
+    <div class="w-full h-full flex flex-col items-start justify-center gap-8">
+      <div
+        class="w-full flex flex-col items-center justify-center gap-4 text-center"
+      >
+        <p
+          class="text-sm sm:text-base font-light text-secondary uppercase animate-pulse"
+        >
+          CONTÁCTANOS
+        </p>
+
+        <div class="w-full bg-white px-5 py-4">
+          <h2 class="text-3xl sm:text-5xl font-bold text-black drop-shadow">
+            Hablemos de tu proyecto
+          </h2>
+        </div>
+
+        <p class="text-sm sm:text-lg font-semibold text-black drop-shadow">
+          Elige la forma que te resulte más cómoda para empezar.
+        </p>
+      </div>
+
+      <div
+        class="w-full flex flex-col lg:flex-row items-center justify-start gap-4"
+      >
+        <div
+          class="flex flex-col items-start justify-between w-full bg-black shadow-lg group cursor-pointer hover:shadow-secondary transition-all duration-500 gap-4 px-5 py-4 grow"
+        >
+          <div
+            class="w-full group-hover:bg-white shadow-lg group-hover:shadow-secondary transition-all duration-500 group-hover:px-5 py-4"
+          >
+            <h3
+              class="text-lg sm:text-xl font-bold text-secondary group-hover:text-black transition-all duration-500 uppercase"
+            >
+              WHATSAPP
+            </h3>
+            <h4
+              class="text-sm sm:text-base font-light text-secondary group-hover:text-black transition-all duration-500 uppercase"
+            >
+              Conversación rápida
+            </h4>
+          </div>
+          <p class="text-sm sm:text-base font-base text-white">
+            Ideal si tienes dudas, quieres contarnos tu idea o necesitas
+            orientación inicial.
+          </p>
+          <div class="flex flex-col items-start justify-start gap-4 w-full">
+            <p
+              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-secondary/50 transition-all duration-500 rounded-full"
+            >
+              Respuesta rápida
+            </p>
+            <p
+              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-secondary/50 transition-all duration-500 rounded-full"
+            >
+              Sin compromiso
+            </p>
+            <p
+              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-secondary/50 transition-all duration-500 rounded-full"
+            >
+              Conversación directa
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full"
+          >
+            <a
+              href={WHATSAPP_LINK}
+              class="flex flex-row items-center gap-2 bg-secondary hover:bg-secondary/60 transition-all duration-500 text-black border-2 border-black font-semibold uppercase px-5 py-4"
+            >
+              Escribir por WhatsApp
+              <div class="w-6 h-6">
+                <ArrowUpRight color="#000" />
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-start justify-between w-full bg-black shadow-lg group cursor-pointer hover:shadow-tertiary transition-all duration-500 gap-4 px-5 py-4 grow"
+        >
+          <div
+            class="w-full group-hover:bg-white shadow-lg group-hover:shadow-tertiary transition-all duration-500 group-hover:px-5 py-4"
+          >
+            <h3
+              class="text-lg sm:text-xl font-bold text-tertiary group-hover:text-black transition-all duration-500 uppercase"
+            >
+              REUNION VIRTUAL
+            </h3>
+            <h4
+              class="text-sm sm:text-base font-light text-tertiary group-hover:text-black transition-all duration-500 uppercase"
+            >
+              Agendar una reunión
+            </h4>
+          </div>
+          <p class="text-sm sm:text-base font-base text-white">
+            Si prefieres una conversación más estructurada para revisar tu caso
+            con mayor detalle.
+          </p>
+          <div class="flex flex-col items-start justify-start gap-4 w-full">
+            <p
+              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-tertiary/50 transition-all duration-500 rounded-full"
+            >
+              Espacio dedicado
+            </p>
+            <p
+              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-tertiary/50 transition-all duration-500 rounded-full"
+            >
+              Mejor contexto del proyecto
+            </p>
+            <p
+              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-tertiary/50 transition-all duration-500 rounded-full"
+            >
+              Revisión más completa
+            </p>
+          </div>
+
+          <div
+          class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full"
+        >
+          <a
+            href={CALENDLY_LINK}
+            class="flex flex-row items-center gap-2 bg-tertiary hover:bg-tertiary/60 transition-all duration-500 text-black border-2 border-black font-semibold uppercase px-5 py-4"
+            >Agendar llamada<div class="w-6 h-6">
+              <ArrowUpRight color="#000" />
+            </div>
+          </a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

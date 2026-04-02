@@ -1,6 +1,5 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import LanguageSelector from "../components/LanguageSelector.astro";
 import { SEO } from "astro-seo";
 
 interface Props {
@@ -18,37 +17,21 @@ const { title, lang = "es" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#000" />
     <SEO
-      title={`${title} - Mauricio Garzon B.`}
+      title={`${title} - JOSUE 24:15`}
       description="Welcome to the professional portfolio of Mauricio Garzon. As a Software Engineer, I bring expertise in web and mobile software development. With a commitment to excellence and a passion for Javascript development, focused on delivering results. Navigate through my career journey, discover my skills, and learn how I can contribute to your projects."
       canonical="https://mgbrunal.github.io"
       openGraph={{
         basic: {
-          title: `${title} - Mauricio Garzon B.`,
+          title: `${title} - JOSUE 24:15`,
           type: "website",
           image:
             "https://media.licdn.com/dms/image/C4D03AQETLSMaC7f-WQ/profile-displayphoto-shrink_800_800/0/1649435378295?e=1712188800&v=beta&t=pYFUEe1cTBJ7ybLHxPdX5X29FVL79nZ0uuZaTCIm5co",
         },
       }}
-      twitter={{
-        creator: "@MGBrunal",
-      }}
-      extend={{
-        link: [{ rel: "icon", href: "/favicon.svg" }],
-        meta: [
-          {
-            name: "twitter:image",
-            content:
-              "https://pbs.twimg.com/profile_images/1518628760802766852/g_FmLFG9_400x400.jpg",
-          },
-          { name: "twitter:title", content: "MGBrunal" },
-          { name: "twitter:description", content: "Web developer" },
-        ],
-      }}
     />
     <ClientRouter />
   </head>
   <body>
-    <LanguageSelector lang={lang} />
     <div class="min-h-screen max-w-screen bg-black overscroll-none">
       <slot />
     </div>
