@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TheProblem from "../components/sections-about-us/TheProblem.astro";
+import Header from "../components/Header.astro";
 import WhoWeAre from "../components/sections-about-us/WhoWeAre.astro";
 import HowWeWork from "../components/sections-about-us/HowWeWork.astro";
 import FinalCTA from "../components/FinalCTA.astro";
@@ -9,17 +9,17 @@ import Footer from "../components/Footer.astro";
 
 <Layout title="Acerca de nosotros" lang="es">
   <main>
-    <section id="who_we_are" class="min-h-[100vh] bg-primary/50">
-      <WhoWeAre />
+    <section id="header" class="h-[20vh] overflow-hidden bg-black">
+      <Header />
     </section>
-    <section id="the_problem" class="min-h-[100vh] bg-tertiary/80">
-      <TheProblem />
+    <section id="who_we_are" class="min-h-[90vh] bg-primary/50">
+      <WhoWeAre />
     </section>
     <section id="how_it_works" class="min-h-[100vh] bg-white">
       <HowWeWork />
     </section>
     <section id="final_cta" class="h-[100vh] overflow-hidden bg-black">
-      <FinalCTA />
+      <FinalCTA variant="info" />
     </section>
 
     <Footer />

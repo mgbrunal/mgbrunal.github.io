@@ -1,5 +1,7 @@
 ---
 import ArrowUpRight from "../assets/icons/ArrowUpRight.astro";
+
+const { variant = "index" } = Astro.props;
 ---
 
 <div class="relative w-full h-full flex flex-col items-center justify-center">
@@ -34,13 +36,30 @@ import ArrowUpRight from "../assets/icons/ArrowUpRight.astro";
           sin complicaciones.
         </p>
 
-        <button
-          class="flex flex-row items-center gap-2 bg-tertiary hover:bg-tertiary/60 transition-all duration-500 text-black border-2 border-black font-semibold uppercase px-5 py-4"
-          >Agendar asesoría gratuita
-          <div class="w-6 h-6">
-            <ArrowUpRight color="#000" />
-          </div>
-        </button>
+        <div
+          class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full"
+        >
+          {
+            variant === "index" && (
+              <a
+                href="/info"
+                class="flex flex-row items-center gap-2 bg-secondary hover:bg-secondary/60 transition-all duration-500 text-black border-2 border-black font-semibold uppercase px-5 py-4"
+              >
+                Quienes somos?
+                <div class="w-6 h-6">
+                  <ArrowUpRight color="#000" />
+                </div>
+              </a>
+            )
+          }
+          <a
+            href="/contacto"
+            class="flex flex-row items-center gap-2 bg-tertiary hover:bg-tertiary/60 transition-all duration-500 text-black border-2 border-black font-semibold uppercase px-5 py-4"
+            >Agendar asesoría gratuita<div class="w-6 h-6">
+              <ArrowUpRight color="#000" />
+            </div>
+          </a>
+        </div>
 
         <div
           class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full"

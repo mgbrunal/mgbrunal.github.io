@@ -10,43 +10,31 @@ const items = [
   {
     title: "Páginas web para negocios",
     content: "Sitios diseñados para comunicar con claridad, generar confianza y facilitar el contacto con clientes potenciales.",
-    color: "#1D4ED8", // Darker Blue (blue-700)
-    lightColor: "rgba(29, 78, 216, 0.1)",
     icon: "store"
   },
   {
     title: "Páginas web para eventos",
     content: "Espacios digitales para informar, registrar asistentes y centralizar toda la comunicación del evento.",
-    color: "#7E22CE", // Darker Purple (purple-700)
-    lightColor: "rgba(126, 34, 206, 0.1)",
     icon: "rocket"
   },
   {
     title: "Proyectos inmobiliarios",
     content: "Páginas enfocadas en captar interés real y organizar la información de posibles compradores.",
-    color: "#15803D", // Darker Green (green-700)
-    lightColor: "rgba(21, 128, 61, 0.1)",
     icon: "design"
   },
   {
     title: "Automatización de procesos",
     content: "Flujos que conectan formularios, mensajes y herramientas para reducir tareas manuales y mejorar el seguimiento.",
-    color: "#B45309", // Amber/Dark Yellow (amber-700)
-    lightColor: "rgba(180, 83, 9, 0.1)",
     icon: "develop"
   },
   {
     title: "Desarrollos a medida",
     content: "Soluciones personalizadas según necesidades específicas que no encajan en un formato estándar.",
-    color: "#C2410C", // Darker Orange (orange-700)
-    lightColor: "rgba(194, 65, 12, 0.1)",
     icon: "custom"
   },
   {
     title: "Optimización y soporte",
     content: "Ajustes, mejoras y mantenimiento para que todo siga funcionando correctamente en el tiempo.",
-    color: "#78350F", // Deep Brown (amber-900)
-    lightColor: "rgba(120, 53, 15, 0.1)",
     icon: "support"
   },
 ];
@@ -75,41 +63,28 @@ const items = [
         <p class="text-sm sm:text-lg font-semibold text-white">
           Cada proyecto es distinto. Estas son las principales formas en las que podemos ayudarte.
         </p>
-
-        <button
-          class="flex flex-row items-center gap-2 bg-tertiary hover:bg-tertiary/60 transition-all duration-500 text-black border-2 border-black font-semibold uppercase px-5 py-4"
-          >Solicitar asesoría gratuita
-          <div class="w-6 h-6">
-            <ArrowUpRight color="#000" />
-          </div></button
-        >
       </div>
 
       <div class="flex flex-col space-y-4 sm:space-y-8 w-full h-full">
         {
-          items.map((item, index) => (
+          items.map((item) => (
             <div 
-              class="flex flex-col h-auto sm:min-h-[300px] items-start justify-center gap-4 bg-white/70 rounded-xl shadow-xl shadow-black/20 border-2 transition-all duration-300 hover:scale-[1.02] p-6 sm:p-8"
-              style={{ 
-                borderColor: item.color,
-              }}
+              class="flex flex-col h-auto sm:min-h-[300px] items-start justify-center gap-4 bg-white/70 border-tertiary rounded-xl shadow-xl shadow-black/20 border-2 transition-all duration-300 hover:scale-[1.02] p-6 sm:p-8"
             >
               <div 
-                class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-2"
-                style={{ backgroundColor: item.lightColor }}
+                class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-2 bg-primary/50"
               >
                 <div class="w-10 h-10 sm:w-12 sm:h-12">
-                  {item.icon === "store" && <Store color={item.color} />}
-                  {item.icon === "rocket" && <Rocket2 color={item.color} />}
-                  {item.icon === "design" && <Design color={item.color} />}
-                  {item.icon === "develop" && <Develop color={item.color} />}
-                  {item.icon === "custom" && <Develop color={item.color} />}
-                  {item.icon === "support" && <Validation color={item.color} />}
+                  {item.icon === "store" && <Store color="#000" />}
+                  {item.icon === "rocket" && <Rocket2 color="#000" />}
+                  {item.icon === "design" && <Design color="#000" />}
+                  {item.icon === "develop" && <Develop color="#000" />}
+                  {item.icon === "custom" && <Develop color="#000" />}
+                  {item.icon === "support" && <Validation color="#000" />}
                 </div>
               </div>
               <h3 
-                class="text-xl sm:text-2xl font-bold uppercase tracking-tight"
-                style={{ color: item.color }}
+                class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-black"
               >
                 {item.title}
               </h3>
