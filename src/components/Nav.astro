@@ -1,4 +1,6 @@
 ---
+import Logo from "../assets/icons/Logo.astro";
+
 const pathname = Astro.url.pathname;
 
 const links = [
@@ -15,15 +17,19 @@ const isActive = (href: string) =>
   id="main-nav"
   class="fixed top-0 left-0 right-0 z-50 h-14 bg-black/90 backdrop-blur-sm border-b border-transparent transition-[border-color] duration-300 ease-out"
 >
-  <div class="w-full h-full xl:max-w-[75%] mx-auto px-10 sm:px-20 flex items-center justify-between">
-
+  <div
+    class="w-full h-full xl:max-w-[75%] mx-auto px-10 sm:px-20 flex items-center justify-between"
+  >
     <a href="/" class="flex items-center gap-3 shrink-0 group">
-      <div
-        class="w-7 h-7 rounded-full border border-white/20 transition-colors duration-200 ease-out can-hover:group-hover:border-secondary/70"
-      ></div>
-      <span class="text-xs font-bold text-white uppercase tracking-[0.2em]">
-        JOSUE 24:15
-      </span>
+      <Logo
+        class="h-9 w-auto transition-opacity duration-200 ease-out can-hover:group-hover:opacity-80"
+      />
+      <div class="flex flex-col items-start justify-center leading-none gap-0.5">
+        <span class="text-sm font-bold text-white tracking-tight">
+          J24:15
+        </span>
+        <span class="text-[10px] font-semibold text-white/40 uppercase tracking-[0.25em]">Casa de Software</span>
+      </div>
     </a>
 
     <!-- Desktop links -->
@@ -52,9 +58,15 @@ const isActive = (href: string) =>
       aria-expanded="false"
       class="sm:hidden flex flex-col justify-center items-end gap-[5px] w-8 h-8 shrink-0 cursor-pointer"
     >
-      <span class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"></span>
-      <span class="nav-line block h-px bg-white transition-all duration-200 ease-out w-3"></span>
-      <span class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"></span>
+      <span
+        class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"
+      ></span>
+      <span
+        class="nav-line block h-px bg-white transition-all duration-200 ease-out w-3"
+      ></span>
+      <span
+        class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"
+      ></span>
     </button>
   </div>
 
@@ -69,9 +81,7 @@ const isActive = (href: string) =>
           href={href}
           data-nav-href={href}
           class={`nav-link text-3xl font-bold uppercase tracking-widest transition-colors duration-200 ${
-            isActive(href)
-              ? "text-tertiary nav-link--active"
-              : "text-white/60"
+            isActive(href) ? "text-tertiary nav-link--active" : "text-white/60"
           }`}
         >
           {label}
@@ -141,22 +151,25 @@ const isActive = (href: string) =>
     });
 
     // Close mobile menu on link click
-    menu.querySelectorAll("a").forEach((link) =>
-      link.addEventListener("click", closeMenu)
-    );
+    menu
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeMenu));
   }
 
   // Update active link after view transitions
   function updateActiveLinks() {
     const pathname = window.location.pathname;
-    document.querySelectorAll<HTMLAnchorElement>("[data-nav-href]").forEach((link) => {
-      const href = link.dataset.navHref ?? "";
-      const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
-      link.classList.toggle("text-tertiary", active);
-      link.classList.toggle("nav-link--active", active);
-      link.classList.toggle("text-white/50", !active);
-      link.classList.toggle("text-white/60", !active);
-    });
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-nav-href]")
+      .forEach((link) => {
+        const href = link.dataset.navHref ?? "";
+        const active =
+          href === "/" ? pathname === "/" : pathname.startsWith(href);
+        link.classList.toggle("text-tertiary", active);
+        link.classList.toggle("nav-link--active", active);
+        link.classList.toggle("text-white/50", !active);
+        link.classList.toggle("text-white/60", !active);
+      });
   }
 
   initNav();
