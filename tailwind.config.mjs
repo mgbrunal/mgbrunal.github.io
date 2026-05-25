@@ -6,13 +6,17 @@ export default {
   safelist: ["row-span-", "col-span-"],
   theme: {
     colors: {
-      white: "#FFF",
-      black: "#000",
-      primary: "#6E6E6E",
-      secondary: "#009B4D",
-      tertiary: "#BAFF39",
+      white: "#FAFAFA",
+      black: "#060A06",
+      surface: "#111811",
+      primary: "#4E6050",
+      secondary: "#00A854",
+      tertiary: "#C5FF3C",
     },
     extend: {
+      fontFamily: {
+        sans: ["Space Grotesk", "system-ui", "sans-serif"],
+      },
       transitionTimingFunction: {
         "out-strong": "cubic-bezier(0.23, 1, 0.32, 1)",
         "in-out-strong": "cubic-bezier(0.77, 0, 0.175, 1)",
