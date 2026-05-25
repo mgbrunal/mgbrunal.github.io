@@ -18,7 +18,7 @@ const items = [
         class="w-full flex flex-col items-center justify-center gap-4 text-center"
       >
         <p
-          class="text-sm sm:text-base font-light text-black uppercase animate-pulse"
+          class="text-sm sm:text-base font-light text-black uppercase"
         >
           El problema
         </p>
@@ -79,3 +79,20 @@ const items = [
     </div>
   </div>
 </div>
+
+<style>
+  @media (hover: hover) and (pointer: fine) {
+    .animate-text-slider:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-text-slider {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+      white-space: normal;
+    }
+  }
+</style>
