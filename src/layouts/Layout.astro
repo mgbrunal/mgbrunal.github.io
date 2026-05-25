@@ -1,40 +1,99 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import { SEO } from "astro-seo";
 import Nav from "../components/Nav.astro";
 
 interface Props {
   title: string;
-  lang: "es" | "en";
+  lang?: "es" | "en";
+  description?: string;
+  ogImage?: string;
 }
 
-const { title, lang = "es" } = Astro.props;
+const {
+  title,
+  lang = "es",
+  description = "Desarrollo de software a medida para negocios en Colombia. Aplicaciones web, móviles y soluciones tecnológicas con resultados reales. JOSUE 24:15 SAS.",
+  ogImage = "/og-image.png",
+} = Astro.props;
+
+const siteUrl = "https://mgbrunal.github.io";
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageAbsolute = new URL(ogImage, siteUrl).href;
+const fullTitle = `${title} | J24:15 Casa de Software`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "JOSUE 24:15 SAS",
+  alternateName: "J24:15 Casa de Software",
+  url: siteUrl,
+  logo: `${siteUrl}/og-image.png`,
+  description:
+    "Estudio de desarrollo de software especializado en aplicaciones web y móviles para negocios en Colombia.",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CO",
+  },
+  foundingDate: "2019",
+  founders: [
+    { "@type": "Person", name: "Mauricio Garzón Brunal" },
+    { "@type": "Person", name: "Laura Mestra Ruíz" },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/maugarbru/",
+    "https://www.linkedin.com/in/lauramestraru/",
+  ],
+  areaServed: {
+    "@type": "Country",
+    name: "Colombia",
+  },
+  taxID: "902001370-7",
+};
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#060A06" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" type="image/png" href="/favicon.png" />
+
+    <!-- Primary meta -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:alt" content="J24:15 Casa de Software" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="J24:15 Casa de Software" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+    <meta name="twitter:image:alt" content="J24:15 Casa de Software" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <SEO
-      title={`${title} - JOSUE 24:15`}
-      description="Welcome to the professional portfolio of Mauricio Garzon. As a Software Engineer, I bring expertise in web and mobile software development. With a commitment to excellence and a passion for Javascript development, focused on delivering results. Navigate through my career journey, discover my skills, and learn how I can contribute to your projects."
-      canonical="https://mgbrunal.github.io"
-      openGraph={{
-        basic: {
-          title: `${title} - JOSUE 24:15`,
-          type: "website",
-          image:
-            "https://media.licdn.com/dms/image/C4D03AQETLSMaC7f-WQ/profile-displayphoto-shrink_800_800/0/1649435378295?e=1712188800&v=beta&t=pYFUEe1cTBJ7ybLHxPdX5X29FVL79nZ0uuZaTCIm5co",
-        },
-      }}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
     />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <ClientRouter />
   </head>
   <body>
