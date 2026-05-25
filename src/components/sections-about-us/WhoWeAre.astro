@@ -1,5 +1,5 @@
 ---
-import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
+import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center py-20">
@@ -28,90 +28,246 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
       </div>
 
       <div
-        class="w-full flex flex-col lg:flex-row items-center justify-start gap-4"
+        class="w-full flex flex-col lg:flex-row items-stretch justify-start gap-4"
       >
+        <!-- ENGINEERING FLIP CARD -->
         <div
-          class="flex flex-col items-start justify-between w-full bg-black shadow-lg group cursor-pointer hover:shadow-secondary transition-all duration-500 gap-4 px-5 py-4 grow"
+          class="flip-container w-full grow"
+          style="perspective: 1200px; min-height: 420px;"
         >
           <div
-            class="w-full group-hover:bg-white shadow-lg group-hover:shadow-secondary transition-all duration-500 group-hover:px-5 py-4"
+            class="flip-inner w-full h-full"
+            style="position: relative; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1);"
+            data-flipped="false"
           >
-            <h3
-              class="text-lg sm:text-xl font-bold text-secondary group-hover:text-black transition-all duration-500 uppercase"
+            <!-- FRONT: Engineering role -->
+            <div
+              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black shadow-lg gap-4 px-5 py-4 cursor-pointer group"
+              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; inset: 0;"
+              onclick="this.closest('.flip-inner').classList.add('is-flipped'); this.closest('.flip-inner').dataset.flipped='true'"
             >
-              INGENIERÍA
-            </h3>
-            <h4
-              class="text-sm sm:text-base font-light text-secondary group-hover:text-black transition-all duration-500 uppercase"
+              <div class="w-full">
+                <div class="w-full shadow-lg py-4 transition-all duration-500">
+                  <h3 class="text-lg sm:text-xl font-bold text-secondary uppercase">
+                    INGENIERÍA
+                  </h3>
+                  <h4 class="text-sm sm:text-base font-light text-secondary uppercase">
+                    Desarrollo y arquitectura técnica
+                  </h4>
+                </div>
+              </div>
+              <p class="text-sm sm:text-base font-base text-white">
+                Encargado de diseñar y construir la base técnica de cada proyecto.
+                Desde páginas web hasta automatización de procesos, el enfoque está
+                en crear soluciones estables, rápidas y bien estructuradas.
+              </p>
+              <div class="flex flex-col items-start justify-start gap-3 w-full">
+                <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 rounded-full">
+                  Eficiencia y rendimiento
+                </p>
+                <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 rounded-full">
+                  Soluciones escalables
+                </p>
+                <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 rounded-full">
+                  Implementaciones limpias y mantenibles
+                </p>
+              </div>
+              <p class="text-xs text-secondary/60 font-light self-end flex items-center gap-1 mt-2">
+                <span>Ver equipo</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </p>
+            </div>
+
+            <!-- BACK: Mauricio -->
+            <div
+              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black border border-secondary/40 shadow-lg gap-4 px-5 py-4"
+              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); position: absolute; inset: 0;"
             >
-              Desarrollo y arquitectura técnica
-            </h4>
-          </div>
-          <p class="text-sm sm:text-base font-base text-white">
-            Encargado de diseñar y construir la base técnica de cada proyecto.
-            Desde páginas web hasta automatización de procesos, el enfoque está
-            en crear soluciones estables, rápidas y bien estructuradas.
-          </p>
-          <div class="flex flex-col items-start justify-start gap-4 w-full">
-            <p
-              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-secondary/50 transition-all duration-500 rounded-full"
-            >
-              Eficiencia y rendimiento
-            </p>
-            <p
-              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-secondary/50 transition-all duration-500 rounded-full"
-            >
-              Soluciones escalables
-            </p>
-            <p
-              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-secondary/50 transition-all duration-500 rounded-full"
-            >
-              Implementaciones limpias y mantenibles
-            </p>
+              <div class="flex flex-row items-center justify-between w-full">
+                <div class="flex flex-row items-center gap-4">
+                  <img
+                    src="https://media.licdn.com/dms/image/v2/C4D03AQETLSMaC7f-WQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1649435378295?e=1781136000&v=beta&t=qTf2eVJVt1mqM_kdQUwGDo46txUF7Dx-baWlL2XlAE0"
+                    alt="Mauricio Garzón Brunal"
+                    class="w-14 h-14 object-cover shrink-0 ring-2 ring-secondary/50"
+                  />
+                  <div>
+                    <p class="text-base sm:text-lg font-bold text-white leading-tight">
+                      Mauricio Garzón Brunal
+                    </p>
+                    <p class="text-xs font-light text-secondary uppercase tracking-wide">
+                      Full-Stack &amp; RN Developer
+                    </p>
+                  </div>
+                </div>
+                <button
+                  class="text-white/30 hover:text-white/80 transition-colors duration-200 shrink-0 ml-2 cursor-pointer"
+                  onclick="this.closest('.flip-inner').classList.remove('is-flipped'); this.closest('.flip-inner').dataset.flipped='false'"
+                  aria-label="Volver"
+                >
+                  <div class="w-10 h-10"><ArrowLeft color="currentColor" /></div>
+                </button>
+              </div>
+
+              <div class="flex flex-row items-baseline gap-2 border-l-2 border-secondary pl-3">
+                <span class="text-3xl font-bold text-secondary leading-none">+6</span>
+                <div class="flex flex-col">
+                  <span class="text-xs text-white font-semibold leading-tight">años de experiencia</span>
+                  <span class="text-xs text-white/50 font-light">Ing. Sistemas · Univ. de Medellín 2023</span>
+                </div>
+              </div>
+
+              <p class="text-sm font-light text-white/80 leading-relaxed">
+                Desarrolla aplicaciones web y móviles full-stack — backend con Express
+                y NestJS, bases de datos SQL y NoSQL, frontend con React, React Native
+                y Vue.js. Trayectoria en equipos de producto desde 2019.
+              </p>
+
+              <div class="flex flex-row flex-wrap gap-2">
+                <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">TypeScript</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">React / RN</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">NestJS</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">AWS</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">GraphQL</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">Vue.js</span>
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/maugarbru/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-row items-center gap-2 text-xs text-secondary font-light hover:text-white transition-colors duration-200 no-underline"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                </svg>
+                linkedin.com/in/maugarbru
+              </a>
+            </div>
           </div>
         </div>
+
+        <!-- BUSINESS FLIP CARD -->
         <div
-          class="flex flex-col items-start justify-between w-full bg-black shadow-lg group cursor-pointer hover:shadow-tertiary transition-all duration-500 gap-4 px-5 py-4 grow"
+          class="flip-container w-full grow"
+          style="perspective: 1200px; min-height: 420px;"
         >
           <div
-            class="w-full group-hover:bg-white shadow-lg group-hover:shadow-tertiary transition-all duration-500 group-hover:px-5 py-4"
+            class="flip-inner w-full h-full"
+            style="position: relative; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1);"
+            data-flipped="false"
           >
-            <h3
-              class="text-lg sm:text-xl font-bold text-tertiary group-hover:text-black transition-all duration-500 uppercase"
+            <!-- FRONT: Business role -->
+            <div
+              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black shadow-lg gap-4 px-5 py-4 cursor-pointer group"
+              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; inset: 0;"
+              onclick="this.closest('.flip-inner').classList.add('is-flipped'); this.closest('.flip-inner').dataset.flipped='true'"
             >
-              Negocio / Producto
-            </h3>
-            <h4
-              class="text-sm sm:text-base font-light text-tertiary group-hover:text-black transition-all duration-500 uppercase"
+              <div class="w-full">
+                <div class="w-full shadow-lg py-4 transition-all duration-500">
+                  <h3 class="text-lg sm:text-xl font-bold text-tertiary uppercase">
+                    Negocio / Producto
+                  </h3>
+                  <h4 class="text-sm sm:text-base font-light text-tertiary uppercase">
+                    Estrategia y enfoque de producto
+                  </h4>
+                </div>
+              </div>
+              <p class="text-sm sm:text-base font-base text-white">
+                Encargada de entender el negocio, estructurar la experiencia del
+                usuario y asegurar que cada solución tenga un objetivo claro. Desde
+                la definición hasta la validación, todo se construye con sentido
+                práctico.
+              </p>
+              <div class="flex flex-col items-start justify-start gap-3 w-full">
+                <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 rounded-full">
+                  Claridad en la propuesta
+                </p>
+                <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 rounded-full">
+                  Experiencia del usuario
+                </p>
+                <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 rounded-full">
+                  Enfoque en resultados reales
+                </p>
+              </div>
+              <p class="text-xs text-tertiary/60 font-light self-end flex items-center gap-1 mt-2">
+                <span>Ver equipo</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </p>
+            </div>
+
+            <!-- BACK: Laura -->
+            <div
+              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black border border-tertiary/40 shadow-lg gap-4 px-5 py-4"
+              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); position: absolute; inset: 0;"
             >
-              Estrategia y enfoque de producto
-            </h4>
-          </div>
-          <p class="text-sm sm:text-base font-base text-white">
-            Encargada de entender el negocio, estructurar la experiencia del
-            usuario y asegurar que cada solución tenga un objetivo claro. Desde
-            la definición hasta la validación, todo se construye con sentido
-            práctico.
-          </p>
-          <div class="flex flex-col items-start justify-start gap-4 w-full">
-            <p
-              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-tertiary/50 transition-all duration-500 rounded-full"
-            >
-              Claridad en la propuesta
-            </p>
-            <p
-              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-tertiary/50 transition-all duration-500 rounded-full"
-            >
-              Experiencia del usuario
-            </p>
-            <p
-              class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary/50 group-hover:bg-tertiary/50 transition-all duration-500 rounded-full"
-            >
-              Enfoque en resultados reales
-            </p>
+              <div class="flex flex-row items-center justify-between w-full">
+                <div class="flex flex-row items-center gap-4">
+                  <img
+                    src="https://media.licdn.com/dms/image/v2/D5603AQFShaoaYP2EKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695070950850?e=1781136000&v=beta&t=bznky4fk8lbpFkioWYAUlGy_TDEs0CnllhnIlLkotRQ"
+                    alt="Laura Mestra Ruíz"
+                    class="w-14 h-14 object-cover shrink-0 ring-2 ring-tertiary/50"
+                  />
+                  <div>
+                    <p class="text-base sm:text-lg font-bold text-white leading-tight">
+                      Laura Mestra Ruíz
+                    </p>
+                    <p class="text-xs font-light text-tertiary uppercase tracking-wide">
+                      Project Manager · Scrum Master
+                    </p>
+                  </div>
+                </div>
+                <button
+                  class="text-white/30 hover:text-white/80 transition-colors duration-200 shrink-0 ml-2 cursor-pointer"
+                  onclick="this.closest('.flip-inner').classList.remove('is-flipped'); this.closest('.flip-inner').dataset.flipped='false'"
+                  aria-label="Volver"
+                >
+                  <span class="w-5 h-5"><ArrowLeft color="currentColor" /></span>
+                </button>
+              </div>
+
+              <div class="flex flex-row items-baseline gap-2 border-l-2 border-tertiary pl-3">
+                <span class="text-3xl font-bold text-tertiary leading-none">+4</span>
+                <div class="flex flex-col">
+                  <span class="text-xs text-white font-semibold leading-tight">años de experiencia</span>
+                  <span class="text-xs text-white/50 font-light">Negocios Internacionales · Univ. de Medellín 2021</span>
+                </div>
+              </div>
+
+              <p class="text-sm font-light text-white/80 leading-relaxed">
+                Profesional en Negocios Internacionales y Scrum Master certificada.
+                Gestiona proyectos de software con claridad de objetivos, liderazgo
+                de equipos y metodologías ágiles desde 2021.
+              </p>
+
+              <div class="flex flex-row flex-wrap gap-2">
+                <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Project Management</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Scrum Master</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Agile</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Negocios Internacionales</span>
+                <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Stakeholders</span>
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/lauramestraru/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-row items-center gap-2 text-xs text-tertiary font-light hover:text-white transition-colors duration-200 no-underline"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                </svg>
+                linkedin.com/in/lauramestraru
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  .flip-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+</style>
