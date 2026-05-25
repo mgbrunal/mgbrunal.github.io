@@ -1,102 +1,239 @@
 ---
-import Store from "../../assets/icons/Store.astro";
-import Rocket2 from "../../assets/icons/Rocket2.astro";
-import Design from "../../assets/icons/Design.astro";
-import Develop from "../../assets/icons/Develop.astro";
-import Validation from "../../assets/icons/Validation.astro";
-
-const items = [
-  {
-    title: "Páginas web para negocios",
-    content: "Sitios diseñados para comunicar con claridad, generar confianza y facilitar el contacto con clientes potenciales.",
-    icon: "store",
-  },
-  {
-    title: "Páginas web para eventos",
-    content: "Espacios digitales para informar, registrar asistentes y centralizar toda la comunicación del evento.",
-    icon: "rocket",
-  },
-  {
-    title: "Proyectos inmobiliarios",
-    content: "Páginas enfocadas en captar interés real y organizar la información de posibles compradores.",
-    icon: "design",
-  },
-  {
-    title: "Automatización de procesos",
-    content: "Flujos que conectan formularios, mensajes y herramientas para reducir tareas manuales y mejorar el seguimiento.",
-    icon: "develop",
-  },
-  {
-    title: "Desarrollos a medida",
-    content: "Soluciones personalizadas según necesidades específicas que no encajan en un formato estándar.",
-    icon: "custom",
-  },
-  {
-    title: "Optimización y soporte",
-    content: "Ajustes, mejoras y mantenimiento para que todo siga funcionando correctamente en el tiempo.",
-    icon: "support",
-  },
-];
-
-const numColor = ["text-tertiary", "text-secondary"];
-const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hover:text-secondary"];
+import WhatWeDoMockups from "./WhatWeDoMockups.astro";
+import WhatWeDoList from "./WhatWeDoList.astro";
 ---
 
-<div class="w-full h-full flex flex-col items-center justify-center py-20">
+<div class="w-full h-full flex flex-col items-center justify-center py-20" id="whatwedo-root">
   <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
     <div class="w-full h-full flex flex-col lg:flex-row items-start justify-center gap-8 lg:gap-16">
 
-      <!-- Sticky sidebar -->
-      <div class="w-full lg:w-[38%] shrink-0 flex flex-col items-start gap-6 lg:sticky lg:top-20">
-        <p data-reveal class="text-sm sm:text-base font-light text-white uppercase">
-          Qué hacemos?
-        </p>
-        <h2 data-reveal data-reveal-delay="80" class="text-3xl sm:text-5xl font-bold text-tertiary drop-shadow-lg">
-          Soluciones digitales según la necesidad de tu negocio
-        </h2>
-        <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-white">
-          Cada proyecto es distinto. Estas son las principales formas en las
-          que podemos ayudarte.
-        </p>
-      </div>
+      <!-- Sidebar: stacks default text + preview in same grid cell -->
+      <div class="sidebar-stack w-full lg:w-[38%] shrink-0 lg:sticky lg:top-24">
 
-      <!-- Numbered list -->
-      <div class="w-full flex flex-col border-t border-white/10">
-        {
-          items.map((item, i) => (
-            <div data-reveal data-reveal-delay={String(i * 50)} class="group flex flex-row items-start gap-5 py-7 border-b border-white/10 transition-colors duration-200 ease-out can-hover:hover:bg-white/5 px-3 -mx-3">
+        <!-- Default content -->
+        <div class="sidebar-default flex flex-col items-start gap-6">
+          <p data-reveal class="text-sm sm:text-base font-light text-white uppercase">Qué hacemos?</p>
+          <h2 data-reveal data-reveal-delay="80" class="text-3xl sm:text-5xl font-bold text-tertiary drop-shadow-lg">
+            Soluciones digitales según la necesidad de tu negocio
+          </h2>
+          <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-white">
+            Cada proyecto es distinto. Estas son las principales formas en las que podemos ayudarte.
+          </p>
+          <p class="hidden lg:block text-xs text-white/30 mt-2">Pasa el cursor sobre cada servicio</p>
+        </div>
 
-              <span
-                class={`text-4xl sm:text-5xl font-bold tabular-nums leading-none shrink-0 mt-0.5 transition-opacity duration-200 ${numColor[i % 2]}`}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
+        <!-- Preview panel (desktop only, overlays default) -->
+        <WhatWeDoMockups />
 
-              <div class="flex flex-col gap-1.5 grow">
-                <h3
-                  class={`text-sm sm:text-base font-bold uppercase tracking-wide text-white transition-colors duration-200 ease-out ${titleHover[i % 2]}`}
-                >
-                  {item.title}
-                </h3>
-                <p class="text-sm font-light text-white/60 leading-relaxed">
-                  {item.content}
-                </p>
-              </div>
+      </div><!-- /sidebar-stack -->
 
-              <div class="w-6 h-6 opacity-20 shrink-0 mt-0.5 transition-opacity duration-200 can-hover:group-hover:opacity-40">
-                {item.icon === "store" && <Store color="#FFF" />}
-                {item.icon === "rocket" && <Rocket2 color="#FFF" />}
-                {item.icon === "design" && <Design color="#FFF" />}
-                {item.icon === "develop" && <Develop color="#FFF" />}
-                {item.icon === "custom" && <Develop color="#FFF" />}
-                {item.icon === "support" && <Validation color="#FFF" />}
-              </div>
-
-            </div>
-          ))
-        }
-      </div>
+      <WhatWeDoList />
 
     </div>
   </div>
 </div>
+
+<style is:global>
+  /* ── Sidebar stacking ── */
+  .sidebar-stack {
+    display: grid;
+  }
+  .sidebar-default,
+  .sidebar-preview {
+    grid-area: 1 / 1;
+    transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .sidebar-preview {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  /* Active state triggered by JS class on #whatwedo-root */
+  #whatwedo-root.preview-active .sidebar-default {
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+  }
+  #whatwedo-root.preview-active .sidebar-preview {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* ── Mobile toggle ── */
+  .list-row.expanded .preview-toggle {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initWhatWeDo() {
+    const root = document.getElementById("whatwedo-root") as HTMLElement;
+    if (!root) return;
+
+    // Do NOT cache mockups — query fresh each time to avoid stale refs after reflows
+    const rows = root.querySelectorAll<HTMLElement>(".list-row[data-row-index]");
+    const urlText = root.querySelector(".url-text") as HTMLElement;
+
+    const urlMap: Record<string, string> = {
+      "0": "sumedida.com",
+      "1": "summit2025.co",
+      "2": "urbanosmedelin.com",
+      "3": "app.sucrm.co",
+      "4": "panel.suapp.co",
+      "5": "auditoria.j24:15.com",
+    };
+
+    let activeIndex: number | null = null;
+    let countdownInterval: ReturnType<typeof setInterval> | null = null;
+
+    function restartAnimations(el: HTMLElement) {
+      // Batch-reset all animations, then one reflow on the HTMLElement parent, then restore
+      const animated = el.querySelectorAll<HTMLElement>('[class*="anim-"]');
+      const ring = el.querySelector<SVGCircleElement>(".score-ring");
+
+      animated.forEach((a) => { a.style.animationName = "none"; });
+      if (ring) ring.style.animationName = "none";
+
+      void el.offsetHeight; // single reflow — valid on HTMLElement
+
+      animated.forEach((a) => { a.style.animationName = ""; });
+      if (ring) ring.style.animationName = "";
+    }
+
+    function showMockup(index: number) {
+      // Fresh query every time — stale NodeList was the bug
+      root.querySelectorAll<HTMLElement>(".mockup[data-mockup]").forEach((m) => {
+        m.classList.remove("active");
+      });
+
+      const target = root.querySelector<HTMLElement>(`.mockup[data-mockup="${index}"]`);
+      if (!target) return;
+
+      target.classList.add("active");
+      restartAnimations(target);
+
+      // Countup numbers
+      target.querySelectorAll<HTMLElement>(".anim-countup[data-target]").forEach((el) => {
+        const goal = parseInt(el.dataset.target ?? "0", 10);
+        el.textContent = "0";
+        let current = 0;
+        const step = Math.ceil(goal / 40);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, goal);
+          el.textContent = current.toLocaleString("es-CO");
+          if (current >= goal) clearInterval(timer);
+        }, 30);
+      });
+
+      // Score ring number
+      const scoreNum = target.querySelector<HTMLElement>(".score-num");
+      if (scoreNum) {
+        scoreNum.textContent = "0";
+        let n = 0;
+        const t = setInterval(() => {
+          n = Math.min(n + 3, 94);
+          scoreNum.textContent = String(n);
+          if (n >= 94) clearInterval(t);
+        }, 20);
+      }
+
+      // Countdown tick
+      if (countdownInterval) clearInterval(countdownInterval);
+      const nums = target.querySelectorAll<HTMLElement>(".countdown-num");
+      if (nums.length) {
+        const values = Array.from(nums).map((numEl) => parseInt(numEl.textContent ?? "0", 10));
+        countdownInterval = setInterval(() => {
+          values[values.length - 1]--;
+          if (values[values.length - 1] < 0) {
+            values[values.length - 1] = 59;
+            if (values.length > 1) values[values.length - 2]--;
+          }
+          nums.forEach((numEl, i) => {
+            numEl.textContent = String(values[i]).padStart(2, "0");
+          });
+        }, 1000);
+      }
+
+      if (urlText) urlText.textContent = urlMap[String(index)] ?? "j24:15.com";
+    }
+
+    function activatePreview(index: number) {
+      if (activeIndex === index) return;
+      activeIndex = index;
+      root.classList.add("preview-active");
+      showMockup(index);
+    }
+
+    function deactivatePreview() {
+      activeIndex = null;
+      root.classList.remove("preview-active");
+      if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+    }
+
+    // Desktop hover
+    const isTouch = () => window.matchMedia("(hover: none)").matches;
+
+    rows.forEach((row) => {
+      const index = parseInt(row.dataset.rowIndex ?? "0", 10);
+
+      row.addEventListener("mouseenter", () => {
+        if (isTouch()) return;
+        activatePreview(index);
+      });
+    });
+
+    // Deactivate when leaving the sidebar-stack area
+    const sidebarStack = root.querySelector<HTMLElement>(".sidebar-stack");
+    const listCol = root.querySelector<HTMLElement>("[data-list-col]");
+
+    [sidebarStack, listCol].forEach(el => {
+      el?.addEventListener("mouseleave", () => {
+        if (isTouch()) return;
+        deactivatePreview();
+      });
+    });
+
+    // Mobile: tap to expand inline
+    rows.forEach((row) => {
+      const index = parseInt(row.dataset.rowIndex ?? "0", 10);
+      const toggleBtn = row.querySelector<HTMLElement>(".preview-toggle");
+      const mobilePreview = row.querySelector<HTMLElement>(".mobile-preview");
+      const mobileContent = row.querySelector<HTMLElement>(".mockup-mobile-content");
+
+      if (!toggleBtn || !mobilePreview || !mobileContent) return;
+
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = row.classList.contains("expanded");
+
+        // Close all others
+        rows.forEach((r) => {
+          r.classList.remove("expanded");
+          const mp = r.querySelector<HTMLElement>(".mobile-preview");
+          if (mp) mp.style.maxHeight = "0";
+        });
+
+        if (!isOpen) {
+          row.classList.add("expanded");
+
+          // Inject mockup content for mobile
+          const desktopMockup = root.querySelector<HTMLElement>(`.mockup[data-mockup="${index}"]`);
+          if (desktopMockup) {
+            const clone = desktopMockup.cloneNode(true) as HTMLElement;
+            clone.style.position = "relative";
+            clone.style.display = "block";
+            clone.style.height = "200px";
+            clone.style.overflow = "hidden";
+            mobileContent.innerHTML = "";
+            mobileContent.appendChild(clone);
+          }
+
+          mobilePreview.style.maxHeight = "260px";
+        }
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initWhatWeDo);
+</script>

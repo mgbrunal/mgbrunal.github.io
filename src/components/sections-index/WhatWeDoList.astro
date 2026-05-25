@@ -1,0 +1,106 @@
+---
+import Store from "../../assets/icons/Store.astro";
+import Rocket2 from "../../assets/icons/Rocket2.astro";
+import Design from "../../assets/icons/Design.astro";
+import Develop from "../../assets/icons/Develop.astro";
+import Validation from "../../assets/icons/Validation.astro";
+
+const items = [
+  {
+    title: "Páginas web para negocios",
+    content: "Sitios diseñados para comunicar con claridad, generar confianza y facilitar el contacto con clientes potenciales.",
+    icon: "store",
+  },
+  {
+    title: "Páginas web para eventos",
+    content: "Espacios digitales para informar, registrar asistentes y centralizar toda la comunicación del evento.",
+    icon: "rocket",
+  },
+  {
+    title: "Proyectos inmobiliarios",
+    content: "Páginas enfocadas en captar interés real y organizar la información de posibles compradores.",
+    icon: "design",
+  },
+  {
+    title: "Automatización de procesos",
+    content: "Flujos que conectan formularios, mensajes y herramientas para reducir tareas manuales y mejorar el seguimiento.",
+    icon: "develop",
+  },
+  {
+    title: "Desarrollos a medida",
+    content: "Soluciones personalizadas según necesidades específicas que no encajan en un formato estándar.",
+    icon: "custom",
+  },
+  {
+    title: "Optimización y soporte",
+    content: "Ajustes, mejoras y mantenimiento para que todo siga funcionando correctamente en el tiempo.",
+    icon: "support",
+  },
+];
+
+const numColor = ["text-tertiary", "text-secondary"];
+const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hover:text-secondary"];
+---
+
+<!-- Numbered list -->
+<div class="w-full flex flex-col border-t border-white/10" data-list-col>
+  {
+    items.map((item, i) => (
+      <div
+        data-reveal
+        data-reveal-delay={String(i * 50)}
+        class="list-row group flex flex-col border-b border-white/10"
+        data-row-index={i}
+      >
+        <!-- Main row content -->
+        <div class="flex flex-row items-start gap-5 py-7 transition-colors duration-200 ease-out can-hover:hover:bg-white/5 px-3 -mx-3 cursor-default">
+          <span class={`text-4xl sm:text-5xl font-bold tabular-nums leading-none shrink-0 mt-0.5 transition-opacity duration-200 ${numColor[i % 2]}`}>
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div class="flex flex-col gap-1.5 grow">
+            <h3 class={`text-sm sm:text-base font-bold uppercase tracking-wide text-white transition-colors duration-200 ease-out ${titleHover[i % 2]}`}>
+              {item.title}
+            </h3>
+            <p class="text-sm font-light text-white/60 leading-relaxed">
+              {item.content}
+            </p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0 mt-0.5">
+            <div class="w-6 h-6 opacity-20 transition-opacity duration-200 can-hover:group-hover:opacity-40">
+              {item.icon === "store" && <Store color="#FFF" />}
+              {item.icon === "rocket" && <Rocket2 color="#FFF" />}
+              {item.icon === "design" && <Design color="#FFF" />}
+              {item.icon === "develop" && <Develop color="#FFF" />}
+              {item.icon === "custom" && <Develop color="#FFF" />}
+              {item.icon === "support" && <Validation color="#FFF" />}
+            </div>
+            <!-- Mobile toggle chevron -->
+            <button class="lg:hidden preview-toggle w-6 h-6 flex items-center justify-center text-white/30 transition-transform duration-300" aria-label="Ver vista previa">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile inline preview -->
+        <div class="mobile-preview lg:hidden overflow-hidden" style="max-height:0;transition:max-height 0.4s cubic-bezier(0.23,1,0.32,1);">
+          <div class="pb-4 px-3">
+            <div class="browser-frame rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a]">
+              <div class="flex items-center gap-2 px-3 py-2 bg-[#2a2a2a] border-b border-white/10">
+                <div class="flex gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
+                  <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
+                  <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+                </div>
+              </div>
+              <!-- Mobile mockup clones (lightweight text-only) -->
+              <div class="mockup-mobile-content" style="height:200px;overflow:hidden;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
