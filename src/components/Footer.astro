@@ -1,48 +1,104 @@
 ---
-
+const year = new Date().getFullYear();
 ---
 
-<div
-  class="w-full flex flex-col items-center justify-center py-5 bg-primary/50"
->
-  <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
+<footer class="w-full bg-black border-t-2 border-secondary/40">
+  <div class="w-full xl:max-w-[75%] mx-auto px-10 sm:px-20 py-16">
     <div
-      class="w-full h-full flex flex-col-reverse sm:flex-row items-end justify-between gap-8"
+      class="w-full flex flex-col lg:flex-row items-start justify-between gap-12"
     >
-      <div
-        class="w-full flex flex-col items-center sm:items-start justify-end gap-2"
-      >
-        <a href="/">
-          <div class="bg-black h-20 w-20 rounded-full"></div>
+      <!-- Brand column -->
+      <div data-reveal class="flex flex-col items-start gap-5 lg:max-w-[42%]">
+        <a href="/" class="flex items-center gap-3 group">
+          <div
+            class="h-9 w-9 rounded-full border border-secondary/40 transition-colors duration-200 ease-out-strong can-hover:group-hover:border-secondary"
+          ></div>
+          <span class="text-sm font-bold text-white uppercase tracking-[0.15em]">
+            JOSUE 24:15 SAS
+          </span>
         </a>
-        <h5 class="text-xs sm:text-sm font-light text-white uppercase">
-          © JOSUE 24:15 SAS
-        </h5>
+
+        <p class="text-sm font-light text-white/50 leading-relaxed">
+          Desarrollo de software enfocado en resultados reales. Soluciones
+          prácticas para negocios que quieren crecer con tecnología bien
+          estructurada.
+        </p>
+
+        <div class="flex flex-row gap-4 pt-1">
+          <a
+            href="https://www.linkedin.com/in/maugarbru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 text-xs text-secondary/60 transition-colors duration-200 ease-out-strong can-hover:hover:text-secondary"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-3.5 h-3.5"
+            >
+              <path
+                d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+              ></path>
+            </svg>
+            Mauricio Garzón
+          </a>
+          <a
+            href="https://www.linkedin.com/in/lauramestraru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 text-xs text-tertiary/60 transition-colors duration-200 ease-out-strong can-hover:hover:text-tertiary"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-3.5 h-3.5"
+            >
+              <path
+                d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+              ></path>
+            </svg>
+            Laura Mestra
+          </a>
+        </div>
       </div>
+
+      <!-- Navigation -->
       <div
-        class="w-full flex flex-col items-center sm:items-end justify-end gap-2"
+        data-reveal
+        data-reveal-delay="120"
+        class="flex flex-col items-start gap-3"
       >
+        <p class="text-xs text-white/20 uppercase tracking-widest mb-1">
+          Páginas
+        </p>
         <a
           href="/"
-          class="text-xs font-light text-white transition-colors duration-200 ease-out-strong can-hover:hover:text-tertiary"
+          class="text-sm font-light text-white/50 transition-colors duration-200 ease-out-strong can-hover:hover:text-white"
           >Inicio</a
         >
         <a
           href="/info"
-          class="text-xs font-light text-white transition-colors duration-200 ease-out-strong can-hover:hover:text-tertiary"
+          class="text-sm font-light text-white/50 transition-colors duration-200 ease-out-strong can-hover:hover:text-white"
           >Quienes somos</a
         >
         <a
           href="/contacto"
-          class="text-xs font-light text-white transition-colors duration-200 ease-out-strong can-hover:hover:text-tertiary"
+          class="text-sm font-light text-white/50 transition-colors duration-200 ease-out-strong can-hover:hover:text-white"
           >Contacto</a
-        >
-        <a
-          href="/"
-          class="text-xs font-light text-white transition-colors duration-200 ease-out-strong can-hover:hover:text-tertiary"
-          >Privacidad</a
         >
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Bottom bar -->
+  <div class="w-full border-t border-white/10">
+    <div
+      class="w-full xl:max-w-[75%] mx-auto px-10 sm:px-20 py-4 flex flex-row items-center justify-between"
+    >
+      <p class="text-xs text-white/25">© {year} JOSUE 24:15 SAS</p>
+      <p class="text-xs text-white/25">Medellín, Colombia</p>
+    </div>
+  </div>
+</footer>
