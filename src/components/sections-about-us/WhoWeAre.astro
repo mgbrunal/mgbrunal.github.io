@@ -9,18 +9,19 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
         class="w-full flex flex-col items-center justify-center gap-4 text-center"
       >
         <p
+          data-reveal
           class="text-sm sm:text-base font-light text-white uppercase"
         >
           ¿QUIÉNES SOMOS?
         </p>
 
-        <div class="w-full bg-white px-5 py-4">
+        <div data-reveal data-reveal-delay="80" class="w-full bg-white px-5 py-4">
           <h2 class="text-3xl sm:text-5xl font-bold text-black drop-shadow">
             Un equipo pequeño, enfocado y complementario
           </h2>
         </div>
 
-        <p class="text-sm sm:text-lg font-semibold text-white drop-shadow">
+        <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-white drop-shadow">
           Combinamos visión técnica y enfoque de negocio para desarrollar
           soluciones que no solo funcionan, sino que tienen sentido en el
           contexto de cada proyecto.
@@ -32,6 +33,8 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
       >
         <!-- ENGINEERING FLIP CARD -->
         <div
+          data-reveal
+          data-reveal-delay="80"
           class="flip-container w-full grow"
           style="perspective: 1200px; min-height: 420px;"
         >
@@ -148,6 +151,8 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
 
         <!-- BUSINESS FLIP CARD -->
         <div
+          data-reveal
+          data-reveal-delay="180"
           class="flip-container w-full grow"
           style="perspective: 1200px; min-height: 420px;"
         >

@@ -19,17 +19,18 @@ const items = [
       >
         <p
           class="text-sm sm:text-base font-light text-black uppercase"
+          data-reveal
         >
           El problema
         </p>
 
-        <div class="w-full bg-white px-5 py-4">
+        <div data-reveal data-reveal-delay="80" class="w-full bg-white px-5 py-4">
           <h1 class="text-3xl sm:text-5xl font-bold text-black drop-shadow">
             Cuando la tecnología no está bien estructurada...
           </h1>
         </div>
 
-        <p class="text-sm sm:text-lg font-semibold text-black drop-shadow">
+        <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-black drop-shadow">
           Muchos negocios tienen herramientas, procesos y presencia digital, pero algo falla en la forma en que todo está conectado.
         </p>
       </div>
@@ -38,7 +39,7 @@ const items = [
 
   <div class="w-full">
     <div class="w-full flex flex-col items-center justify-start gap-4">
-      <div class="w-full py-20 overflow-hidden">
+      <div data-reveal-fade data-reveal-delay="200" class="w-full py-20 overflow-hidden">
         <div class="flex w-max whitespace-nowrap animate-text-slider">
           {
             items.map((text, i) => (
@@ -72,6 +73,7 @@ const items = [
   <div class="w-full xl:max-w-[75%] px-10 sm:px-20">
     <div class="w-full flex flex-col items-center justify-start gap-4">
       <p
+        data-reveal
         class="text-sm sm:text-lg text-center font-bold bg-secondary/50 text-black rounded-full p-2"
       >
         El problema no es la falta de herramientas, sino cómo están organizadas.
