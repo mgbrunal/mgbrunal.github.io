@@ -36,17 +36,17 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
           data-reveal
           data-reveal-delay="80"
           class="flip-container w-full grow"
-          style="perspective: 1200px; min-height: 420px;"
+          style="perspective: 1200px;"
         >
           <div
-            class="flip-inner w-full h-full"
-            style="position: relative; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1);"
+            class="flip-inner w-full"
+            style="display: grid; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1);"
             data-flipped="false"
           >
             <!-- FRONT: Engineering role -->
             <div
-              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black shadow-lg gap-4 px-5 py-4 cursor-pointer group"
-              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; inset: 0;"
+              class="flip-face w-full flex flex-col items-start justify-between bg-black border border-secondary/20 shadow-lg gap-4 px-5 py-4 cursor-pointer group"
+              style="grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden;"
               onclick="this.closest('.flip-inner').classList.add('is-flipped'); this.closest('.flip-inner').dataset.flipped='true'"
             >
               <div class="w-full">
@@ -83,8 +83,8 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
 
             <!-- BACK: Mauricio -->
             <div
-              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black border border-secondary/40 shadow-lg gap-4 px-5 py-4"
-              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); position: absolute; inset: 0;"
+              class="flip-face w-full flex flex-col items-start justify-between bg-black border border-secondary/40 shadow-lg gap-4 px-5 py-4"
+              style="grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg);"
             >
               <div class="flex flex-row items-center justify-between w-full">
                 <div class="flex flex-row items-center gap-4">
@@ -154,17 +154,17 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
           data-reveal
           data-reveal-delay="180"
           class="flip-container w-full grow"
-          style="perspective: 1200px; min-height: 420px;"
+          style="perspective: 1200px;"
         >
           <div
-            class="flip-inner w-full h-full"
-            style="position: relative; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1);"
+            class="flip-inner w-full"
+            style="display: grid; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1);"
             data-flipped="false"
           >
             <!-- FRONT: Business role -->
             <div
-              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black shadow-lg gap-4 px-5 py-4 cursor-pointer group"
-              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; inset: 0;"
+              class="flip-face w-full flex flex-col items-start justify-between bg-black border border-tertiary/20 shadow-lg gap-4 px-5 py-4 cursor-pointer group"
+              style="grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden;"
               onclick="this.closest('.flip-inner').classList.add('is-flipped'); this.closest('.flip-inner').dataset.flipped='true'"
             >
               <div class="w-full">
@@ -202,8 +202,8 @@ import ArrowLeft from "../../assets/icons/ArrowLeft.astro";
 
             <!-- BACK: Laura -->
             <div
-              class="flip-face w-full h-full flex flex-col items-start justify-between bg-black border border-tertiary/40 shadow-lg gap-4 px-5 py-4"
-              style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); position: absolute; inset: 0;"
+              class="flip-face w-full flex flex-col items-start justify-between bg-black border border-tertiary/40 shadow-lg gap-4 px-5 py-4"
+              style="grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg);"
             >
               <div class="flex flex-row items-center justify-between w-full">
                 <div class="flex flex-row items-center gap-4">
