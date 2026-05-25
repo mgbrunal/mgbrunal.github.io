@@ -1,0 +1,167 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/info", label: "Nosotros" },
+  { href: "/contacto", label: "Contacto" },
+];
+
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<nav
+  id="main-nav"
+  class="fixed top-0 left-0 right-0 z-50 h-14 bg-black/90 backdrop-blur-sm border-b border-transparent transition-[border-color] duration-300 ease-out"
+>
+  <div class="w-full h-full xl:max-w-[75%] mx-auto px-10 sm:px-20 flex items-center justify-between">
+
+    <a href="/" class="flex items-center gap-3 shrink-0 group">
+      <div
+        class="w-7 h-7 rounded-full border border-white/20 transition-colors duration-200 ease-out can-hover:group-hover:border-secondary/70"
+      ></div>
+      <span class="text-xs font-bold text-white uppercase tracking-[0.2em]">
+        JOSUE 24:15
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden sm:flex items-center gap-8">
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={href}
+            data-nav-href={href}
+            class={`nav-link relative text-xs uppercase tracking-widest font-light pb-px transition-colors duration-200 ease-out ${
+              isActive(href)
+                ? "text-tertiary nav-link--active"
+                : "text-white/50 can-hover:hover:text-white"
+            }`}
+          >
+            {label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      id="nav-toggle"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      class="sm:hidden flex flex-col justify-center items-end gap-[5px] w-8 h-8 shrink-0 cursor-pointer"
+    >
+      <span class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"></span>
+      <span class="nav-line block h-px bg-white transition-all duration-200 ease-out w-3"></span>
+      <span class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="nav-menu"
+    class="sm:hidden hidden flex-col items-start gap-8 px-10 pt-8 pb-10 bg-black border-t border-white/10"
+  >
+    {
+      links.map(({ href, label }) => (
+        <a
+          href={href}
+          data-nav-href={href}
+          class={`nav-link text-3xl font-bold uppercase tracking-widest transition-colors duration-200 ${
+            isActive(href)
+              ? "text-tertiary nav-link--active"
+              : "text-white/60"
+          }`}
+        >
+          {label}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<style>
+  .nav-link--active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #baff39;
+  }
+</style>
+
+<script>
+  function initNav() {
+    const nav = document.getElementById("main-nav") as HTMLElement;
+    const toggle = document.getElementById("nav-toggle") as HTMLButtonElement;
+    const menu = document.getElementById("nav-menu") as HTMLElement;
+    const lines = document.querySelectorAll<HTMLElement>(".nav-line");
+
+    if (!nav || !toggle || !menu) return;
+
+    let menuOpen = false;
+
+    // Scroll: reveal bottom border
+    function onScroll() {
+      if (window.scrollY > 10) {
+        nav.classList.add("!border-white/10");
+      } else {
+        nav.classList.remove("!border-white/10");
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Mobile toggle
+    function closeMenu() {
+      menuOpen = false;
+      toggle.setAttribute("aria-expanded", "false");
+      menu.classList.add("hidden");
+      menu.classList.remove("flex");
+      lines[0].style.transform = "";
+      lines[1].style.opacity = "1";
+      lines[2].style.transform = "";
+    }
+
+    toggle.addEventListener("click", () => {
+      menuOpen = !menuOpen;
+      toggle.setAttribute("aria-expanded", String(menuOpen));
+      if (menuOpen) {
+        menu.classList.remove("hidden");
+        menu.classList.add("flex");
+        lines[0].style.transform = "translateY(10px) rotate(-45deg)";
+        lines[1].style.opacity = "0";
+        lines[2].style.transform = "translateY(-10px) rotate(45deg)";
+      } else {
+        closeMenu();
+      }
+    });
+
+    // Close mobile menu on link click
+    menu.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", closeMenu)
+    );
+  }
+
+  // Update active link after view transitions
+  function updateActiveLinks() {
+    const pathname = window.location.pathname;
+    document.querySelectorAll<HTMLAnchorElement>("[data-nav-href]").forEach((link) => {
+      const href = link.dataset.navHref ?? "";
+      const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
+      link.classList.toggle("text-tertiary", active);
+      link.classList.toggle("nav-link--active", active);
+      link.classList.toggle("text-white/50", !active);
+      link.classList.toggle("text-white/60", !active);
+    });
+  }
+
+  initNav();
+  document.addEventListener("astro:after-swap", () => {
+    initNav();
+    updateActiveLinks();
+  });
+</script>

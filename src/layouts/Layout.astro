@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
+import Nav from "../components/Nav.astro";
 
 interface Props {
   title: string;
@@ -33,6 +34,7 @@ const { title, lang = "es" } = Astro.props;
   </head>
   <body>
     <div class="min-h-screen max-w-screen bg-black overscroll-none">
+      <Nav />
       <slot />
     </div>
   </body>
