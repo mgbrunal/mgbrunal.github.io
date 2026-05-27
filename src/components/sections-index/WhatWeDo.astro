@@ -17,7 +17,6 @@ import WhatWeDoList from "./WhatWeDoList.astro";
           <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-white">
             Cada proyecto es distinto. Estas son las principales formas en las que podemos ayudarte.
           </p>
-          <p class="hidden lg:block text-xs text-white/30 mt-2">Desplázate o pasa el cursor para explorar</p>
         </div>
       </div>
 
@@ -39,15 +38,16 @@ import WhatWeDoList from "./WhatWeDoList.astro";
     const rows = root.querySelectorAll<HTMLElement>(".list-row[data-row-index]");
 
     const urlMap: Record<string, string> = {
-      "0": "sumedida.com",
-      "1": "summit2025.co",
-      "2": "urbanosmedelin.com",
-      "3": "app.sucrm.co",
-      "4": "panel.suapp.co",
-      "5": "auditoria.j24:15.com",
+      "0": "tu-negocio.com",
+      "1": "evento-mayor-2025.co",
+      "2": "desarrollo-urbano.com",
+      "3": "auto.tu-app.co",
+      "4": "panel.tu-empresa.co",
+      "5": "audit.tu-pagina.com",
     };
 
     const openIndices = new Set<number>();
+    const animationIntervals = new Map<number, ReturnType<typeof setInterval>>();
     let countdownInterval: ReturnType<typeof setInterval> | null = null;
 
     function restartAnimations(el: HTMLElement) {
@@ -127,10 +127,20 @@ import WhatWeDoList from "./WhatWeDoList.astro";
       if (urlEl) urlEl.textContent = urlMap[String(index)] ?? "j24:15.com";
 
       preview.style.maxHeight = "300px";
+
+      const interval = setInterval(() => {
+        const clone = content.firstElementChild as HTMLElement | null;
+        if (!clone) return;
+        restartAnimations(clone);
+        triggerJsAnimations(clone);
+      }, 5000);
+      animationIntervals.set(index, interval);
     }
 
     function collapseAll() {
       openIndices.clear();
+      animationIntervals.forEach((interval) => clearInterval(interval));
+      animationIntervals.clear();
       rows.forEach((r) => {
         r.classList.remove("expanded");
         const p = r.querySelector<HTMLElement>(".inline-preview");
@@ -178,6 +188,7 @@ import WhatWeDoList from "./WhatWeDoList.astro";
 
     document.addEventListener("astro:before-swap", () => {
       window.removeEventListener("scroll", updateFromScroll);
+      animationIntervals.forEach((interval) => clearInterval(interval));
       if (countdownInterval) clearInterval(countdownInterval);
     }, { once: true });
   }
