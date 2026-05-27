@@ -39,7 +39,6 @@ const items = [
 ];
 
 const numColor = ["text-tertiary", "text-secondary"];
-const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hover:text-secondary"];
 ---
 
 <!-- Numbered list -->
@@ -49,16 +48,16 @@ const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hove
       <div
         data-reveal
         data-reveal-delay={String(i * 50)}
-        class="list-row group flex flex-col border-b border-white/10"
+        class="list-row flex flex-col border-b border-white/10"
         data-row-index={i}
       >
         <!-- Main row content -->
-        <div class="flex flex-row items-start gap-5 py-7 transition-colors duration-200 ease-out can-hover:hover:bg-white/5 px-3 -mx-3 cursor-default">
-          <span class={`text-4xl sm:text-5xl font-bold tabular-nums leading-none shrink-0 mt-0.5 transition-opacity duration-200 ${numColor[i % 2]}`}>
+        <div class="flex flex-row items-start gap-5 py-7">
+          <span class={`text-4xl sm:text-5xl font-bold tabular-nums leading-none shrink-0 mt-0.5 ${numColor[i % 2]}`}>
             {String(i + 1).padStart(2, "0")}
           </span>
           <div class="flex flex-col gap-1.5 grow">
-            <h3 class={`text-sm sm:text-base font-bold uppercase tracking-wide text-white transition-colors duration-200 ease-out ${titleHover[i % 2]}`}>
+            <h3 class="text-sm sm:text-base font-bold uppercase tracking-wide text-white">
               {item.title}
             </h3>
             <p class="text-sm font-light text-white/60 leading-relaxed">
@@ -66,7 +65,7 @@ const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hove
             </p>
           </div>
           <div class="flex items-center gap-2 shrink-0 mt-0.5">
-            <div class="w-6 h-6 opacity-20 transition-opacity duration-200 can-hover:group-hover:opacity-40">
+            <div class="w-6 h-6 opacity-20">
               {item.icon === "store" && <Store color="#FFF" />}
               {item.icon === "rocket" && <Rocket2 color="#FFF" />}
               {item.icon === "design" && <Design color="#FFF" />}
@@ -74,12 +73,6 @@ const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hove
               {item.icon === "custom" && <Develop color="#FFF" />}
               {item.icon === "support" && <Validation color="#FFF" />}
             </div>
-            <!-- Mobile toggle chevron -->
-            <button class="lg:hidden preview-toggle w-6 h-6 flex items-center justify-center text-white/30 transition-transform duration-300" aria-label="Ver vista previa">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </button>
           </div>
         </div>
 

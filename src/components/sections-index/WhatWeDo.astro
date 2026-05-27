@@ -30,11 +30,6 @@ import WhatWeDoList from "./WhatWeDoList.astro";
   <WhatWeDoMockups />
 </div>
 
-<style is:global>
-  .list-row.expanded .preview-toggle {
-    transform: rotate(180deg);
-  }
-</style>
 
 <script>
   function initWhatWeDo() {
@@ -52,7 +47,7 @@ import WhatWeDoList from "./WhatWeDoList.astro";
       "5": "auditoria.j24:15.com",
     };
 
-    let activeIndex: number | null = null;
+    const openIndices = new Set<number>();
     let countdownInterval: ReturnType<typeof setInterval> | null = null;
 
     function restartAnimations(el: HTMLElement) {
@@ -106,14 +101,8 @@ import WhatWeDoList from "./WhatWeDoList.astro";
 
     // ── Unified expand: works for desktop and mobile ──────────────────────────
     function expandRow(index: number) {
-      if (activeIndex === index) return;
-      activeIndex = index;
-
-      rows.forEach((r) => {
-        r.classList.remove("expanded");
-        const p = r.querySelector<HTMLElement>(".inline-preview");
-        if (p) p.style.maxHeight = "0";
-      });
+      if (openIndices.has(index)) return;
+      openIndices.add(index);
 
       const row = root.querySelector<HTMLElement>(`.list-row[data-row-index="${index}"]`);
       if (!row) return;
@@ -141,7 +130,7 @@ import WhatWeDoList from "./WhatWeDoList.astro";
     }
 
     function collapseAll() {
-      activeIndex = null;
+      openIndices.clear();
       rows.forEach((r) => {
         r.classList.remove("expanded");
         const p = r.querySelector<HTMLElement>(".inline-preview");
@@ -161,12 +150,12 @@ import WhatWeDoList from "./WhatWeDoList.astro";
         const vh = window.innerHeight;
         const rect = root.getBoundingClientRect();
 
-        if (rect.bottom < 120 || rect.top > vh - 120) {
+        if (rect.top > vh * 0.8) {
           collapseAll();
           return;
         }
 
-        const readingLine = vh * 0.5;
+        const readingLine = vh * 0.45;
         let closest: HTMLElement | null = null;
         let closestDist = Infinity;
 
@@ -186,32 +175,6 @@ import WhatWeDoList from "./WhatWeDoList.astro";
     window.addEventListener("scroll", updateFromScroll, { passive: true });
     updateFromScroll();
 
-    // ── Hover (desktop) ───────────────────────────────────────────────────────
-    const isTouch = () => window.matchMedia("(hover: none)").matches;
-
-    rows.forEach((row) => {
-      const index = parseInt(row.dataset.rowIndex ?? "0", 10);
-      row.addEventListener("mouseenter", () => {
-        if (isTouch()) return;
-        expandRow(index);
-      });
-    });
-
-    root.querySelector<HTMLElement>("[data-list-col]")
-      ?.addEventListener("mouseleave", () => {
-        if (isTouch()) return;
-        updateFromScroll();
-      });
-
-    // ── Tap chevron toggle ────────────────────────────────────────────────────
-    rows.forEach((row) => {
-      const index = parseInt(row.dataset.rowIndex ?? "0", 10);
-      row.querySelector<HTMLElement>(".preview-toggle")
-        ?.addEventListener("click", (e) => {
-          e.stopPropagation();
-          row.classList.contains("expanded") ? collapseAll() : expandRow(index);
-        });
-    });
 
     document.addEventListener("astro:before-swap", () => {
       window.removeEventListener("scroll", updateFromScroll);
