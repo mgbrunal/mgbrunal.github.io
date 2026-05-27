@@ -13,12 +13,13 @@ const {
   title,
   lang = "es",
   description = "Desarrollo de software a medida para negocios en Colombia. Aplicaciones web, móviles y soluciones tecnológicas con resultados reales. JOSUE 24:15 SAS.",
-  ogImage = "/og-image.png",
+  ogImage = "/og.png",
 } = Astro.props;
 
 const siteUrl = "https://mgbrunal.github.io";
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageAbsolute = new URL(ogImage, siteUrl).href;
+const twitterImageAbsolute = new URL("/twitter.png", siteUrl).href;
 const fullTitle = `${title} | J24:15 Casa de Software`;
 
 const jsonLd = {
@@ -27,14 +28,14 @@ const jsonLd = {
   name: "JOSUE 24:15 SAS",
   alternateName: "J24:15 Casa de Software",
   url: siteUrl,
-  logo: `${siteUrl}/og-image.png`,
+  logo: `${siteUrl}/og.png`,
   description:
     "Estudio de desarrollo de software especializado en aplicaciones web y móviles para negocios en Colombia.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "CO",
   },
-  foundingDate: "2019",
+  foundingDate: "2025",
   founders: [
     { "@type": "Person", name: "Mauricio Garzón Brunal" },
     { "@type": "Person", name: "Laura Mestra Ruíz" },
@@ -80,7 +81,7 @@ const jsonLd = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageAbsolute} />
+    <meta name="twitter:image" content={twitterImageAbsolute} />
     <meta name="twitter:image:alt" content="J24:15 Casa de Software" />
 
     <!-- Fonts -->
