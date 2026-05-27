@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import logoWhite from "../assets/img/logo_white.png";
 
 const pathname = Astro.url.pathname;
@@ -18,13 +19,13 @@ const isActive = (href: string) =>
   class="fixed top-0 left-0 right-0 z-50 h-14 bg-black/90 backdrop-blur-sm border-b border-transparent transition-[border-color] duration-300 ease-out"
 >
   <div
-    class="w-full h-full xl:max-w-[75%] mx-auto px-10 sm:px-20 flex items-center justify-between"
+    class="w-full h-full xl:max-w-[75%] mx-auto px-10 sm:px-20 flex items-center justify-between overflow-visible"
   >
     <a href="/" class="flex items-center gap-3 shrink-0 group">
-      <img
-        src={logoWhite.src}
+      <Image
+        src={logoWhite}
         alt="J24:15"
-        class="h-9 transition-opacity duration-200 ease-out can-hover:group-hover:opacity-80"
+        class="h-9 w-auto transition-opacity duration-200 ease-out can-hover:group-hover:opacity-80"
       />
       <div class="flex flex-col items-start justify-center leading-none gap-0.5">
         <span class="text-sm font-bold text-white tracking-tight">
@@ -58,7 +59,7 @@ const isActive = (href: string) =>
       id="nav-toggle"
       aria-label="Abrir menú"
       aria-expanded="false"
-      class="sm:hidden flex flex-col justify-center items-end gap-[5px] w-8 h-8 shrink-0 cursor-pointer"
+      class="sm:hidden flex flex-col justify-center items-end gap-[5px] w-8 h-8 shrink-0 cursor-pointer overflow-visible"
     >
       <span
         class="nav-line block h-px bg-white transition-all duration-200 ease-out w-5"
@@ -144,9 +145,9 @@ const isActive = (href: string) =>
       if (menuOpen) {
         menu.classList.remove("hidden");
         menu.classList.add("flex");
-        lines[0].style.transform = "translateY(10px) rotate(-45deg)";
+        lines[0].style.transform = "translateY(6px) rotate(-45deg)";
         lines[1].style.opacity = "0";
-        lines[2].style.transform = "translateY(-10px) rotate(45deg)";
+        lines[2].style.transform = "translateY(-6px) rotate(45deg)";
       } else {
         closeMenu();
       }
