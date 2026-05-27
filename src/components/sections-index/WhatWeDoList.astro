@@ -84,19 +84,23 @@ const titleHover = ["can-hover:group-hover:text-tertiary", "can-hover:group-hove
         </div>
 
         <!-- Mobile inline preview -->
-        <div class="mobile-preview lg:hidden overflow-hidden" style="max-height:0;transition:max-height 0.4s cubic-bezier(0.23,1,0.32,1);">
+        <div class="inline-preview overflow-hidden" style="max-height:0;transition:max-height 0.45s cubic-bezier(0.23,1,0.32,1);">
           <div class="pb-4 px-3">
-            <div class="browser-frame rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a]">
+            <div class="browser-frame rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] shadow-2xl">
+              <!-- Chrome bar — matches desktop -->
               <div class="flex items-center gap-2 px-3 py-2 bg-[#2a2a2a] border-b border-white/10">
                 <div class="flex gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-[#ff5f57]"></span>
-                  <span class="w-2 h-2 rounded-full bg-[#febc2e]"></span>
-                  <span class="w-2 h-2 rounded-full bg-[#28c840]"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></span>
+                </div>
+                <div class="flex-1 mx-2 bg-[#3a3a3a] rounded-md px-2.5 py-0.5 flex items-center gap-1.5">
+                  <svg class="w-2.5 h-2.5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/></svg>
+                  <span class="url-text-mobile text-[9px] text-white/30 font-mono truncate">j24:15.com</span>
                 </div>
               </div>
-              <!-- Mobile mockup clones (lightweight text-only) -->
-              <div class="mockup-mobile-content" style="height:200px;overflow:hidden;">
-              </div>
+              <!-- Mockup viewport — same structure as desktop, content vertically centered -->
+              <div class="mockup-mobile-content relative overflow-hidden bg-white flex items-center justify-center" style="height:220px;"></div>
             </div>
           </div>
         </div>

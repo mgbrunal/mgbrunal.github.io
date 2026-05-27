@@ -7,11 +7,9 @@ import WhatWeDoList from "./WhatWeDoList.astro";
   <div class="w-full h-full xl:max-w-[75%] px-10 sm:px-20">
     <div class="w-full h-full flex flex-col lg:flex-row items-start justify-center gap-8 lg:gap-16">
 
-      <!-- Sidebar: stacks default text + preview in same grid cell -->
-      <div class="sidebar-stack w-full lg:w-[38%] shrink-0 lg:sticky lg:top-24">
-
-        <!-- Default content -->
-        <div class="sidebar-default flex flex-col items-start gap-6">
+      <!-- Sidebar: always shows text -->
+      <div class="w-full lg:w-[38%] shrink-0 lg:sticky lg:top-24">
+        <div class="flex flex-col items-start gap-6">
           <p data-reveal class="text-sm sm:text-base font-light text-white uppercase">Qué hacemos?</p>
           <h2 data-reveal data-reveal-delay="80" class="text-3xl sm:text-5xl font-bold text-tertiary drop-shadow-lg">
             Soluciones digitales según la necesidad de tu negocio
@@ -19,48 +17,20 @@ import WhatWeDoList from "./WhatWeDoList.astro";
           <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-white">
             Cada proyecto es distinto. Estas son las principales formas en las que podemos ayudarte.
           </p>
-          <p class="hidden lg:block text-xs text-white/30 mt-2">Pasa el cursor sobre cada servicio</p>
+          <p class="hidden lg:block text-xs text-white/30 mt-2">Desplázate o pasa el cursor para explorar</p>
         </div>
-
-        <!-- Preview panel (desktop only, overlays default) -->
-        <WhatWeDoMockups />
-
-      </div><!-- /sidebar-stack -->
+      </div>
 
       <WhatWeDoList />
 
     </div>
   </div>
+
+  <!-- Hidden clone pool — mockup HTML stays in DOM for JS to clone from -->
+  <WhatWeDoMockups />
 </div>
 
 <style is:global>
-  /* ── Sidebar stacking ── */
-  .sidebar-stack {
-    display: grid;
-  }
-  .sidebar-default,
-  .sidebar-preview {
-    grid-area: 1 / 1;
-    transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  .sidebar-preview {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  /* Active state triggered by JS class on #whatwedo-root */
-  #whatwedo-root.preview-active .sidebar-default {
-    opacity: 0;
-    transform: translateY(-6px);
-    pointer-events: none;
-  }
-  #whatwedo-root.preview-active .sidebar-preview {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  /* ── Mobile toggle ── */
   .list-row.expanded .preview-toggle {
     transform: rotate(180deg);
   }
@@ -71,9 +41,7 @@ import WhatWeDoList from "./WhatWeDoList.astro";
     const root = document.getElementById("whatwedo-root") as HTMLElement;
     if (!root) return;
 
-    // Do NOT cache mockups — query fresh each time to avoid stale refs after reflows
     const rows = root.querySelectorAll<HTMLElement>(".list-row[data-row-index]");
-    const urlText = root.querySelector(".url-text") as HTMLElement;
 
     const urlMap: Record<string, string> = {
       "0": "sumedida.com",
@@ -88,46 +56,29 @@ import WhatWeDoList from "./WhatWeDoList.astro";
     let countdownInterval: ReturnType<typeof setInterval> | null = null;
 
     function restartAnimations(el: HTMLElement) {
-      // Batch-reset all animations, then one reflow on the HTMLElement parent, then restore
       const animated = el.querySelectorAll<HTMLElement>('[class*="anim-"]');
       const ring = el.querySelector<SVGCircleElement>(".score-ring");
-
       animated.forEach((a) => { a.style.animationName = "none"; });
       if (ring) ring.style.animationName = "none";
-
-      void el.offsetHeight; // single reflow — valid on HTMLElement
-
+      void el.offsetHeight;
       animated.forEach((a) => { a.style.animationName = ""; });
       if (ring) ring.style.animationName = "";
     }
 
-    function showMockup(index: number) {
-      // Fresh query every time — stale NodeList was the bug
-      root.querySelectorAll<HTMLElement>(".mockup[data-mockup]").forEach((m) => {
-        m.classList.remove("active");
-      });
-
-      const target = root.querySelector<HTMLElement>(`.mockup[data-mockup="${index}"]`);
-      if (!target) return;
-
-      target.classList.add("active");
-      restartAnimations(target);
-
-      // Countup numbers
-      target.querySelectorAll<HTMLElement>(".anim-countup[data-target]").forEach((el) => {
-        const goal = parseInt(el.dataset.target ?? "0", 10);
-        el.textContent = "0";
+    function triggerJsAnimations(el: HTMLElement) {
+      el.querySelectorAll<HTMLElement>(".anim-countup[data-target]").forEach((countEl) => {
+        const goal = parseInt(countEl.dataset.target ?? "0", 10);
+        countEl.textContent = "0";
         let current = 0;
         const step = Math.ceil(goal / 40);
         const timer = setInterval(() => {
           current = Math.min(current + step, goal);
-          el.textContent = current.toLocaleString("es-CO");
+          countEl.textContent = current.toLocaleString("es-CO");
           if (current >= goal) clearInterval(timer);
         }, 30);
       });
 
-      // Score ring number
-      const scoreNum = target.querySelector<HTMLElement>(".score-num");
+      const scoreNum = el.querySelector<HTMLElement>(".score-num");
       if (scoreNum) {
         scoreNum.textContent = "0";
         let n = 0;
@@ -138,101 +89,134 @@ import WhatWeDoList from "./WhatWeDoList.astro";
         }, 20);
       }
 
-      // Countdown tick
       if (countdownInterval) clearInterval(countdownInterval);
-      const nums = target.querySelectorAll<HTMLElement>(".countdown-num");
+      const nums = el.querySelectorAll<HTMLElement>(".countdown-num");
       if (nums.length) {
-        const values = Array.from(nums).map((numEl) => parseInt(numEl.textContent ?? "0", 10));
+        const values = Array.from(nums).map((n) => parseInt(n.textContent ?? "0", 10));
         countdownInterval = setInterval(() => {
           values[values.length - 1]--;
           if (values[values.length - 1] < 0) {
             values[values.length - 1] = 59;
             if (values.length > 1) values[values.length - 2]--;
           }
-          nums.forEach((numEl, i) => {
-            numEl.textContent = String(values[i]).padStart(2, "0");
-          });
+          nums.forEach((n, i) => { n.textContent = String(values[i]).padStart(2, "0"); });
         }, 1000);
       }
-
-      if (urlText) urlText.textContent = urlMap[String(index)] ?? "j24:15.com";
     }
 
-    function activatePreview(index: number) {
+    // ── Unified expand: works for desktop and mobile ──────────────────────────
+    function expandRow(index: number) {
       if (activeIndex === index) return;
       activeIndex = index;
-      root.classList.add("preview-active");
-      showMockup(index);
+
+      rows.forEach((r) => {
+        r.classList.remove("expanded");
+        const p = r.querySelector<HTMLElement>(".inline-preview");
+        if (p) p.style.maxHeight = "0";
+      });
+
+      const row = root.querySelector<HTMLElement>(`.list-row[data-row-index="${index}"]`);
+      if (!row) return;
+
+      const preview = row.querySelector<HTMLElement>(".inline-preview");
+      const content = row.querySelector<HTMLElement>(".mockup-mobile-content");
+      if (!preview || !content) return;
+
+      row.classList.add("expanded");
+
+      const pool = root.querySelector<HTMLElement>(`.mockup[data-mockup="${index}"]`);
+      if (pool) {
+        const clone = pool.cloneNode(true) as HTMLElement;
+        clone.style.display = "block";
+        content.innerHTML = "";
+        content.appendChild(clone);
+        restartAnimations(clone);
+        triggerJsAnimations(clone);
+      }
+
+      const urlEl = row.querySelector<HTMLElement>(".url-text-mobile");
+      if (urlEl) urlEl.textContent = urlMap[String(index)] ?? "j24:15.com";
+
+      preview.style.maxHeight = "300px";
     }
 
-    function deactivatePreview() {
+    function collapseAll() {
       activeIndex = null;
-      root.classList.remove("preview-active");
+      rows.forEach((r) => {
+        r.classList.remove("expanded");
+        const p = r.querySelector<HTMLElement>(".inline-preview");
+        if (p) p.style.maxHeight = "0";
+      });
       if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
     }
 
-    // Desktop hover
+    // ── Scroll-driven (all devices) ───────────────────────────────────────────
+    let rafPending = false;
+
+    function updateFromScroll() {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        rafPending = false;
+        const vh = window.innerHeight;
+        const rect = root.getBoundingClientRect();
+
+        if (rect.bottom < 120 || rect.top > vh - 120) {
+          collapseAll();
+          return;
+        }
+
+        const readingLine = vh * 0.4;
+        let closest: HTMLElement | null = null;
+        let closestDist = Infinity;
+
+        rows.forEach((row) => {
+          const r = row.getBoundingClientRect();
+          const mid = (r.top + r.bottom) / 2;
+          const dist = Math.abs(mid - readingLine);
+          if (dist < closestDist) { closestDist = dist; closest = row; }
+        });
+
+        if (closest) {
+          expandRow(parseInt((closest as HTMLElement).dataset.rowIndex ?? "0", 10));
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateFromScroll, { passive: true });
+    updateFromScroll();
+
+    // ── Hover (desktop) ───────────────────────────────────────────────────────
     const isTouch = () => window.matchMedia("(hover: none)").matches;
 
     rows.forEach((row) => {
       const index = parseInt(row.dataset.rowIndex ?? "0", 10);
-
       row.addEventListener("mouseenter", () => {
         if (isTouch()) return;
-        activatePreview(index);
+        expandRow(index);
       });
     });
 
-    // Deactivate when leaving the sidebar-stack area
-    const sidebarStack = root.querySelector<HTMLElement>(".sidebar-stack");
-    const listCol = root.querySelector<HTMLElement>("[data-list-col]");
-
-    [sidebarStack, listCol].forEach(el => {
-      el?.addEventListener("mouseleave", () => {
+    root.querySelector<HTMLElement>("[data-list-col]")
+      ?.addEventListener("mouseleave", () => {
         if (isTouch()) return;
-        deactivatePreview();
+        updateFromScroll();
       });
-    });
 
-    // Mobile: tap to expand inline
+    // ── Tap chevron toggle ────────────────────────────────────────────────────
     rows.forEach((row) => {
       const index = parseInt(row.dataset.rowIndex ?? "0", 10);
-      const toggleBtn = row.querySelector<HTMLElement>(".preview-toggle");
-      const mobilePreview = row.querySelector<HTMLElement>(".mobile-preview");
-      const mobileContent = row.querySelector<HTMLElement>(".mockup-mobile-content");
-
-      if (!toggleBtn || !mobilePreview || !mobileContent) return;
-
-      toggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = row.classList.contains("expanded");
-
-        // Close all others
-        rows.forEach((r) => {
-          r.classList.remove("expanded");
-          const mp = r.querySelector<HTMLElement>(".mobile-preview");
-          if (mp) mp.style.maxHeight = "0";
+      row.querySelector<HTMLElement>(".preview-toggle")
+        ?.addEventListener("click", (e) => {
+          e.stopPropagation();
+          row.classList.contains("expanded") ? collapseAll() : expandRow(index);
         });
-
-        if (!isOpen) {
-          row.classList.add("expanded");
-
-          // Inject mockup content for mobile
-          const desktopMockup = root.querySelector<HTMLElement>(`.mockup[data-mockup="${index}"]`);
-          if (desktopMockup) {
-            const clone = desktopMockup.cloneNode(true) as HTMLElement;
-            clone.style.position = "relative";
-            clone.style.display = "block";
-            clone.style.height = "200px";
-            clone.style.overflow = "hidden";
-            mobileContent.innerHTML = "";
-            mobileContent.appendChild(clone);
-          }
-
-          mobilePreview.style.maxHeight = "260px";
-        }
-      });
     });
+
+    document.addEventListener("astro:before-swap", () => {
+      window.removeEventListener("scroll", updateFromScroll);
+      if (countdownInterval) clearInterval(countdownInterval);
+    }, { once: true });
   }
 
   document.addEventListener("astro:page-load", initWhatWeDo);
