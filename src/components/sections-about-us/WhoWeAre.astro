@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center py-20">
@@ -52,10 +53,13 @@
           <!-- Person info -->
           <div class="flex flex-col items-start gap-4 px-5 py-4">
             <div class="flex flex-row items-center gap-4 w-full">
-              <img
+              <Image
                 src="https://media.licdn.com/dms/image/v2/C4D03AQETLSMaC7f-WQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1649435378295?e=1781136000&v=beta&t=qTf2eVJVt1mqM_kdQUwGDo46txUF7Dx-baWlL2XlAE0"
                 alt="Mauricio Garzón Brunal"
                 class="w-14 h-14 object-cover shrink-0 ring-2 ring-secondary/50"
+                width={56}
+                height={56}
+                loading="eager"
               />
               <div>
                 <p class="text-base sm:text-lg font-bold text-white leading-tight">Mauricio Garzón Brunal</p>
@@ -113,10 +117,13 @@
           <!-- Person info -->
           <div class="flex flex-col items-start gap-4 px-5 py-4">
             <div class="flex flex-row items-center gap-4 w-full">
-              <img
+              <Image
                 src="https://media.licdn.com/dms/image/v2/D5603AQFShaoaYP2EKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695070950850?e=1781136000&v=beta&t=bznky4fk8lbpFkioWYAUlGy_TDEs0CnllhnIlLkotRQ"
                 alt="Laura Mestra Ruíz"
                 class="w-14 h-14 object-cover shrink-0 ring-2 ring-tertiary/50"
+                width={56}
+                height={56}
+                loading="eager"
               />
               <div>
                 <p class="text-base sm:text-lg font-bold text-white leading-tight">Laura Mestra Ruíz</p>
