@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const projects = [
   { file: "223collectionhotels.webp", url: "223collectionhotels.com", label: "223 Collection Hotels" },
   { file: "celerik.webp",             url: "celerik.com",             label: "Celerik" },
@@ -61,12 +63,14 @@ const projects = [
           </div>
           <!-- Screenshot -->
           <div class="relative overflow-hidden" style="height: 220px;">
-            <img
+            <Image
               src={`/screenshots/${p.file}`}
               alt={p.label}
               class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               loading="lazy"
               decoding="async"
+              width={400}
+              height={220}
             />
             <!-- Hover overlay -->
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
