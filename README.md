@@ -1,54 +1,88 @@
-# Astro Starter Kit: Basics
+# J24:15 Casa de Software
+
+Marketing site for **JOSUE 24:15 SAS** — a software studio building web and mobile
+applications for businesses in Colombia. Static, Spanish-first, three pages.
+
+Live at [josue2415.com](https://josue2415.com).
+
+## Stack
+
+Astro 7 · Tailwind CSS 3 · TypeScript · deployed to GitHub Pages.
+
+## Getting started
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev      # http://localhost:4321
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+> **Astro 7 runs the dev server as a background daemon.** Ctrl-C will not free the
+> port — use `npx astro dev stop`. A leftover daemon is why `npm run dev` sometimes
+> reports `Port 4321 is in use` and silently moves to 4322.
+> `npx astro dev status` and `npx astro dev logs` are also available.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+| Command           | Action                                             |
+| :---------------- | :------------------------------------------------- |
+| `npm run dev`     | Dev server on `localhost:4321`                     |
+| `npm run build`   | Type-check (`astro check`) then build to `./dist/`  |
+| `npm run preview` | Serve the built output locally                      |
 
-## 🚀 Project Structure
+`build` fails on type errors — that is intentional, it gates the deploy.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── pages/                    # one file per route: / · /info · /contacto
+├── layouts/Layout.astro      # <head>, SEO meta, JSON-LD, ClientRouter
+├── components/
+│   ├── sections-index/       # sections of the home page
+│   ├── sections-about-us/    # sections of /info
+│   └── *.astro               # shared: Nav, Header, Footer, Contact, FinalCTA
+└── assets/
+    ├── icons/                # inline .astro SVG components
+    └── img/                  # imported images (optimized at build)
+public/                       # served as-is: og/twitter images, screenshots, videos
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Images in `src/assets/img/` go through Astro's image pipeline (converted to WebP and
+resized at build). Only put files in `public/` when they must keep a stable URL —
+anything referenced there ships unoptimized.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Design tokens
 
-Any static assets, like images, can be placed in the `public/` directory.
+Defined in `tailwind.config.mjs`, not ad hoc in component classes:
 
-## 🧞 Commands
+| Token       | Value     | Use                |
+| :---------- | :-------- | :----------------- |
+| `white`     | `#FAFAFA` | body text on dark  |
+| `black`     | `#060A06` | page background    |
+| `surface`   | `#111811` | raised panels      |
+| `primary`   | `#4E6050` | muted accent       |
+| `secondary` | `#00A854` | brand green        |
+| `tertiary`  | `#C5FF3C` | highlight lime     |
 
-All commands are run from the root of the project, from a terminal:
+Type is Space Grotesk. There is also a `can-hover:` variant for hover styles that
+should not fire on touch devices — prefer it over bare `hover:`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Deploying
 
-## 👀 Want to learn more?
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds and
+publishes to GitHub Pages. There is no staging environment: **`master` is
+production.** The custom domain comes from `CNAME`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Because the site is fully static, anything derived from the current date — such as
+the years of experience in `WhoWeAre.astro` — is fixed at build time and only
+updates when the site is rebuilt.
+
+All absolute URLs (canonical tags, OG images, sitemap) derive from `site` in
+`astro.config.mjs`. Change it there and nowhere else — `public/robots.txt` is the
+one file that cannot read it and must be updated by hand.
+
+## Internationalization
+
+`astro.config.mjs` declares `es` (default, unprefixed) and `en` locales, but no
+translated routes exist yet — the site is Spanish-only in practice. `Layout.astro`
+accepts a `lang` prop that sets `<html lang>`.

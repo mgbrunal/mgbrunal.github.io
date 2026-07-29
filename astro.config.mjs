@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://mgbrunal.github.io",
+  site: "https://josue2415.com",
   base: "/",
   integrations: [tailwind(), sitemap()],
   i18n: {

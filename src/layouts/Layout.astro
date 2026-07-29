@@ -16,7 +16,8 @@ const {
   ogImage = "/og.png",
 } = Astro.props;
 
-const siteUrl = "https://mgbrunal.github.io";
+// Single source of truth is `site` in astro.config.mjs
+const siteUrl = Astro.site?.origin ?? "https://josue2415.com";
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageAbsolute = new URL(ogImage, siteUrl).href;
 const twitterImageAbsolute = new URL("/twitter.png", siteUrl).href;
