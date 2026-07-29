@@ -1,5 +1,11 @@
 ---
 import { Image } from "astro:assets";
+import mauroPhoto from "../../assets/img/mauro.png";
+import lauraPhoto from "../../assets/img/laura.jpeg";
+
+const currentYear = new Date().getFullYear();
+const mauroYears = currentYear - 2019;
+const lauraYears = currentYear - 2021;
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center py-20">
@@ -54,7 +60,7 @@ import { Image } from "astro:assets";
           <div class="flex flex-col items-start gap-4 px-5 py-4">
             <div class="flex flex-row items-center gap-4 w-full">
               <Image
-                src="https://media.licdn.com/dms/image/v2/C4D03AQETLSMaC7f-WQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1649435378295?e=1781136000&v=beta&t=qTf2eVJVt1mqM_kdQUwGDo46txUF7Dx-baWlL2XlAE0"
+                src={mauroPhoto}
                 alt="Mauricio Garzón Brunal"
                 class="w-14 h-14 object-cover shrink-0 ring-2 ring-secondary/50"
                 width={56}
@@ -67,7 +73,7 @@ import { Image } from "astro:assets";
               </div>
             </div>
             <div class="flex flex-row items-baseline gap-2 border-l-2 border-secondary pl-3">
-              <span class="text-3xl font-bold text-secondary leading-none">+6</span>
+              <span class="text-3xl font-bold text-secondary leading-none">+{mauroYears}</span>
               <div class="flex flex-col">
                 <span class="text-xs text-white font-semibold leading-tight">años de experiencia</span>
                 <span class="text-xs text-white/50 font-light">Ing. Sistemas · Univ. de Medellín 2023</span>
@@ -118,7 +124,7 @@ import { Image } from "astro:assets";
           <div class="flex flex-col items-start gap-4 px-5 py-4">
             <div class="flex flex-row items-center gap-4 w-full">
               <Image
-                src="https://media.licdn.com/dms/image/v2/D5603AQFShaoaYP2EKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695070950850?e=1781136000&v=beta&t=bznky4fk8lbpFkioWYAUlGy_TDEs0CnllhnIlLkotRQ"
+                src={lauraPhoto}
                 alt="Laura Mestra Ruíz"
                 class="w-14 h-14 object-cover shrink-0 ring-2 ring-tertiary/50"
                 width={56}
@@ -131,7 +137,7 @@ import { Image } from "astro:assets";
               </div>
             </div>
             <div class="flex flex-row items-baseline gap-2 border-l-2 border-tertiary pl-3">
-              <span class="text-3xl font-bold text-tertiary leading-none">+4</span>
+              <span class="text-3xl font-bold text-tertiary leading-none">+{lauraYears}</span>
               <div class="flex flex-col">
                 <span class="text-xs text-white font-semibold leading-tight">años de experiencia</span>
                 <span class="text-xs text-white/50 font-light">Negocios Internacionales · Univ. de Medellín 2021</span>
