@@ -51,12 +51,12 @@
       {
         "title": "Websites for events",
         "content": "Digital spaces to share details, register attendees and centralize all communication around the event.",
-        "url": "summit-2025.co"
+        "url": "founderssummit2025.com"
       },
       {
         "title": "Real estate projects",
         "content": "Pages built to capture genuine interest and organize information from prospective buyers.",
-        "url": "urban-development.com"
+        "url": "parkviewresidences.com"
       },
       {
         "title": "Process automation",
@@ -83,26 +83,26 @@
     },
     "event": {
       "badge": "Coming soon",
-      "titleLine1": "Entrepreneurship",
+      "titleLine1": "Founders",
       "titleLine2": "Summit 2025",
-      "date": "Jul 12 · Bogotá",
+      "date": "Jul 12 · Austin, TX",
       "countdown": ["days", "hrs", "min"],
-      "cta": "Register"
+      "cta": "Save my spot"
     },
     "housing": {
-      "brand": "ALTAMIRA",
-      "badge": "PRE-SALE",
-      "location": "Medellín · Laureles",
-      "titleLine1": "Torres",
-      "titleLine2": "del Parque",
+      "brand": "PARKVIEW",
+      "badge": "NOW LEASING",
+      "location": "Denver · LoHi",
+      "titleLine1": "Parkview",
+      "titleLine2": "Residences",
       "specs": [
         { "value": "2–3", "label": "beds" },
-        { "value": "68m²", "label": "area" },
+        { "value": "1,240", "label": "sq ft" },
         { "value": "48", "label": "units" }
       ],
       "availabilityLabel": "Availability",
-      "availabilityValue": "32% sold",
-      "cta": "Register interest"
+      "availabilityValue": "32% leased",
+      "cta": "Request info"
     },
     "automation": {
       "heading": "Automated flow",
