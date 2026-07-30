@@ -5,33 +5,10 @@ import Develop from "../../assets/icons/Develop.astro";
 import Rocket2 from "../../assets/icons/Rocket2.astro";
 import Validation from "../../assets/icons/Validation.astro";
 
-const items = [
-  {
-    title: "Análisis",
-    description:
-      "Entendemos el negocio, los objetivos y el contexto real del proyecto.",
-  },
-  {
-    title: "Definición",
-    description:
-      "Aterrizamos la solución más adecuada, ya sea una página web, automatización o desarrollo a medida.",
-  },
-  {
-    title: "Diseño",
-    description:
-      "Estructuramos la experiencia del usuario y los procesos necesarios.",
-  },
-  {
-    title: "Desarrollo",
-    description:
-      "Construimos la solución asegurando estabilidad, rendimiento y claridad.",
-  },
-  {
-    title: "Entrega",
-    description:
-      "Dejamos todo listo para operar, con acompañamiento inicial si es necesario.",
-  },
-];
+import { useTranslations } from "../../i18n";
+
+const t = useTranslations(Astro.currentLocale);
+const items = t.howWeWork.steps;
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center py-20">
@@ -44,12 +21,12 @@ const items = [
           data-reveal
           class="text-sm sm:text-base font-light text-black uppercase"
         >
-          Nuestro proceso
+          {t.howWeWork.eyebrow}
         </p>
 
         <div data-reveal data-reveal-delay="80" class="w-full bg-tertiary px-5 py-4">
           <h1 class="text-3xl sm:text-5xl font-bold text-black drop-shadow">
-            Cómo trabajamos cada proyecto
+            {t.howWeWork.title}
           </h1>
         </div>
       </div>

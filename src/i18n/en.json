@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "siteName": "J24:15 Software House",
+    "titleSuffix": "J24:15 Software House",
+    "ogImageAlt": "J24:15 Software House",
+    "ogLocale": "en_US",
+    "languageName": "English",
+    "switchLanguage": "View in Spanish",
+    "jsonLdDescription": "Software development studio specializing in web and mobile applications for businesses worldwide."
+  },
+  "pages": {
+    "home": {
+      "title": "Custom Software Development",
+      "description": "We build software that moves real businesses forward. Custom web and mobile applications, focused on results. JOSUE 24:15 SAS — a software house working with clients worldwide."
+    },
+    "about": {
+      "title": "Who We Are",
+      "description": "We are Mauricio Garzón and Laura Mestra, a two-person senior team with over six years of experience building high-impact software for businesses around the world."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Have a project in mind? Get in touch and tell us what you need. We reply within 24 hours. JOSUE 24:15 SAS — Software House."
+    }
+  },
+  "nav": {
+    "tagline": "Software House",
+    "openMenu": "Open menu",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Software development focused on real results",
+    "lead": "We build websites, automations and digital solutions that help businesses capture opportunities and operate more efficiently.",
+    "ctaAbout": "Who we are",
+    "ctaContact": "Book a free consultation",
+    "note": "Practical solutions, without unnecessary complexity"
+  },
+  "whatWeDo": {
+    "eyebrow": "What we do",
+    "title": "Digital solutions shaped around your business",
+    "lead": "Every project is different. These are the main ways we can help you.",
+    "numberLocale": "en-US",
+    "fallbackUrl": "j24:15.com",
+    "items": [
+      {
+        "title": "Websites for businesses",
+        "content": "Sites designed to communicate clearly, build trust and make it easy for potential customers to reach you.",
+        "url": "your-business.com"
+      },
+      {
+        "title": "Websites for events",
+        "content": "Digital spaces to share details, register attendees and centralize all communication around the event.",
+        "url": "summit-2025.co"
+      },
+      {
+        "title": "Real estate projects",
+        "content": "Pages built to capture genuine interest and organize information from prospective buyers.",
+        "url": "urban-development.com"
+      },
+      {
+        "title": "Process automation",
+        "content": "Workflows that connect forms, messages and tools to cut manual work and improve follow-up.",
+        "url": "auto.your-app.co"
+      },
+      {
+        "title": "Custom development",
+        "content": "Tailored solutions for specific needs that don't fit a standard format.",
+        "url": "panel.your-company.co"
+      },
+      {
+        "title": "Optimization and support",
+        "content": "Tweaks, improvements and maintenance so everything keeps working properly over time.",
+        "url": "audit.your-site.com"
+      }
+    ]
+  },
+  "mockups": {
+    "previewLabel": "Preview",
+    "business": {
+      "navContact": "Contact",
+      "cta": "Get in touch"
+    },
+    "event": {
+      "badge": "Coming soon",
+      "titleLine1": "Entrepreneurship",
+      "titleLine2": "Summit 2025",
+      "date": "Jul 12 · Bogotá",
+      "countdown": ["days", "hrs", "min"],
+      "cta": "Register"
+    },
+    "housing": {
+      "brand": "ALTAMIRA",
+      "badge": "PRE-SALE",
+      "location": "Medellín · Laureles",
+      "titleLine1": "Torres",
+      "titleLine2": "del Parque",
+      "specs": [
+        { "value": "2–3", "label": "beds" },
+        { "value": "68m²", "label": "area" },
+        { "value": "48", "label": "units" }
+      ],
+      "availabilityLabel": "Availability",
+      "availabilityValue": "32% sold",
+      "cta": "Register interest"
+    },
+    "automation": {
+      "heading": "Automated flow",
+      "nodes": [
+        "Web form",
+        "Internal CRM",
+        "WhatsApp to the team",
+        "Email to the client"
+      ]
+    },
+    "dashboard": {
+      "heading": "Control panel",
+      "live": "● Live",
+      "statUsers": "Users",
+      "statOrders": "Orders",
+      "activityLabel": "Weekly activity",
+      "weekdays": ["M", "T", "W", "T", "F", "S", "S"]
+    },
+    "audit": {
+      "heading": "Performance audit",
+      "rows": ["Speed", "SEO", "Accessibility"],
+      "improvementsLabel": "Improvements applied",
+      "tags": ["Images", "Cache", "CSS", "Fonts"]
+    }
+  },
+  "theProblem": {
+    "eyebrow": "The problem",
+    "title": "When technology isn't well structured...",
+    "lead": "Many businesses have the tools, the processes and a digital presence, but something breaks down in how it all connects.",
+    "items": [
+      "Information that doesn't flow between systems",
+      "Manual processes that eat up time",
+      "Tools that aren't integrated",
+      "Experiences that don't guide the user properly",
+      "Inconsistent follow-up on opportunities"
+    ],
+    "conclusion": "The problem isn't a lack of tools, it's how they're organized."
+  },
+  "whoWeAre": {
+    "eyebrow": "WHO WE ARE",
+    "title": "A small, focused, complementary team",
+    "lead": "We combine technical vision with a business perspective to build solutions that don't just work, but make sense in the context of each project.",
+    "yearsLabel": "years of experience",
+    "engineering": {
+      "role": "ENGINEERING / PRODUCT",
+      "subrole": "Development and technical architecture",
+      "description": "Responsible for designing and building the technical foundation of every project. From websites to process automation, the focus is on creating stable, fast, well-structured solutions.",
+      "badges": [
+        "Efficiency and performance",
+        "Scalable solutions",
+        "Clean, maintainable implementations"
+      ],
+      "name": "Mauricio Garzón Brunal",
+      "title": "Full-Stack & RN Developer",
+      "education": "Systems Engineering · Univ. de Medellín 2023",
+      "bio": "Builds full-stack web and mobile applications — backends with Express and NestJS, SQL and NoSQL databases, frontends with React, React Native and Vue.js. Working on product teams since 2019.",
+      "skills": ["TypeScript", "React / RN", "NestJS", "AWS", "GraphQL", "Vue.js"]
+    },
+    "business": {
+      "role": "Business / Project",
+      "subrole": "Strategy and product focus",
+      "description": "Responsible for understanding the business, structuring the user experience and making sure every solution has a clear objective. From definition through validation, everything is built with practical sense.",
+      "badges": [
+        "Clarity in the proposal",
+        "User experience",
+        "Focus on real results"
+      ],
+      "name": "Laura Mestra Ruíz",
+      "title": "Project Manager · Scrum Master",
+      "education": "International Business · Univ. de Medellín 2021",
+      "bio": "International Business professional and certified Scrum Master. Manages software projects with clear objectives, team leadership and agile methodologies since 2021.",
+      "skills": [
+        "Project Management",
+        "Scrum Master",
+        "Agile",
+        "International Business",
+        "Stakeholders"
+      ]
+    }
+  },
+  "recentWork": {
+    "eyebrow": "Recent work",
+    "title": "Projects that speak for themselves",
+    "visitLabel": "Visit"
+  },
+  "howWeWork": {
+    "eyebrow": "Our process",
+    "title": "How we approach every project",
+    "steps": [
+      {
+        "title": "Analysis",
+        "description": "We understand the business, the goals and the real context of the project."
+      },
+      {
+        "title": "Definition",
+        "description": "We settle on the most suitable solution, whether that's a website, an automation or custom development."
+      },
+      {
+        "title": "Design",
+        "description": "We structure the user experience and the processes behind it."
+      },
+      {
+        "title": "Development",
+        "description": "We build the solution with stability, performance and clarity in mind."
+      },
+      {
+        "title": "Delivery",
+        "description": "We hand everything over ready to run, with initial support if needed."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Tell us what you need and we'll shape it with you",
+    "lead": "If you have an idea, a project already underway, or you simply want to improve what you already have, we can help you define the best solution without the complications.",
+    "ctaAbout": "Who we are",
+    "ctaContact": "Book a free consultation",
+    "badges": [
+      "No commitment",
+      "Fast response",
+      "We guide you from the first conversation"
+    ]
+  },
+  "contact": {
+    "eyebrow": "GET IN TOUCH",
+    "title": "Let's talk about your project",
+    "lead": "Pick whichever way is most comfortable to get started.",
+    "whatsappMessage": "Hi, I'd like advice about a project",
+    "whatsapp": {
+      "title": "WHATSAPP",
+      "subtitle": "Quick conversation",
+      "description": "Ideal if you have questions, want to tell us your idea or need some initial guidance.",
+      "badges": ["Fast response", "No commitment", "Direct conversation"],
+      "cta": "Message us on WhatsApp"
+    },
+    "meeting": {
+      "title": "VIDEO MEETING",
+      "subtitle": "Book a meeting",
+      "description": "If you'd prefer a more structured conversation to go through your case in more detail.",
+      "badges": [
+        "Dedicated time",
+        "Better project context",
+        "A more thorough review"
+      ],
+      "cta": "Book a call"
+    }
+  },
+  "footer": {
+    "tagline": "Software House",
+    "description": "Software development focused on real results. Practical solutions for businesses that want to grow with well-structured technology.",
+    "navHeading": "Pages",
+    "home": "Home",
+    "about": "About us",
+    "contact": "Contact",
+    "legal": "JOSUE 24:15 SAS - NIT 902001370-7",
+    "rights": "All rights reserved"
+  }
+}

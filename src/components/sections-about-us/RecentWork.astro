@@ -1,5 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import { useTranslations } from "../../i18n";
+
+const t = useTranslations(Astro.currentLocale);
 
 const projects = [
   { file: "josue2415.webp",           url: "josue2415.com",           label: "Josue 24:15" },
@@ -13,9 +16,9 @@ const projects = [
 
 <div class="w-full flex flex-col items-center justify-center py-20 overflow-hidden gap-12">
   <div class="w-full xl:max-w-[75%] px-5 sm:px-20 flex flex-col items-start gap-4">
-    <p data-reveal class="text-sm sm:text-base font-light text-white uppercase">Trabajo reciente</p>
+    <p data-reveal class="text-sm sm:text-base font-light text-white uppercase">{t.recentWork.eyebrow}</p>
     <h2 data-reveal data-reveal-delay="80" class="text-3xl sm:text-5xl font-bold text-white drop-shadow-lg">
-      Proyectos que hablan por sí solos
+      {t.recentWork.title}
     </h2>
   </div>
 
@@ -31,7 +34,7 @@ const projects = [
           href={`https://${p.url}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Visitar ${p.label}`}
+          aria-label={`${t.recentWork.visitLabel} ${p.label}`}
           class="browser-card group shrink-0 w-[320px] sm:w-[400px] rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] shadow-2xl no-underline"
         >
           <!-- Chrome bar -->

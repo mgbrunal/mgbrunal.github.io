@@ -1,5 +1,9 @@
 ---
 import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
+import { getLocale, routes, useTranslations } from "../../i18n";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 ---
 
 <div class="relative w-full min-h-[100dvh] flex flex-col items-start justify-center">
@@ -21,13 +25,11 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
   <!-- Content -->
   <div class="relative z-10 w-full xl:max-w-[75%] mx-auto px-5 sm:px-20 py-20 flex flex-col items-start gap-8">
     <h1 data-reveal class="text-4xl sm:text-6xl font-bold text-white leading-tight tracking-tight">
-      Desarrollo de software enfocado en resultados reales
+      {t.hero.title}
     </h1>
 
     <p data-reveal data-reveal-delay="120" class="text-sm sm:text-lg font-light text-white/80 max-w-[52ch]">
-      Creamos páginas web, automatizaciones y soluciones digitales que
-      ayudan a negocios a captar oportunidades y operar de forma más
-      eficiente.
+      {t.hero.lead}
     </p>
 
     <div
@@ -36,23 +38,23 @@ import ArrowUpRight from "../../assets/icons/ArrowUpRight.astro";
       class="flex flex-col sm:flex-row items-start justify-start gap-4"
     >
       <a
-        href="/info"
+        href={routes[locale].about}
         class="flex flex-row items-center gap-2 bg-secondary text-black border-2 border-black font-semibold uppercase px-5 py-4 transition-[background-color,transform] duration-200 ease-out-strong can-hover:hover:bg-secondary/60 active:scale-[0.97]"
-        >Quienes somos?<div class="w-6 h-6">
+        >{t.hero.ctaAbout}<div class="w-6 h-6">
           <ArrowUpRight color="#000" />
         </div></a
       >
       <a
-        href="/contacto"
+        href={routes[locale].contact}
         class="flex flex-row items-center gap-2 bg-tertiary text-black border-2 border-black font-semibold uppercase px-5 py-4 transition-[background-color,transform] duration-200 ease-out-strong can-hover:hover:bg-tertiary/60 active:scale-[0.97]"
-        >Agendar asesoría gratuita<div class="w-6 h-6">
+        >{t.hero.ctaContact}<div class="w-6 h-6">
           <ArrowUpRight color="#000" />
         </div>
       </a>
     </div>
 
     <p data-reveal data-reveal-delay="360" class="text-xs sm:text-sm text-white/50 tracking-wide uppercase">
-      Soluciones prácticas, sin complejidad innecesaria
+      {t.hero.note}
     </p>
   </div>
 </div>

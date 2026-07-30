@@ -5,38 +5,13 @@ import Design from "../../assets/icons/Design.astro";
 import Develop from "../../assets/icons/Develop.astro";
 import Validation from "../../assets/icons/Validation.astro";
 
-const items = [
-  {
-    title: "Páginas web para negocios",
-    content: "Sitios diseñados para comunicar con claridad, generar confianza y facilitar el contacto con clientes potenciales.",
-    icon: "store",
-  },
-  {
-    title: "Páginas web para eventos",
-    content: "Espacios digitales para informar, registrar asistentes y centralizar toda la comunicación del evento.",
-    icon: "rocket",
-  },
-  {
-    title: "Proyectos de vivienda",
-    content: "Páginas enfocadas en captar interés real y organizar la información de posibles compradores.",
-    icon: "design",
-  },
-  {
-    title: "Automatización de procesos",
-    content: "Flujos que conectan formularios, mensajes y herramientas para reducir tareas manuales y mejorar el seguimiento.",
-    icon: "develop",
-  },
-  {
-    title: "Desarrollos a medida",
-    content: "Soluciones personalizadas según necesidades específicas que no encajan en un formato estándar.",
-    icon: "custom",
-  },
-  {
-    title: "Optimización y soporte",
-    content: "Ajustes, mejoras y mantenimiento para que todo siga funcionando correctamente en el tiempo.",
-    icon: "support",
-  },
-];
+import { useTranslations } from "../../i18n";
+
+const t = useTranslations(Astro.currentLocale);
+
+// Icons are positional, so they live here rather than in the dictionary.
+const icons = ["store", "rocket", "design", "develop", "custom", "support"];
+const items = t.whatWeDo.items.map((item, i) => ({ ...item, icon: icons[i] }));
 
 const numColor = ["text-tertiary", "text-secondary"];
 ---
@@ -89,7 +64,7 @@ const numColor = ["text-tertiary", "text-secondary"];
                 </div>
                 <div class="flex-1 mx-2 bg-[#3a3a3a] rounded-md px-2.5 py-0.5 flex items-center gap-1.5">
                   <svg class="w-2.5 h-2.5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/></svg>
-                  <span class="url-text-mobile text-[9px] text-white/30 font-mono truncate">j24:15.com</span>
+                  <span class="url-text-mobile text-[9px] text-white/30 font-mono truncate">{t.whatWeDo.fallbackUrl}</span>
                 </div>
               </div>
               <!-- Mockup viewport — same structure as desktop, content vertically centered -->

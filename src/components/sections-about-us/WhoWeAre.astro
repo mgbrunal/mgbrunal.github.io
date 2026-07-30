@@ -3,6 +3,12 @@ import { Image } from "astro:assets";
 import mauroPhoto from "../../assets/img/mauro.png";
 import lauraPhoto from "../../assets/img/laura.jpeg";
 
+import { useTranslations } from "../../i18n";
+
+const t = useTranslations(Astro.currentLocale);
+const engineering = t.whoWeAre.engineering;
+const business = t.whoWeAre.business;
+
 const currentYear = new Date().getFullYear();
 const mauroYears = currentYear - 2019;
 const lauraYears = currentYear - 2021;
@@ -18,19 +24,17 @@ const lauraYears = currentYear - 2021;
           data-reveal
           class="text-sm sm:text-base font-light text-white uppercase"
         >
-          ¿QUIÉNES SOMOS?
+          {t.whoWeAre.eyebrow}
         </p>
 
         <div data-reveal data-reveal-delay="80" class="w-full bg-white px-5 py-4">
           <h2 class="text-3xl sm:text-5xl font-bold text-black drop-shadow">
-            Un equipo pequeño, enfocado y complementario
+            {t.whoWeAre.title}
           </h2>
         </div>
 
         <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-white drop-shadow">
-          Combinamos visión técnica y enfoque de negocio para desarrollar
-          soluciones que no solo funcionan, sino que tienen sentido en el
-          contexto de cada proyecto.
+          {t.whoWeAre.lead}
         </p>
       </div>
 
@@ -42,18 +46,20 @@ const lauraYears = currentYear - 2021;
           <!-- Role info -->
           <div class="flex flex-col items-start justify-between gap-4 px-5 py-4 border-b border-secondary/20">
             <div class="w-full py-2">
-              <h3 class="text-lg sm:text-xl font-bold text-secondary uppercase">INGENIERÍA / PRODUCTO</h3>
-              <h4 class="text-sm sm:text-base font-light text-secondary uppercase">Desarrollo y arquitectura técnica</h4>
+              <h3 class="text-lg sm:text-xl font-bold text-secondary uppercase">{engineering.role}</h3>
+              <h4 class="text-sm sm:text-base font-light text-secondary uppercase">{engineering.subrole}</h4>
             </div>
             <p class="text-sm sm:text-base text-white">
-              Encargado de diseñar y construir la base técnica de cada proyecto.
-              Desde páginas web hasta automatización de procesos, el enfoque está
-              en crear soluciones estables, rápidas y bien estructuradas.
+              {engineering.description}
             </p>
             <div class="flex flex-col items-start gap-3 w-full">
-              <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">Eficiencia y rendimiento</p>
-              <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">Soluciones escalables</p>
-              <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">Implementaciones limpias y mantenibles</p>
+              {
+                engineering.badges.map((badge) => (
+                  <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">
+                    {badge}
+                  </p>
+                ))
+              }
             </div>
           </div>
           <!-- Person info -->
@@ -61,36 +67,35 @@ const lauraYears = currentYear - 2021;
             <div class="flex flex-row items-center gap-4 w-full">
               <Image
                 src={mauroPhoto}
-                alt="Mauricio Garzón Brunal"
+                alt={engineering.name}
                 class="w-14 h-14 object-cover shrink-0 ring-2 ring-secondary/50"
                 width={56}
                 height={56}
                 loading="eager"
               />
               <div>
-                <p class="text-base sm:text-lg font-bold text-white leading-tight">Mauricio Garzón Brunal</p>
-                <p class="text-xs font-light text-secondary uppercase tracking-wide">Full-Stack &amp; RN Developer</p>
+                <p class="text-base sm:text-lg font-bold text-white leading-tight">{engineering.name}</p>
+                <p class="text-xs font-light text-secondary uppercase tracking-wide">{engineering.title}</p>
               </div>
             </div>
             <div class="flex flex-row items-baseline gap-2 border-l-2 border-secondary pl-3">
               <span class="text-3xl font-bold text-secondary leading-none">+{mauroYears}</span>
               <div class="flex flex-col">
-                <span class="text-xs text-white font-semibold leading-tight">años de experiencia</span>
-                <span class="text-xs text-white/50 font-light">Ing. Sistemas · Univ. de Medellín 2023</span>
+                <span class="text-xs text-white font-semibold leading-tight">{t.whoWeAre.yearsLabel}</span>
+                <span class="text-xs text-white/50 font-light">{engineering.education}</span>
               </div>
             </div>
             <p class="text-sm font-light text-white/80 leading-relaxed">
-              Desarrolla aplicaciones web y móviles full-stack — backend con Express
-              y NestJS, bases de datos SQL y NoSQL, frontend con React, React Native
-              y Vue.js. Trayectoria en equipos de producto desde 2019.
+              {engineering.bio}
             </p>
             <div class="flex flex-row flex-wrap gap-2">
-              <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">TypeScript</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">React / RN</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">NestJS</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">AWS</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">GraphQL</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">Vue.js</span>
+              {
+                engineering.skills.map((skill) => (
+                  <span class="text-xs text-white/60 px-2 py-1 bg-secondary/10 rounded-full">
+                    {skill}
+                  </span>
+                ))
+              }
             </div>
             <a href="https://www.linkedin.com/in/maugarbru/" target="_blank" rel="noopener noreferrer"
               class="flex flex-row items-center gap-2 text-xs text-secondary font-light can-hover:hover:text-white transition-colors duration-200 no-underline">
@@ -105,19 +110,20 @@ const lauraYears = currentYear - 2021;
           <!-- Role info -->
           <div class="flex flex-col items-start justify-between gap-4 px-5 py-4 border-b border-tertiary/20">
             <div class="w-full py-2">
-              <h3 class="text-lg sm:text-xl font-bold text-tertiary uppercase">Negocio / Projecto</h3>
-              <h4 class="text-sm sm:text-base font-light text-tertiary uppercase">Estrategia y enfoque de producto</h4>
+              <h3 class="text-lg sm:text-xl font-bold text-tertiary uppercase">{business.role}</h3>
+              <h4 class="text-sm sm:text-base font-light text-tertiary uppercase">{business.subrole}</h4>
             </div>
             <p class="text-sm sm:text-base text-white">
-              Encargada de entender el negocio, estructurar la experiencia del
-              usuario y asegurar que cada solución tenga un objetivo claro. Desde
-              la definición hasta la validación, todo se construye con sentido
-              práctico.
+              {business.description}
             </p>
             <div class="flex flex-col items-start gap-3 w-full">
-              <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">Claridad en la propuesta</p>
-              <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">Experiencia del usuario</p>
-              <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">Enfoque en resultados reales</p>
+              {
+                business.badges.map((badge) => (
+                  <p class="text-xs sm:text-sm text-white font-light p-2 bg-primary/50 rounded-full">
+                    {badge}
+                  </p>
+                ))
+              }
             </div>
           </div>
           <!-- Person info -->
@@ -125,35 +131,35 @@ const lauraYears = currentYear - 2021;
             <div class="flex flex-row items-center gap-4 w-full">
               <Image
                 src={lauraPhoto}
-                alt="Laura Mestra Ruíz"
+                alt={business.name}
                 class="w-14 h-14 object-cover shrink-0 ring-2 ring-tertiary/50"
                 width={56}
                 height={56}
                 loading="eager"
               />
               <div>
-                <p class="text-base sm:text-lg font-bold text-white leading-tight">Laura Mestra Ruíz</p>
-                <p class="text-xs font-light text-tertiary uppercase tracking-wide">Project Manager · Scrum Master</p>
+                <p class="text-base sm:text-lg font-bold text-white leading-tight">{business.name}</p>
+                <p class="text-xs font-light text-tertiary uppercase tracking-wide">{business.title}</p>
               </div>
             </div>
             <div class="flex flex-row items-baseline gap-2 border-l-2 border-tertiary pl-3">
               <span class="text-3xl font-bold text-tertiary leading-none">+{lauraYears}</span>
               <div class="flex flex-col">
-                <span class="text-xs text-white font-semibold leading-tight">años de experiencia</span>
-                <span class="text-xs text-white/50 font-light">Negocios Internacionales · Univ. de Medellín 2021</span>
+                <span class="text-xs text-white font-semibold leading-tight">{t.whoWeAre.yearsLabel}</span>
+                <span class="text-xs text-white/50 font-light">{business.education}</span>
               </div>
             </div>
             <p class="text-sm font-light text-white/80 leading-relaxed">
-              Profesional en Negocios Internacionales y Scrum Master certificada.
-              Gestiona proyectos de software con claridad de objetivos, liderazgo
-              de equipos y metodologías ágiles desde 2021.
+              {business.bio}
             </p>
             <div class="flex flex-row flex-wrap gap-2">
-              <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Project Management</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Scrum Master</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Agile</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Negocios Internacionales</span>
-              <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">Stakeholders</span>
+              {
+                business.skills.map((skill) => (
+                  <span class="text-xs text-white/60 px-2 py-1 bg-tertiary/10 rounded-full">
+                    {skill}
+                  </span>
+                ))
+              }
             </div>
             <a href="https://www.linkedin.com/in/lauramestraru/" target="_blank" rel="noopener noreferrer"
               class="flex flex-row items-center gap-2 text-xs text-tertiary font-light can-hover:hover:text-white transition-colors duration-200 no-underline">

@@ -1,7 +1,11 @@
 ---
 import ArrowUpRight from "../assets/icons/ArrowUpRight.astro";
+import { getLocale, routes, useTranslations } from "../i18n";
 
 const { variant = "index" } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 ---
 
 <div class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center">
@@ -26,14 +30,12 @@ const { variant = "index" } = Astro.props;
       class="relative z-10 w-full h-full flex flex-col items-center justify-center gap-12"
     >
       <h1 data-reveal class="text-4xl sm:text-6xl font-bold text-white drop-shadow-lg">
-        Cuéntanos qué necesitas y lo aterrizamos contigo
+        {t.finalCta.title}
       </h1>
 
       <div class="w-full flex flex-col items-start justify-center gap-4">
         <p data-reveal data-reveal-delay="100" class="text-sm sm:text-lg font-semibold text-white">
-          Si tienes una idea, un proyecto en marcha o simplemente quieres
-          mejorar lo que ya tienes, podemos ayudarte a definir la mejor solución
-          sin complicaciones.
+          {t.finalCta.lead}
         </p>
 
         <div
@@ -44,10 +46,10 @@ const { variant = "index" } = Astro.props;
           {
             variant === "index" && (
               <a
-                href="/info"
+                href={routes[locale].about}
                 class="flex flex-row items-center gap-2 bg-secondary text-black border-2 border-black font-semibold uppercase px-5 py-4 transition-[background-color,transform] duration-200 ease-out-strong can-hover:hover:bg-secondary/60 active:scale-[0.97]"
               >
-                Quienes somos?
+                {t.finalCta.ctaAbout}
                 <div class="w-6 h-6">
                   <ArrowUpRight color="#000" />
                 </div>
@@ -55,9 +57,9 @@ const { variant = "index" } = Astro.props;
             )
           }
           <a
-            href="/contacto"
+            href={routes[locale].contact}
             class="flex flex-row items-center gap-2 bg-tertiary text-black border-2 border-black font-semibold uppercase px-5 py-4 transition-[background-color,transform] duration-200 ease-out-strong can-hover:hover:bg-tertiary/60 active:scale-[0.97]"
-            >Agendar asesoría gratuita<div class="w-6 h-6">
+            >{t.finalCta.ctaContact}<div class="w-6 h-6">
               <ArrowUpRight color="#000" />
             </div>
           </a>
@@ -68,21 +70,13 @@ const { variant = "index" } = Astro.props;
           data-reveal-delay="300"
           class="flex flex-col sm:flex-row items-start justify-start gap-4 w-full"
         >
-          <p
-            class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary rounded-full"
-          >
-            Sin compromiso
-          </p>
-          <p
-            class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary rounded-full"
-          >
-            Respuesta rápida
-          </p>
-          <p
-            class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary rounded-full"
-          >
-            Te orientamos desde el primer contacto
-          </p>
+          {
+            t.finalCta.badges.map((badge) => (
+              <p class="text-xs sm:text-sm text-white font-light drop-shadow p-2 bg-primary rounded-full">
+                {badge}
+              </p>
+            ))
+          }
         </div>
       </div>
     </div>

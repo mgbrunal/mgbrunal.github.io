@@ -1,6 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import logoWhite from "../assets/img/logo_white.png";
+import { getLocale, routes, useTranslations } from "../i18n";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 const year = new Date().getFullYear();
 ---
@@ -12,7 +16,7 @@ const year = new Date().getFullYear();
     >
       <!-- Brand column -->
       <div data-reveal class="flex flex-col items-start gap-5 lg:max-w-[42%]">
-        <a href="/" class="flex items-center gap-4 group">
+        <a href={routes[locale].home} class="flex items-center gap-4 group">
           <Image
             src={logoWhite}
             alt="J24:15"
@@ -21,14 +25,12 @@ const year = new Date().getFullYear();
           />
           <div class="flex flex-col items-start justify-center leading-none gap-1">
             <span class="text-xl font-bold text-white tracking-tight">J24:15</span>
-            <span class="text-[11px] font-semibold text-white/40 uppercase tracking-[0.3em]">Casa de Software</span>
+            <span class="text-[11px] font-semibold text-white/40 uppercase tracking-[0.3em]">{t.footer.tagline}</span>
           </div>
         </a>
 
         <p class="text-sm font-light text-white/50 leading-relaxed">
-          Desarrollo de software enfocado en resultados reales. Soluciones
-          prácticas para negocios que quieren crecer con tecnología bien
-          estructurada.
+          {t.footer.description}
         </p>
 
         <div class="flex flex-row gap-4 pt-1">
@@ -78,22 +80,22 @@ const year = new Date().getFullYear();
         class="flex flex-col items-start gap-3"
       >
         <p class="text-xs text-white/40 uppercase tracking-widest mb-1">
-          Páginas
+          {t.footer.navHeading}
         </p>
         <a
-          href="/"
+          href={routes[locale].home}
           class="text-sm font-light text-white/50 transition-colors duration-200 ease-out-strong can-hover:hover:text-white"
-          >Inicio</a
+          >{t.footer.home}</a
         >
         <a
-          href="/info"
+          href={routes[locale].about}
           class="text-sm font-light text-white/50 transition-colors duration-200 ease-out-strong can-hover:hover:text-white"
-          >Quienes somos</a
+          >{t.footer.about}</a
         >
         <a
-          href="/contacto"
+          href={routes[locale].contact}
           class="text-sm font-light text-white/50 transition-colors duration-200 ease-out-strong can-hover:hover:text-white"
-          >Contacto</a
+          >{t.footer.contact}</a
         >
       </div>
     </div>
@@ -104,9 +106,9 @@ const year = new Date().getFullYear();
     <div
       class="w-full xl:max-w-[75%] mx-auto px-5 sm:px-20 py-4 flex flex-row items-center justify-between"
     >
-      <p class="text-xs text-white/40">JOSUE 24:15 SAS - NIT 902001370-7</p>
+      <p class="text-xs text-white/40">{t.footer.legal}</p>
       <p class="text-xs text-white/40">
-        © {year} - Todos los derechos reservados
+        © {year} - {t.footer.rights}
       </p>
     </div>
   </div>

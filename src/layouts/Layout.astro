@@ -1,60 +1,76 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Nav from "../components/Nav.astro";
+import {
+  defaultLocale,
+  getLocale,
+  hreflang,
+  locales,
+  routes,
+  useTranslations,
+  type RouteKey,
+} from "../i18n";
 
 interface Props {
-  title: string;
-  lang?: "es" | "en";
-  description?: string;
+  route: RouteKey;
   ogImage?: string;
 }
 
-const {
-  title,
-  lang = "es",
-  description = "Desarrollo de software a medida para negocios en Colombia. Aplicaciones web, móviles y soluciones tecnológicas con resultados reales. JOSUE 24:15 SAS.",
-  ogImage = "/og.png",
-} = Astro.props;
+const { route, ogImage = "/og.png" } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const page = t.pages[route];
+const description = page.description;
 
 // Single source of truth is `site` in astro.config.mjs
 const siteUrl = Astro.site?.origin ?? "https://josue2415.com";
-const canonical = new URL(Astro.url.pathname, siteUrl).href;
+// Built from the route map rather than Astro.url so canonical, hreflang and the
+// sitemap can never disagree about trailing slashes.
+const canonical = new URL(routes[locale][route], siteUrl).href;
 const ogImageAbsolute = new URL(ogImage, siteUrl).href;
 const twitterImageAbsolute = new URL("/twitter.png", siteUrl).href;
-const fullTitle = `${title} | J24:15 Casa de Software`;
+const fullTitle = `${page.title} | ${t.meta.titleSuffix}`;
+
+const alternates = locales.map((code) => ({
+  hreflang: hreflang[code],
+  href: new URL(routes[code][route], siteUrl).href,
+}));
+const xDefaultHref = new URL(routes[defaultLocale][route], siteUrl).href;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "JOSUE 24:15 SAS",
-  alternateName: "J24:15 Casa de Software",
-  url: siteUrl,
+  alternateName: t.meta.siteName,
+  url: canonical,
   logo: `${siteUrl}/og.png`,
-  description:
-    "Estudio de desarrollo de software especializado en aplicaciones web y móviles para negocios en Colombia.",
+  inLanguage: hreflang[locale],
+  description: t.meta.jsonLdDescription,
   address: {
     "@type": "PostalAddress",
     addressCountry: "CO",
   },
   foundingDate: "2025",
   founders: [
-    { "@type": "Person", name: "Mauricio Garzón Brunal" },
-    { "@type": "Person", name: "Laura Mestra Ruíz" },
+    { "@type": "Person", name: t.whoWeAre.engineering.name },
+    { "@type": "Person", name: t.whoWeAre.business.name },
   ],
   sameAs: [
     "https://www.linkedin.com/in/maugarbru/",
     "https://www.linkedin.com/in/lauramestraru/",
   ],
-  areaServed: {
-    "@type": "Country",
-    name: "Colombia",
-  },
+  // The Spanish site targets Colombia; the English one is for a global audience.
+  areaServed:
+    locale === "es"
+      ? { "@type": "Country", name: "Colombia" }
+      : { "@type": "Place", name: "Worldwide" },
   taxID: "902001370-7",
 };
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={hreflang[locale]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,22 +84,30 @@ const jsonLd = {
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
 
+    <!-- Alternate locales -->
+    {
+      alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageAbsolute} />
-    <meta property="og:image:alt" content="J24:15 Casa de Software" />
-    <meta property="og:locale" content="es_CO" />
-    <meta property="og:site_name" content="J24:15 Casa de Software" />
+    <meta property="og:image:alt" content={t.meta.ogImageAlt} />
+    <meta property="og:locale" content={t.meta.ogLocale} />
+    <meta property="og:site_name" content={t.meta.siteName} />
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={twitterImageAbsolute} />
-    <meta name="twitter:image:alt" content="J24:15 Casa de Software" />
+    <meta name="twitter:image:alt" content={t.meta.ogImageAlt} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -94,13 +118,13 @@ const jsonLd = {
     />
 
     <!-- JSON-LD structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <ClientRouter />
   </head>
   <body>
     <div class="min-h-screen bg-black overscroll-none">
-      <Nav />
+      <Nav route={route} />
       <slot />
     </div>
   </body>

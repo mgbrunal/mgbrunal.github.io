@@ -1,14 +1,10 @@
 ---
 import Cross from "../../assets/icons/Cross.astro";
 import Warning from "../../assets/icons/Warning.astro";
+import { useTranslations } from "../../i18n";
 
-const items = [
-  "Información que no fluye entre sistemas",
-  "Procesos manuales que consumen tiempo",
-  "Herramientas que no están integradas",
-  "Experiencias que no guían al usuario correctamente",
-  "Seguimiento inconsistente de oportunidades",
-];
+const t = useTranslations(Astro.currentLocale);
+const items = t.theProblem.items;
 ---
 
 <div class="w-full h-full flex flex-col items-center justify-center py-20">
@@ -21,17 +17,17 @@ const items = [
           class="text-sm sm:text-base font-light text-black uppercase"
           data-reveal
         >
-          El problema
+          {t.theProblem.eyebrow}
         </p>
 
         <div data-reveal data-reveal-delay="80" class="w-full bg-white px-5 py-4">
           <h1 class="text-3xl sm:text-5xl font-bold text-black drop-shadow">
-            Cuando la tecnología no está bien estructurada...
+            {t.theProblem.title}
           </h1>
         </div>
 
         <p data-reveal data-reveal-delay="160" class="text-sm sm:text-lg font-semibold text-black drop-shadow">
-          Muchos negocios tienen herramientas, procesos y presencia digital, pero algo falla en la forma en que todo está conectado.
+          {t.theProblem.lead}
         </p>
       </div>
     </div>
@@ -76,7 +72,7 @@ const items = [
         data-reveal
         class="text-sm sm:text-lg text-center font-bold bg-secondary/50 text-black rounded-full p-2"
       >
-        El problema no es la falta de herramientas, sino cómo están organizadas.
+        {t.theProblem.conclusion}
       </p>
     </div>
   </div>

@@ -1,27 +1,50 @@
 ---
 import { Image } from "astro:assets";
 import logoWhite from "../assets/img/logo_white.png";
+import ES_Flag from "../assets/icons/ES_Flag.astro";
+import UK_Flag from "../assets/icons/UK_Flag.astro";
+import {
+  getLocale,
+  otherLocale,
+  routes,
+  useTranslations,
+  type RouteKey,
+} from "../i18n";
 
-const pathname = Astro.url.pathname;
+interface Props {
+  route: RouteKey;
+}
 
-const links = [
-  { href: "/", label: "Inicio" },
-  { href: "/info", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
+const { route } = Astro.props;
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const home = routes[locale].home;
+
+const links: { href: string; label: string }[] = [
+  { href: routes[locale].home, label: t.nav.home },
+  { href: routes[locale].about, label: t.nav.about },
+  { href: routes[locale].contact, label: t.nav.contact },
 ];
 
+// Same page, other language — keeps the reader in place when they switch.
+const alternate = otherLocale(locale);
+const alternateHref = routes[alternate][route];
+const alternateLabel = useTranslations(alternate).meta.languageName;
+
 const isActive = (href: string) =>
-  href === "/" ? pathname === "/" : pathname.startsWith(href);
+  href === home ? Astro.url.pathname === home : Astro.url.pathname.startsWith(href);
 ---
 
 <nav
   id="main-nav"
+  data-home={home}
   class="fixed top-0 left-0 right-0 z-50 h-14 bg-black/90 backdrop-blur-sm border-b border-transparent transition-[border-color] duration-300 ease-out"
 >
   <div
     class="w-full h-full xl:max-w-[75%] mx-auto px-5 sm:px-20 flex items-center justify-between overflow-visible"
   >
-    <a href="/" class="flex items-center gap-3 shrink-0 group">
+    <a href={home} class="flex items-center gap-3 shrink-0 group">
       <Image
         src={logoWhite}
         alt="J24:15"
@@ -32,7 +55,7 @@ const isActive = (href: string) =>
         <span class="text-sm font-bold text-white tracking-tight">
           J24:15
         </span>
-        <span class="text-[10px] font-semibold text-white/40 uppercase tracking-[0.25em]">Casa de Software</span>
+        <span class="text-[10px] font-semibold text-white/40 uppercase tracking-[0.25em]">{t.nav.tagline}</span>
       </div>
     </a>
 
@@ -53,12 +76,26 @@ const isActive = (href: string) =>
           </a>
         ))
       }
+
+      <!-- Language switcher -->
+      <a
+        href={alternateHref}
+        hreflang={alternate}
+        aria-label={t.meta.switchLanguage}
+        title={t.meta.switchLanguage}
+        class="flex items-center gap-2 pl-2 border-l border-white/10 text-xs uppercase tracking-widest font-light text-white/50 transition-colors duration-200 ease-out can-hover:hover:text-white no-underline"
+      >
+        <span class="w-4 h-4 shrink-0 flex items-center justify-center [&>svg]:w-full [&>svg]:h-auto">
+          {alternate === "en" ? <UK_Flag /> : <ES_Flag />}
+        </span>
+        {alternate.toUpperCase()}
+      </a>
     </div>
 
     <!-- Mobile toggle -->
     <button
       id="nav-toggle"
-      aria-label="Abrir menú"
+      aria-label={t.nav.openMenu}
       aria-expanded="false"
       class="sm:hidden flex flex-col justify-center items-end gap-[5px] w-8 h-8 shrink-0 cursor-pointer overflow-visible"
     >
@@ -92,6 +129,18 @@ const isActive = (href: string) =>
         </a>
       ))
     }
+
+    <!-- Language switcher -->
+    <a
+      href={alternateHref}
+      hreflang={alternate}
+      class="flex items-center gap-3 pt-2 text-xl font-bold uppercase tracking-widest text-white/60 no-underline"
+    >
+      <span class="w-6 h-6 shrink-0 flex items-center justify-center [&>svg]:w-full [&>svg]:h-auto">
+        {alternate === "en" ? <UK_Flag /> : <ES_Flag />}
+      </span>
+      {alternateLabel}
+    </a>
   </div>
 </nav>
 
@@ -163,12 +212,15 @@ const isActive = (href: string) =>
   // Update active link after view transitions
   function updateActiveLinks() {
     const pathname = window.location.pathname;
+    // Home is "/" in Spanish but "/en/" in English, so read it off the markup
+    // instead of assuming "/" — otherwise every /en/ link looks active.
+    const home = document.getElementById("main-nav")?.dataset.home ?? "/";
     document
       .querySelectorAll<HTMLAnchorElement>("[data-nav-href]")
       .forEach((link) => {
         const href = link.dataset.navHref ?? "";
         const active =
-          href === "/" ? pathname === "/" : pathname.startsWith(href);
+          href === home ? pathname === home : pathname.startsWith(href);
         link.classList.toggle("text-tertiary", active);
         link.classList.toggle("nav-link--active", active);
         link.classList.toggle("text-white/50", !active);

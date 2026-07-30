@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "siteName": "J24:15 Casa de Software",
+    "titleSuffix": "J24:15 Casa de Software",
+    "ogImageAlt": "J24:15 Casa de Software",
+    "ogLocale": "es_CO",
+    "languageName": "Español",
+    "switchLanguage": "Ver en inglés",
+    "jsonLdDescription": "Estudio de desarrollo de software especializado en aplicaciones web y móviles para negocios en Colombia."
+  },
+  "pages": {
+    "home": {
+      "title": "Desarrollo de Software a Medida",
+      "description": "Construimos software que impulsa negocios reales. Aplicaciones web y móviles a medida, con foco en resultados. JOSUE 24:15 SAS — Casa de Software en Colombia."
+    },
+    "about": {
+      "title": "Quiénes Somos",
+      "description": "Somos Mauricio Garzón y Laura Mestra, un equipo de dos desarrolladores senior con más de 6 años de experiencia construyendo software de alto impacto para negocios en Colombia."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "¿Tienes un proyecto en mente? Escríbenos y cuéntanos qué necesitas. Respondemos en menos de 24 horas. JOSUE 24:15 SAS — Casa de Software."
+    }
+  },
+  "nav": {
+    "tagline": "Casa de Software",
+    "openMenu": "Abrir menú",
+    "home": "Inicio",
+    "about": "Nosotros",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Desarrollo de software enfocado en resultados reales",
+    "lead": "Creamos páginas web, automatizaciones y soluciones digitales que ayudan a negocios a captar oportunidades y operar de forma más eficiente.",
+    "ctaAbout": "Quienes somos?",
+    "ctaContact": "Agendar asesoría gratuita",
+    "note": "Soluciones prácticas, sin complejidad innecesaria"
+  },
+  "whatWeDo": {
+    "eyebrow": "Qué hacemos?",
+    "title": "Soluciones digitales según la necesidad de tu negocio",
+    "lead": "Cada proyecto es distinto. Estas son las principales formas en las que podemos ayudarte.",
+    "numberLocale": "es-CO",
+    "fallbackUrl": "j24:15.com",
+    "items": [
+      {
+        "title": "Páginas web para negocios",
+        "content": "Sitios diseñados para comunicar con claridad, generar confianza y facilitar el contacto con clientes potenciales.",
+        "url": "tu-negocio.com"
+      },
+      {
+        "title": "Páginas web para eventos",
+        "content": "Espacios digitales para informar, registrar asistentes y centralizar toda la comunicación del evento.",
+        "url": "evento-mayor-2025.co"
+      },
+      {
+        "title": "Proyectos de vivienda",
+        "content": "Páginas enfocadas en captar interés real y organizar la información de posibles compradores.",
+        "url": "desarrollo-urbano.com"
+      },
+      {
+        "title": "Automatización de procesos",
+        "content": "Flujos que conectan formularios, mensajes y herramientas para reducir tareas manuales y mejorar el seguimiento.",
+        "url": "auto.tu-app.co"
+      },
+      {
+        "title": "Desarrollos a medida",
+        "content": "Soluciones personalizadas según necesidades específicas que no encajan en un formato estándar.",
+        "url": "panel.tu-empresa.co"
+      },
+      {
+        "title": "Optimización y soporte",
+        "content": "Ajustes, mejoras y mantenimiento para que todo siga funcionando correctamente en el tiempo.",
+        "url": "audit.tu-pagina.com"
+      }
+    ]
+  },
+  "mockups": {
+    "previewLabel": "Vista previa",
+    "business": {
+      "navContact": "Contacto",
+      "cta": "Escríbenos"
+    },
+    "event": {
+      "badge": "Próximamente",
+      "titleLine1": "Summit de",
+      "titleLine2": "Emprendimiento 2025",
+      "date": "12 Jul · Bogotá",
+      "countdown": ["días", "hrs", "min"],
+      "cta": "Registrarme"
+    },
+    "housing": {
+      "brand": "ALTAMIRA",
+      "badge": "PREVENTA",
+      "location": "Medellín · Laureles",
+      "titleLine1": "Torres",
+      "titleLine2": "del Parque",
+      "specs": [
+        { "value": "2–3", "label": "hab" },
+        { "value": "68m²", "label": "área" },
+        { "value": "48", "label": "unidades" }
+      ],
+      "availabilityLabel": "Disponibilidad",
+      "availabilityValue": "32% vendido",
+      "cta": "Registrar interés"
+    },
+    "automation": {
+      "heading": "Flujo automático",
+      "nodes": [
+        "Formulario web",
+        "CRM interno",
+        "WhatsApp al equipo",
+        "Email al cliente"
+      ]
+    },
+    "dashboard": {
+      "heading": "Panel de control",
+      "live": "● En vivo",
+      "statUsers": "Usuarios",
+      "statOrders": "Pedidos",
+      "activityLabel": "Actividad semanal",
+      "weekdays": ["L", "M", "X", "J", "V", "S", "D"]
+    },
+    "audit": {
+      "heading": "Auditoría de rendimiento",
+      "rows": ["Velocidad", "SEO", "Accesibilidad"],
+      "improvementsLabel": "Mejoras aplicadas",
+      "tags": ["Imágenes", "Caché", "CSS", "Fuentes"]
+    }
+  },
+  "theProblem": {
+    "eyebrow": "El problema",
+    "title": "Cuando la tecnología no está bien estructurada...",
+    "lead": "Muchos negocios tienen herramientas, procesos y presencia digital, pero algo falla en la forma en que todo está conectado.",
+    "items": [
+      "Información que no fluye entre sistemas",
+      "Procesos manuales que consumen tiempo",
+      "Herramientas que no están integradas",
+      "Experiencias que no guían al usuario correctamente",
+      "Seguimiento inconsistente de oportunidades"
+    ],
+    "conclusion": "El problema no es la falta de herramientas, sino cómo están organizadas."
+  },
+  "whoWeAre": {
+    "eyebrow": "¿QUIÉNES SOMOS?",
+    "title": "Un equipo pequeño, enfocado y complementario",
+    "lead": "Combinamos visión técnica y enfoque de negocio para desarrollar soluciones que no solo funcionan, sino que tienen sentido en el contexto de cada proyecto.",
+    "yearsLabel": "años de experiencia",
+    "engineering": {
+      "role": "INGENIERÍA / PRODUCTO",
+      "subrole": "Desarrollo y arquitectura técnica",
+      "description": "Encargado de diseñar y construir la base técnica de cada proyecto. Desde páginas web hasta automatización de procesos, el enfoque está en crear soluciones estables, rápidas y bien estructuradas.",
+      "badges": [
+        "Eficiencia y rendimiento",
+        "Soluciones escalables",
+        "Implementaciones limpias y mantenibles"
+      ],
+      "name": "Mauricio Garzón Brunal",
+      "title": "Full-Stack & RN Developer",
+      "education": "Ing. Sistemas · Univ. de Medellín 2023",
+      "bio": "Desarrolla aplicaciones web y móviles full-stack — backend con Express y NestJS, bases de datos SQL y NoSQL, frontend con React, React Native y Vue.js. Trayectoria en equipos de producto desde 2019.",
+      "skills": ["TypeScript", "React / RN", "NestJS", "AWS", "GraphQL", "Vue.js"]
+    },
+    "business": {
+      "role": "Negocio / Projecto",
+      "subrole": "Estrategia y enfoque de producto",
+      "description": "Encargada de entender el negocio, estructurar la experiencia del usuario y asegurar que cada solución tenga un objetivo claro. Desde la definición hasta la validación, todo se construye con sentido práctico.",
+      "badges": [
+        "Claridad en la propuesta",
+        "Experiencia del usuario",
+        "Enfoque en resultados reales"
+      ],
+      "name": "Laura Mestra Ruíz",
+      "title": "Project Manager · Scrum Master",
+      "education": "Negocios Internacionales · Univ. de Medellín 2021",
+      "bio": "Profesional en Negocios Internacionales y Scrum Master certificada. Gestiona proyectos de software con claridad de objetivos, liderazgo de equipos y metodologías ágiles desde 2021.",
+      "skills": [
+        "Project Management",
+        "Scrum Master",
+        "Agile",
+        "Negocios Internacionales",
+        "Stakeholders"
+      ]
+    }
+  },
+  "recentWork": {
+    "eyebrow": "Trabajo reciente",
+    "title": "Proyectos que hablan por sí solos",
+    "visitLabel": "Visitar"
+  },
+  "howWeWork": {
+    "eyebrow": "Nuestro proceso",
+    "title": "Cómo trabajamos cada proyecto",
+    "steps": [
+      {
+        "title": "Análisis",
+        "description": "Entendemos el negocio, los objetivos y el contexto real del proyecto."
+      },
+      {
+        "title": "Definición",
+        "description": "Aterrizamos la solución más adecuada, ya sea una página web, automatización o desarrollo a medida."
+      },
+      {
+        "title": "Diseño",
+        "description": "Estructuramos la experiencia del usuario y los procesos necesarios."
+      },
+      {
+        "title": "Desarrollo",
+        "description": "Construimos la solución asegurando estabilidad, rendimiento y claridad."
+      },
+      {
+        "title": "Entrega",
+        "description": "Dejamos todo listo para operar, con acompañamiento inicial si es necesario."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Cuéntanos qué necesitas y lo aterrizamos contigo",
+    "lead": "Si tienes una idea, un proyecto en marcha o simplemente quieres mejorar lo que ya tienes, podemos ayudarte a definir la mejor solución sin complicaciones.",
+    "ctaAbout": "Quienes somos?",
+    "ctaContact": "Agendar asesoría gratuita",
+    "badges": [
+      "Sin compromiso",
+      "Respuesta rápida",
+      "Te orientamos desde el primer contacto"
+    ]
+  },
+  "contact": {
+    "eyebrow": "CONTÁCTANOS",
+    "title": "Hablemos de tu proyecto",
+    "lead": "Elige la forma que te resulte más cómoda para empezar.",
+    "whatsappMessage": "Hola, quiero recibir asesoría sobre un proyecto",
+    "whatsapp": {
+      "title": "WHATSAPP",
+      "subtitle": "Conversación rápida",
+      "description": "Ideal si tienes dudas, quieres contarnos tu idea o necesitas orientación inicial.",
+      "badges": ["Respuesta rápida", "Sin compromiso", "Conversación directa"],
+      "cta": "Escribir por WhatsApp"
+    },
+    "meeting": {
+      "title": "REUNION VIRTUAL",
+      "subtitle": "Agendar una reunión",
+      "description": "Si prefieres una conversación más estructurada para revisar tu caso con mayor detalle.",
+      "badges": [
+        "Espacio dedicado",
+        "Mejor contexto del proyecto",
+        "Revisión más completa"
+      ],
+      "cta": "Agendar llamada"
+    }
+  },
+  "footer": {
+    "tagline": "Casa de Software",
+    "description": "Desarrollo de software enfocado en resultados reales. Soluciones prácticas para negocios que quieren crecer con tecnología bien estructurada.",
+    "navHeading": "Páginas",
+    "home": "Inicio",
+    "about": "Quienes somos",
+    "contact": "Contacto",
+    "legal": "JOSUE 24:15 SAS - NIT 902001370-7",
+    "rights": "Todos los derechos reservados"
+  }
+}
